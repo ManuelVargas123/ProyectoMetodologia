@@ -7,10 +7,11 @@
   <title>Taller Andrés</title>
 
   <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
   <!-- Datatable -->
-   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+
                                 <!-- Con asset, laravel va a la carpeta 'public' y busca la ruta dada -->
   <link rel="stylesheet" href="{{asset('css/materialize.min.css')}}">
 
@@ -54,7 +55,6 @@
       </div>
     </nav>  
 
-    
 
 <script type="text/javascript">
     $(document).ready( function () {

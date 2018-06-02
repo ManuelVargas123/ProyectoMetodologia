@@ -1,6 +1,9 @@
 @extends('layouts.master')
-@section('content')
 
+@section('header')
+@endsection
+
+@section('content')
 	<h2>Herramientas</h2>
 
 		<div>
@@ -23,5 +26,7 @@
 				</tbody>
 			</table>
 		</div>
+@endsection
 
-@endsection()
+@section('footer')
+@endsection

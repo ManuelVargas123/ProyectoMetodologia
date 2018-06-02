@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Motor; // Modelo para llamar a la tabla de Motores
+use App\Http\Requests\CreateMotorRequest; // Validacion de los campos de motores
 
 class MotoresController extends Controller
 {
@@ -24,7 +25,7 @@ class MotoresController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateMotorRequest $request)
     {
         $motor = new Motor;
         $motor->nombre              = $request->nombre;
@@ -34,7 +35,6 @@ class MotoresController extends Controller
         $motor->descripcion         = $request->descripcion;
         $motor->modelosDisponibles  = $request->modelos_disponibles;
         $motor->cilindros           = $request->cilindros;
-        $motor->modelo              = $request->modelo;
         if($motor->save()) { // Insertar el registro
             return redirect()->back()->with('success', 'Has agregado un nuevo motor correctamente.');
         } else {

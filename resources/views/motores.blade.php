@@ -6,6 +6,19 @@
 
 @section('content')
 	<div class="row">
+
+		@if(count($errors) > 0)
+			<!-- Mostrar errores de validacion en caso de que existan -->
+			<div class="alert alert-danger" style="background-color: #d42c2c; border-radius: 2px; color: #FFF; padding: 5px 20px; margin-top: 10px;-webkit-box-shadow: 0px 2px 15px -2px rgba(0,0,0,0.75); -moz-box-shadow: 0px 2px 15px -2px rgba(0,0,0,0.75); box-shadow: 0px 2px 15px -2px rgba(0,0,0,0.75);">
+				<p style="font-size: 18px;">Se encontraron uno o más problemas:</p>
+				<ul>
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+		@endif
+
 		<div class="col s8">
 			<h2>Motores</h2>
 		</div>

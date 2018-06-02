@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <link rel="shortcut icon" href="/favicon.ico">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Taller Andrés</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Datatable -->
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
                                 <!-- Con asset, laravel va a la carpeta 'public' y busca la ruta dada -->
   <link rel="stylesheet" href="{{asset('css/materialize.min.css')}}">
 
@@ -18,7 +22,7 @@
       <li><a href="#">Transmisiones</a></li>
       <li><a href="#">Partes</a></li>
       <li><a href="#">Empleados</a></li>
-      <li><a href="#">Herramientas</a></li>
+      <li><a href="herramientas">Herramientas</a></li>
       <li><a href="#">Cajas de herramientas</a></li>
     </ul>
     <ul id="dropdown2" class="dropdown-content">
@@ -32,7 +36,7 @@
 
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo" style="margin-left: 20px;">Taller Andrés</a>
+        <a href="/" class="brand-logo" style="margin-left: 20px;">Taller Andrés</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           @isAdmin
             <li><a href="#">Ventas</a></li>
@@ -50,13 +54,22 @@
       </div>
     </nav>  
 
-  <div class="container">
-    <!-- Auth::user() puede mostrar la informacion del usuario solicitada -->
-      <center><h3>Bievenido <b>{{ Auth::user()->name }}</b></h3></center>
+    
+
+<script type="text/javascript">
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+    } );
+  </script>
+    <div class="container">
       @yield('content')
   </div>
 
   <!--  Scripts-->
+  <!-- Datatable  -->
+  
+
+
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="{{asset('js/materialize.min.js')}}"></script>
   <script type="text/javascript">

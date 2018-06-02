@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTaskTable extends Migration
+class CreateMotoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateTaskTable extends Migration
      */
     public function up()
     {
-        Schema::create('task', function (Blueprint $table) {
+        Schema::create('motores', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('admin_id')->nullable();
-            $table->boolean('status')->default(false);
-            $table->string('content');
+            $table->string('nombre');
+            $table->string('modelo');
+            $table->integer('cantidad');
+            $table->string('marca');
+            $table->string('descripcion');
+            $table->text('modelosDisponibles');
+            $table->integer('cilindros');
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ class CreateTaskTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('task');
+        Schema::dropIfExists('motores');
     }
 }

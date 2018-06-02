@@ -60,7 +60,7 @@ class EmpleadosController extends Controller
         return response()->json([
             'id' => $empleado->id,
             'nombre' => $empleado->nombre,
-            'primerApellido' => $primerApellido,
+            'primerApellido' => $empleado->primerApellido,
             'modificacion' => $empleado->updated_at
         ]);
     }

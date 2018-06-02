@@ -23,7 +23,13 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('/transmisiones', 'TransmisionesController@index');
 	Route::get('/partes', 'PartesController@index');                           //<--------Falta implementar
+	
 	Route::get('/empleados', 'EmpleadosController@index');
+	Route::post('/empleados/store', 'EmpleadosController@store')->name('empleados_store');
+	Route::delete('/empleados/delete/{id}', 'EmpleadosController@destroy')->name('empleados_destroy');
+	Route::post('/empleados/edit', 'EmpleadosController@edit')->name('empleados_edit');
+	Route::post('/empleados/update', 'EmpleadosController@update')->name('empleados_update');
+
 	Route::get('/herramientas', 'HerramientasController@index');
 	Route::get('/cajas_herramientas', 'CajaHerramientasController@index');  //<--------Falta implementar
 

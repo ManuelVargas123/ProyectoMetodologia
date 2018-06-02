@@ -19,16 +19,6 @@ class EmpleadosController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -36,7 +26,14 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $empleado = new Empleado;
+        $empleado->nombre = $request->nombre;
+        $empleado->primerApellido = $request->primerApellido;
+        if($empleado->save()){
+            return redirect()->back()->with('success', 'Has agregado un nuevo empleado correctamente');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar agregar un empleado, intentalo de nuevo.');
+        }
     }
 
     /**
@@ -56,9 +53,16 @@ class EmpleadosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $id = $request->id;
+        $empleado = Empleado::find($id);
+        return response()->json([
+            'id' => $empleado->id,
+            'nombre' => $empleado->nombre,
+            'primerApellido' => $primerApellido,
+            'modificacion' => $empleado->updated_at
+        ]);
     }
 
     /**
@@ -68,9 +72,18 @@ class EmpleadosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = $request->id;
+
+        $empleado = Empleado::find($id);
+        $empleado->nombre = $request->nombre;
+        $empleado->primerApellido = $request->primerApellido;
+        if($empleado->save()) {
+            return redirect()->back()->with('success', 'Has editado un empleado correctamente');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar editar un empleado, intentalo de nuevo.');
+        }
     }
 
     /**
@@ -81,6 +94,11 @@ class EmpleadosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $empleado = Empleado::find($id); // Buscamos el registro
+        if($empleado->delete()) {   // Lo eliminamos
+            return redirect()->back()->with('success', 'Has eliminado un empleado correctamente.');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar eliminar un empleado, intentalo de nuevo.');
+        }
     }
 }

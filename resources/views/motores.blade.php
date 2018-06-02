@@ -154,7 +154,6 @@
 			$('.modal').modal(); // Inicializar Modal
 			$('.tooltipped').tooltip(); // Inicializar tooltips
         });
-
 		$('a[href$="modal_editar_motor"]').click(function() {
 			$.ajax({
 				type: "POST",

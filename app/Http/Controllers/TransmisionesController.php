@@ -72,7 +72,7 @@ class TransmisionesController extends Controller
             'marca' => $transmision->marca,
             'descripcion' => $transmision->descripcion,
             'modelos_disponibles' => $transmision->modelosDisponibles,
-            'palanca_cambios ' => $transmision->palancaCambios ,
+            'palanca_cambios' => $transmision->palancaCambios ,
             'modificacion' => $transmision->updated_at
         ]);
     }

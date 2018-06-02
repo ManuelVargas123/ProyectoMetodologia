@@ -17,6 +17,4 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/herramientas', 'ToDoController@herramientas');
 });
 
-
 Auth::routes();
-

@@ -36,7 +36,16 @@ class HerramientasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $herramienta = new Herramienta;
+        $herramienta->cantidad            = $request->cantidad;
+        $herramienta->marca               = $request->marca;
+        $herramienta->tipo                = $request->tipo;
+        $herramienta->descripcion         = $request->descripcion;
+        if($herramienta->save()) { // Insertar el registro
+            return redirect()->back()->with('success', 'Has agregado una nueva herramienta correctamente.');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar agregar una herramienta, intentalo de nuevo.');
+        }
     }
 
     /**
@@ -56,9 +65,19 @@ class HerramientasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $id = $request->id;
+
+        $herramienta = Herramienta::find($id);
+
+        return response()->json([
+            'id' => $herramienta->id,
+            'cantidad' => $herramienta->cantidad,
+            'marca' => $herramienta->marca,
+            'tipo' => $herramienta->tipo,
+            'descripcion' => $herramienta->descripcion,
+        ]);
     }
 
     /**
@@ -68,9 +87,20 @@ class HerramientasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = $request->id;
+
+        $herramienta = Herramienta::find($id);
+        $herramienta->cantidad            = $request->cantidad;
+        $herramienta->marca               = $request->marca;
+        $herramienta->tipo                = $request->tipo;
+        $herramienta->descripcion         = $request->descripcion;
+        if($herramienta->save()) { // Insertar el registro
+            return redirect()->back()->with('info', 'Has editado una herramienta correctamente.');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar editar una herramienta, intentalo de nuevo.');
+        }
     }
 
     /**
@@ -81,6 +111,11 @@ class HerramientasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $herramienta = Herramienta::find($id); // Buscamos el registro
+        if($herramienta->delete()) { // Lo eliminamos
+            return redirect()->back()->with('success', 'Has eliminado una herramienta correctamente.');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar eliminar una herramienta, intentalo de nuevo.');
+        }
     }
 }

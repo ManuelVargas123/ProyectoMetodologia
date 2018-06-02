@@ -33,6 +33,12 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/agregar_gerente', 'ToDoController@agregar_gerente');        //<--------Falta implementar
 	Route::get('/eliminar_gerente', 'ToDoController@eliminar_gerente');       //<--------Falta implementar
 	Route::get('/ver_gerentes', 'ToDoController@ver_gerentes');          //<--------Falta implementar
+
+	//herramientas
+	Route::post('/herramientas/store', 'HerramientasController@store')->name('herramientas_store');
+	Route::delete('/herramientas/delete/{id}', 'HerramientasController@destroy')->name('herramientas_destroy');
+	Route::post('/herramientas/edit', 'HerramientasController@edit')->name('herramientas_edit');
+	Route::post('/herramientas/update', 'HerramientasController@update')->name('herramientas_update');
 });
 
 Auth::routes();

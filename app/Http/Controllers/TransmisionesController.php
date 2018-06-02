@@ -19,16 +19,6 @@ class TransmisionesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -36,7 +26,19 @@ class TransmisionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $transmision = new Transmision;
+        $transmision->nombre              = $request->nombre;
+        $transmision->modelo              = $request->modelo;
+        $transmision->cantidad            = $request->cantidad;
+        $transmision->marca               = $request->marca;
+        $transmision->descripcion         = $request->descripcion;
+        $transmision->modelosDisponibles  = $request->modelos_disponibles;
+        $transmision->palancaCambios      = $request->palanca_cambios ;
+        if($transmision->save()) { // Insertar el registro
+            return redirect()->back()->with('success', 'Has agregado una nueva transmision correctamente.');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar agregar una transmision, intentalo de nuevo.');
+        }
     }
 
     /**
@@ -56,9 +58,23 @@ class TransmisionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $id = $request->id;
+
+        $transmision = Transmision::find($id);
+
+        return response()->json([
+            'id' => $transmision->id,
+            'nombre' => $transmision->nombre,
+            'modelo' => $transmision->modelo,
+            'cantidad' => $transmision->cantidad,
+            'marca' => $transmision->marca,
+            'descripcion' => $transmision->descripcion,
+            'modelos_disponibles' => $transmision->modelosDisponibles,
+            'palanca_cambios ' => $transmision->palancaCambios ,
+            'modificacion' => $transmision->updated_at
+        ]);
     }
 
     /**
@@ -68,9 +84,23 @@ class TransmisionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = $request->id;
+
+        $transmision = Transmision::find($id);
+        $transmision->nombre              = $request->nombre;
+        $transmision->modelo              = $request->modelo;
+        $transmision->cantidad            = $request->cantidad;
+        $transmision->marca               = $request->marca;
+        $transmision->descripcion         = $request->descripcion;
+        $transmision->modelosDisponibles  = $request->modelos_disponibles;
+        $transmision->palancaCambios     = $request->palanca_cambios ;
+        if($transmision->save()) { // Insertar el registro
+            return redirect()->back()->with('info', 'Has editado una transmision correctamente.');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar editar una transmision, intentalo de nuevo.');
+        }
     }
 
     /**
@@ -81,6 +111,11 @@ class TransmisionesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $transmision = Transmision::find($id); // Buscamos el registro
+        if($transmision->delete()) { // Lo eliminamos
+            return redirect()->back()->with('success', 'Has eliminado una transmision correctamente.');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar eliminar una transmision, intentalo de nuevo.');
+        }
     }
 }

@@ -13,12 +13,56 @@ class ToDoController extends Controller
 
     public function edit()
     {
-    	return view('edit');
+        return view('edit');
+    }
+
+    public function motores()
+    {
+
+    }
+
+    public function transmisiones()
+    {
+
+    }
+
+    public function partes()
+    {
+
+    }
+
+    public function empleados()
+    {
+
     }
 
     public function herramientas()
     {
-    	$Consultaherramientas = DB::table('herramientas')->get();
-    	return view('herramientas', compact('Consultaherramientas'));
+
+    }
+
+    public function cajas_herramientas()
+    {
+
+    }
+
+    public function ventas()
+    {
+        
+    }
+
+    public function agregar_gerente()
+    {
+        return view('agregar_gerente');
+    }
+
+    public function eliminar_gerente()
+    {
+        return view('eliminar_gerente');
+    }
+
+    public function ver_gerentes()
+    {
+        return view('ver_gerentes');
     }
 }

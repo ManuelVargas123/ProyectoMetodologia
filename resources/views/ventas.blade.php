@@ -4,10 +4,10 @@
 @endsection
 
 @section('content')
-	<h2>Herramientas</h2>
+	<h2>Ventas</h2>
 
 		<div>
-			<table id="table_herramientas" class="display">
+			<table id="table_ventas" class="display">
 				<thead>
 					<th>Cantidad</th>
 					<th>Marca</th>
@@ -15,12 +15,12 @@
 					<th>Descripcion</th>
 				</thead>
 				<tbody>
-					@foreach($herramientas as $herramienta)
+					@foreach($ventas as $venta)
 						<tr>
-							<td>{{ $herramientas->cantidad }}</td>
-							<td>{{ $herramientas->marca }}</td>
-							<td>{{ $herramientas->tipo }}</td>
-							<td>{{ $herramientas->descripcion }}</td>
+							<td>{{$ventas->}}</td>
+							<td>{{$ventas->}}</td>
+							<td>{{$ventas->}}</td>
+							<td>{{$ventas->}}</td>
 						</tr>
 					@endforeach
 				</tbody>
@@ -31,7 +31,7 @@
 @section('footer')
 	<script type="text/javascript">
         $(document).ready(function() {
-            $('#table_herramientas').DataTable({
+            $('#table_ventas').DataTable({
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
                 }

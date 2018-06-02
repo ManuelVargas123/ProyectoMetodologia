@@ -13,8 +13,26 @@
 
 Route::middleware(['auth'])->group(function () {
 	Route::get('/','ToDoController@index');
+
+	// Inventario
+	Route::get('/motores', 'MotoresController@index');
+	Route::post('/motores/store', 'MotoresController@store')->name('motores_store');
+	Route::delete('/motores/delete/{id}', 'MotoresController@destroy')->name('motores_destroy');
+	Route::post('/motores/edit', 'MotoresController@edit')->name('motores_edit');
+	Route::post('/motores/update', 'MotoresController@update')->name('motores_update');
+
+	Route::get('/transmisiones', 'TransmisionesController@index');
+	Route::get('/partes', 'PartesController@index');                           //<--------Falta implementar
+	Route::get('/empleados', 'EmpleadosController@index');
+	Route::get('/herramientas', 'HerramientasController@index');
+	Route::get('/cajas_herramientas', 'CajaHerramientasController@index');  //<--------Falta implementar
+
+	Route::get('/ventas', 'VentasController@index');                         //<--------Falta implementar
+
 	Route::get('/edit','ToDoController@edit')->name('edit');
-	Route::get('/herramientas', 'ToDoController@herramientas');
+	Route::get('/agregar_gerente', 'ToDoController@agregar_gerente');        //<--------Falta implementar
+	Route::get('/eliminar_gerente', 'ToDoController@eliminar_gerente');       //<--------Falta implementar
+	Route::get('/ver_gerentes', 'ToDoController@ver_gerentes');          //<--------Falta implementar
 });
 
 Auth::routes();

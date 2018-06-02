@@ -7,18 +7,18 @@
 	<h2>Empleados</h2>
 
 		<div>
-			<table id="table_id" class="display">
+			<table id="table_empleados" class="display">
 				<thead>
 					<th>Nombre</th>
 					<th>Apellido paterno</th>
 					<th>Fecha de agregado</th>
 				</thead>
 				<tbody>
-					@foreach($Consultaempleados as $empleados)
+					@foreach($empleados as $empleado)
 						<tr>
-							<td>{{$empleados->nombre}}</td>
-							<td>{{$empleados->primerApellido}}</td>
-							<td>{{$empleados->created_at}}</td>
+							<td>{{ $empleado->nombre }}</td>
+							<td>{{ $empleado->primerApellido }}</td>
+							<td>{{ $empleado->created_at }}</td>
 						</tr>
 					@endforeach
 				</tbody>
@@ -27,4 +27,13 @@
 @endsection
 
 @section('footer')
+	<script type="text/javascript">
+        $(document).ready(function() {
+            $('#table_empleados').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
 @endsection

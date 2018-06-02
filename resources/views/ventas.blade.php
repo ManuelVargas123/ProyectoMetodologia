@@ -7,7 +7,7 @@
 	<h2>Ventas</h2>
 
 		<div>
-			<table id="table_id" class="display">
+			<table id="table_ventas" class="display">
 				<thead>
 					<th>Cantidad</th>
 					<th>Marca</th>
@@ -15,7 +15,7 @@
 					<th>Descripcion</th>
 				</thead>
 				<tbody>
-					@foreach($Consultaventas as $ventas)
+					@foreach($ventas as $venta)
 						<tr>
 							<td>{{$ventas->}}</td>
 							<td>{{$ventas->}}</td>
@@ -29,4 +29,13 @@
 @endsection
 
 @section('footer')
+	<script type="text/javascript">
+        $(document).ready(function() {
+            $('#table_ventas').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
 @endsection

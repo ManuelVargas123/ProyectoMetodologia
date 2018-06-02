@@ -7,7 +7,7 @@
 	<h2>Transmisiones</h2>
 
 		<div>
-			<table id="table_id" class="display">
+			<table id="table_transmisores" class="display">
 				<thead>
 					<th>Nombre</th>
 					<th>Modelo</th>
@@ -19,16 +19,16 @@
 					<th>Ultima actualizacion</th>
 				</thead>
 				<tbody>
-					@foreach($Consultatransmisiones as $transmisiones)
+					@foreach($transmisiones as $transmision)
 						<tr>
-							<td>{{$transmisiones->nombre}}</td>
-							<td>{{$transmisiones->modelo}}</td>
-							<td>{{$transmisiones->cantidad}}</td>
-							<td>{{$transmisiones->marca}}</td>
-							<td>{{$transmisiones->descripcion}}</td>
-							<td>{{$transmisiones->modelosDisponibles}}</td>
-							<td>{{$transmisiones->palancaCambios}}</td>
-							<td>{{$transmisiones->updated_at}}</td>
+							<td>{{ $transmision->nombre }}</td>
+							<td>{{ $transmision->modelo }}</td>
+							<td>{{ $transmision->cantidad }}</td>
+							<td>{{ $transmision->marca }}</td>
+							<td>{{ $transmision->descripcion }}</td>
+							<td>{{ $transmision->modelosDisponibles }}</td>
+							<td>{{ $transmision->palancaCambios }}</td>
+							<td>{{ $transmision->updated_at }}</td>
 						</tr>
 					@endforeach
 				</tbody>
@@ -37,4 +37,13 @@
 @endsection
 
 @section('footer')
+	<script type="text/javascript">
+        $(document).ready(function() {
+            $('#table_transmisores').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
 @endsection

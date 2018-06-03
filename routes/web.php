@@ -24,41 +24,37 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/transmisiones', 'TransmisionesController@index');
 	Route::get('/partes', 'PartesController@index');                           //<--------Falta implementar
 	
+	//empleados
 	Route::get('/empleados', 'EmpleadosController@index');
-<<<<<<< HEAD
-=======
 	Route::post('/empleados/store', 'EmpleadosController@store')->name('empleados_store');
 	Route::delete('/empleados/delete/{id}', 'EmpleadosController@destroy')->name('empleados_destroy');
 	Route::post('/empleados/edit', 'EmpleadosController@edit')->name('empleados_edit');
 	Route::post('/empleados/update', 'EmpleadosController@update')->name('empleados_update');
 
-	Route::get('/herramientas', 'HerramientasController@index');
->>>>>>> 8398a55bba3082bf5cf9b08b2786d691d677212d
 	Route::get('/cajas_herramientas', 'CajaHerramientasController@index');  //<--------Falta implementar
 
 	Route::get('/ventas', 'VentasController@index');                         //<--------Falta implementar
 
+	//Administrar usuarios
 	Route::get('/edit','ToDoController@edit')->name('edit');
 	Route::get('/agregar_gerente', 'ToDoController@agregar_gerente');        //<--------Falta implementar
 	Route::get('/eliminar_gerente', 'ToDoController@eliminar_gerente');       //<--------Falta implementar
 	Route::get('/ver_gerentes', 'ToDoController@ver_gerentes');          //<--------Falta implementar
-<<<<<<< HEAD
-=======
 
+	//servicios
 	Route::get('/servicios', 'ServiciosController@index');
 	Route::post('/servicios/store', 'ServiciosController@store')->name('servicios_store');
 	Route::delete('/servicios/delete/{id}', 'ServiciosController@destroy')->name('servicios_destroy');
 	Route::post('/servicios/edit', 'ServiciosController@edit')->name('servicios_edit');
 	Route::post('/servicios/update', 'ServiciosController@update')->name('servicios_update');
 
+	//autopartes
 	Route::get('/autopartes', 'PartesController@index');
 	Route::post('/autopartes/store', 'PartesController@store')->name('partes_store');
 	Route::delete('/autopartes/delete/{id}', 'PartesController@destroy')->name('partes_destroy');
 	Route::post('/autopartes/edit', 'PartesController@edit')->name('partes_edit');
 	Route::post('/autopartes/update', 'PartesController@update')->name('partes_update');
-});
->>>>>>> 8398a55bba3082bf5cf9b08b2786d691d677212d
-
+	
 	//herramientas
 	Route::get('/herramientas', 'HerramientasController@index');
 	Route::post('/herramientas/store', 'HerramientasController@store')->name('herramientas_store');

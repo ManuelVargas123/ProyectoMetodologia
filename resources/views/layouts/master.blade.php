@@ -96,7 +96,7 @@
                     </form>
                 </li>
         </ul>
-        
+
 
         <div class="container">
             @yield('content')
@@ -137,15 +137,8 @@
         @endif
 
         <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems, options);
-            });
-
-            // Or with jQuery
-
             $(document).ready(function(){
-            $('.sidenav').sidenav();
+                $('.sidenav').sidenav();
             });
         </script>
 

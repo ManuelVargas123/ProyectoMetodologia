@@ -22,10 +22,10 @@
 			<th>Modelo</th>
 			<th>Cantidad</th>
 			<th>Marca</th>
-			<th>Descripcion</th>
+			<th>Descripción</th>
 			<th>Modelos disponibles</th>
 			<th>Palanca de cambios</th>
-			<th>Ultima actualizacion</th>
+			<th>Ultima actualización</th>
 			<th></th>
 		</thead>
 		<tbody>
@@ -61,7 +61,7 @@
 	<form id="modal_nueva_transmision" class="modal" action="{{ route('transmisiones_store') }}" method="POST">
 		@csrf
 		<div class="modal-content">
-			<h4>Agregar nueva trasnmision</h4>
+			<h4>Agregar nueva transmisión</h4>
 			<div class="row">
 				<div class="input-field col s6">
 					<input name="nombre" id="nombre" type="text" class="validate">
@@ -103,7 +103,7 @@
 	<form id="modal_editar_transmision" class="modal" action="{{ route('transmisiones_update') }}" method="POST">
 		@csrf
 		<div class="modal-content">
-			<h4>Editar transmision</h4>
+			<h4>Editar transmisión</h4>
 			<div class="row">
 				<input id="editar_id" type="hidden" name="id" value="">
 				<div class="input-field col s6">

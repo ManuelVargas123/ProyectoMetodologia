@@ -16,7 +16,7 @@
 			</a>
 		</div>
 	</div>
-	<table id="table_servicios" class="display">
+	<table id="table_servicios" class="display striped">
 		<thead>
 			<th>Servicio</th>
 			<th>Costo</th>

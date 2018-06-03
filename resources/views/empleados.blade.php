@@ -16,7 +16,7 @@
 			</a>
 		</div>
 	</div>
-	<table id="table_empleados" class="display">
+	<table id="table_empleados" class="display striped">
 		<thead>
 			<th>Nombre</th>
 			<th>Apellido paterno</th>

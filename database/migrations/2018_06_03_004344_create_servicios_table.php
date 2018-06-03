@@ -18,7 +18,7 @@ class CreateServiciosTable extends Migration
             $table->string('servicio');
             $table->float('costo');
             $table->date('fecha');
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->timestamps();
         });
     }

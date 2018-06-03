@@ -82,7 +82,7 @@
         <ul id="mobile-demo" class="sidenav">
             <li><a href="/" style="margin-right: 10px;"><i class="material-icons">home</i>Inicio</a></li>
             @isAdmin
-            <li><a href="/" style="margin-right: 10px;"><i class="material-icons">group</i>Administrar Gerentes</a></li>
+            <li><a href="/gerentes" style="margin-right: 10px;"><i class="material-icons">group</i>Administrar Gerentes</a></li>
             <li><a class="dropdown-trigger" href="#" data-target="dropdown3" style="margin-right: 10px;"><i class="material-icons">monetization_on</i>Ganancias<i class="material-icons right">arrow_drop_down</i></a></li>
             @endisAdmin
                 <!-- Dropdown Trigger -->

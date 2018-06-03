@@ -24,6 +24,7 @@
 			<th>Descripcion</th>
 			<th>Costo total</th>
 			<th>Fecha de venta</th>
+			<th></th>
 		</thead>
 		<tbody>
 			@foreach($ventas as $venta)
@@ -98,19 +99,19 @@
 				</div>
 				<div class="input-field col s6">
 					<input name="apellido" id="editar_apellido" type="text" class="validate">
-					<label for="apellido">Apellido paterno</label>
+					<label for="editar_apellido">Apellido paterno</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="telefono" id="editar_telefono" type="number" class="validate">
-					<label for="telefono">Telefono</label>
+					<label for="editar_telefono">Telefono</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="descripcion" id="editar_descripcion" type="text" class="validate">
-					<label for="descripcion">Descripcion</label>
+					<label for="editar_descripcion">Descripcion</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="costo" id="editar_costo" type="number" min="0.00" max="1000000.00" step="0.01" class="validate">
-					<label for="costo">Costo</label>
+					<label for="editar_costo">Costo</label>
 				</div>
 			</div>
 		</div>

@@ -14,10 +14,10 @@ class CreateCajaHerramientasTable extends Migration
     public function up()
     {
         Schema::create('caja_herramientas', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('id_empleado1');
-            $table->integer('id_empleado2')->nullable();
-            $table->text('herramientas');
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('user_id2')->unsigned()->nullable();
             $table->timestamps();
         });
     }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Gerente;
+use App\User;
 
 class GerentesController extends Controller
 {
@@ -14,7 +14,7 @@ class GerentesController extends Controller
      */
     public function index()
     {
-        $gerentes = Gerente::get();
+        $gerentes = User::where('is_admin', false)->get();
         return view('gerentes', compact('gerentes'));
     }
 
@@ -37,7 +37,7 @@ class GerentesController extends Controller
     public function store(Request $request)
     {
         $gerente = new User;
-        $gerente->nombre = $request->nombre;
+        $gerente->name = $request->name;
         $gerente->primerApellido = $request->primerApellido;
         $gerente->email = $request->email;
         $gerente->password = $request->password;
@@ -72,10 +72,10 @@ class GerentesController extends Controller
         $gerente = User::find($id);
         return response()->json([
             'id' => $gerente->id,
-            'nombre' => $gerente->nombre,
+            'name' => $gerente->name,
             'primerApellido' => $gerente->primerApellido,
             'email' => $gerente->email,
-            'password' => $gerente->password,
+            //'password' => $gerente->password,
             'modificacion' => $gerente->updated_at
         ]);
     }
@@ -91,11 +91,10 @@ class GerentesController extends Controller
     {
         $id = $request->id;
 
-        $gerente = Gerente::find($id);
-        $gerente->nombre = $request->nombre;
+        $gerente = User::find($id);
+        $gerente->name = $request->name;
         $gerente->primerApellido = $request->primerApellido;
         $gerente->email = $request->email;
-        $gerente->password = $request->password;
         if($gerente->save()){
             return redirect()->back()->with('success', 'Has editado un nuevo gerente correctamente');
         } else {

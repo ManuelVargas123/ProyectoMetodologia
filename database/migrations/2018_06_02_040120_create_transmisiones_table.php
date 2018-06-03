@@ -14,12 +14,13 @@ class CreateTransmisionesTable extends Migration
     public function up()
     {
         Schema::create('transmisiones', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('nombre');
             $table->string('modelo');
             $table->integer('cantidad');
             $table->string('marca');
-            $table->text('descripcion');
+            $table->text('descripcion')->nullable();
             $table->text('modelosDisponibles');
             $table->string('palancaCambios');
             $table->timestamps();

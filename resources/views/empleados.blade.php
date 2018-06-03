@@ -5,6 +5,17 @@
 @endsection
 
 @section('content')
+	@if(count($errors) > 0)
+		<div style="background-color: #f15858; border-radius: 4px; border: 1px solid #de3c3c; color: #FFF; font-family: 'Roboto'; margin-top: 10px; padding: 0px 10px;">
+			<ul>
+				@foreach ($errors->all() as $error)
+					<ul>
+						<li>• {{ $error }}</li>
+					</ul>
+				@endforeach
+			</ul>
+		</div>
+	@endif
 	<div class="row">
 		<div class="col s8">
 			<h2>Empleados</h2>
@@ -16,7 +27,7 @@
 			</a>
 		</div>
 	</div>
-	<table id="table_empleados" class="display">
+	<table id="table_empleados" class="display striped">
 		<thead>
 			<th>Nombre</th>
 			<th>Apellido paterno</th>

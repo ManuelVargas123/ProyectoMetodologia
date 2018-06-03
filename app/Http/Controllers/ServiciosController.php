@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Servicio; //Modelo
+use App\Http\Requests\ServiciosRequest;
 
 class ServiciosController extends Controller
 {
@@ -24,7 +25,7 @@ class ServiciosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ServiciosRequest $request)
     {
         $servicio = new Servicio;
         $servicio->servicio = $request->servicio;
@@ -86,7 +87,7 @@ class ServiciosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(ServiciosRequest $request)
     {
         $id = $request->id;
 

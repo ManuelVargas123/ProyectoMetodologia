@@ -14,6 +14,7 @@ class CreateAutopartesTable extends Migration
     public function up()
     {
         Schema::create('autopartes', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('parte');
             $table->string('modelo');

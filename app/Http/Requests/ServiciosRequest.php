@@ -28,7 +28,7 @@ class ServiciosRequest extends FormRequest
             'costo' => 'required|numeric|max:999999',
             'nombreCliente' => 'required|string|max:255',
             'apellidoCliente' => 'required|string|max:255',
-            'telCliente' => 'required|string|max:255',
+            'telCliente' => 'required|numeric',
             'carro' => 'required|string|max:255',
             'fecha' => 'required|date',
             'fechaSiguiente' => 'required|date',

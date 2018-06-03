@@ -17,10 +17,10 @@
 		</div>
 	@endif
 	<div class="row">
-		<div class="col s8">
-			<h2>Transmisiones</h2>
+		<div class="col l7 s12">
+			<h2 style="text-align: center;margin-top: 5px;">Transmisiones</h2>
 		</div>
-		<div class="col s4" style="text-align: right; margin-top: 20px;">
+		<div class="col l5 s12" style="text-align: center; margin-top: 15px;">
 			<a class="waves-effect waves-light btn modal-trigger" href="#modal_nueva_transmision">
 				<i class="large material-icons" style="vertical-align: middle">add</i>
 				<span style="vertical-align: middle">Agregar</span>
@@ -69,46 +69,47 @@
 	</table>
 
 	<!-- Modal - Nuevo motor -->
-	<form id="modal_nueva_transmision" class="modal" action="{{ route('transmisiones_store') }}" method="POST">
-		@csrf
-		<div class="modal-content">
-			<h4>Agregar nueva transmisión</h4>
-			<div class="row">
-				<div class="input-field col s6">
-					<input name="nombre" id="nombre" type="text" class="validate">
-					<label for="nombre">Nombre</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="modelo" id="modelo" type="text" class="validate">
-					<label for="modelo">Modelo</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="cantidad" id="cantidad" type="number" class="validate">
-					<label for="cantidad">Cantidad</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="marca" id="marca" type="text" class="validate">
-					<label for="marca">Marca</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="descripcion" id="descripcion" type="text" class="validate">
-					<label for="descripcion">Descripción</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="modelos_disponibles" id="modelos_disponibles" type="text" class="validate">
-					<label for="modelos_disponibles">Modelos disponibles</label>
+		<form id="modal_nueva_transmision" class="modal" action="{{ route('transmisiones_store') }}" method="POST">
+			@csrf
+			<div class="modal-content">
+				<h4>Agregar nueva transmisión</h4>
+				<div class="row">
+					<div class="input-field col s6">
+						<input name="nombre" id="nombre" type="text" class="validate">
+						<label for="nombre">Nombre</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="modelo" id="modelo" type="text" class="validate">
+						<label for="modelo">Modelo</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="cantidad" id="cantidad" type="number" class="validate">
+						<label for="cantidad">Cantidad</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="marca" id="marca" type="text" class="validate">
+						<label for="marca">Marca</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="descripcion" id="descripcion" type="text" class="validate">
+						<label for="descripcion">Descripción</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="modelos_disponibles" id="modelos_disponibles" type="text" class="validate">
+						<label for="modelos_disponibles">Modelos disponibles</label>
+					</div>
+
+					<div class="input-field col s6">
+						<input name="palanca_cambios" id="palanca_cambios" type="text" class="validate">
+						<label for="palanca_cambios">Palanca de cambios</label>
+					</div>
 				</div>
 
-				<div class="input-field col s6">
-					<input name="palanca_cambios" id="palanca_cambios" type="text" class="validate">
-					<label for="palanca_cambios">Palanca de cambios</label>
-				</div>
 			</div>
-		</div>
-		<div class="modal-footer">
-			<button type="submit" name="button" class="modal-close waves-effect waves-green btn-flat">Guardar</button>
-		</div>
-	</form>
+			<div class="modal-footer">
+				<button type="submit" name="button" class="modal-close waves-effect waves-green btn-flat">Guardar</button>
+			</div>
+		</form>
 
 	<!-- Modal - Editar transmision-->
 	<form id="modal_editar_transmision" class="modal" action="{{ route('transmisiones_update') }}" method="POST">

@@ -24,7 +24,6 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/transmisiones', 'TransmisionesController@index');
 	Route::get('/partes', 'PartesController@index');                           //<--------Falta implementar
 	Route::get('/empleados', 'EmpleadosController@index');
-	Route::get('/herramientas', 'HerramientasController@index');
 	Route::get('/cajas_herramientas', 'CajaHerramientasController@index');  //<--------Falta implementar
 
 	Route::get('/ventas', 'VentasController@index');                         //<--------Falta implementar
@@ -35,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/ver_gerentes', 'ToDoController@ver_gerentes');          //<--------Falta implementar
 
 	//herramientas
+	Route::get('/herramientas', 'HerramientasController@index');
 	Route::post('/herramientas/store', 'HerramientasController@store')->name('herramientas_store');
 	Route::delete('/herramientas/delete/{id}', 'HerramientasController@destroy')->name('herramientas_destroy');
 	Route::post('/herramientas/edit', 'HerramientasController@edit')->name('herramientas_edit');

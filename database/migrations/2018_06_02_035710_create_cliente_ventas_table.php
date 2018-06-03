@@ -14,6 +14,7 @@ class CreateClienteVentasTable extends Migration
     public function up()
     {
         Schema::create('cliente_ventas', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('nombre');
             $table->string('descripcion');

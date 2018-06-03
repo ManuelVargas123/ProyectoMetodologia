@@ -38,7 +38,11 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('/cajas_herramientas', 'CajaHerramientasController@index');  //<--------Falta implementar
 
-	Route::get('/ventas', 'VentasController@index');                         //<--------Falta implementar
+	Route::get('/ventas', 'VentasController@index');   
+	Route::post('/ventas/store', 'VentasController@store')->name('ventas_store');
+	Route::delete('/ventas/delete/{id}', 'VentasController@destroy')->name('ventas_destroy');
+	Route::post('/ventas/edit', 'VentasController@edit')->name('ventas_edit');
+	Route::post('/ventas/update', 'VentasController@update')->name('ventas_update');
 
 	//Administrar usuarios
 	Route::get('/edit','ToDoController@edit')->name('edit');

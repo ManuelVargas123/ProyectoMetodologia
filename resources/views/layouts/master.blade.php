@@ -43,7 +43,6 @@
             <li><a href="servicios">Servicios</a></li>
             <li><a href="ventas">Ventas</a></li>
             <li><a href="clientesServicios">Clientes de Servicios</a></li>
-            <li><a href="clientesVentas">Clientes de Ventas</a></li>
         </ul>
 
         <!-- La secciones que tengan el arroba isAdmin, endisAdmin,

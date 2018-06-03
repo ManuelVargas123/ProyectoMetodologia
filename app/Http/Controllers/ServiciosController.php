@@ -30,7 +30,12 @@ class ServiciosController extends Controller
         $servicio = new Servicio;
         $servicio->servicio = $request->servicio;
         $servicio->costo = $request->costo;
+        $servicio->nombreCliente = $request->nombreCliente;
+        $servicio->apellidoCliente = $request->apellidoCliente;
+        $servicio->telCliente = $request->telCliente;
+        $servicio->carro = $request->carro;
         $servicio->fecha = $request->fecha;
+        $servicio->fechaSiguiente = $request->fechaSiguiente;
         $servicio->descripcion = $request->descripcion;
         if($servicio->save()){
             return redirect()->back()->with('success', 'Has agregado un nuevo servicio correctamente');
@@ -64,7 +69,12 @@ class ServiciosController extends Controller
             'id' => $servicio->id,
             'servicio' => $servicio->servicio,
             'costo' => $servicio->costo,
+            'nombreCliente' => $servicio->nombreCliente,
+            'apellidoCliente' => $servicio->apellidoCliente,
+            'telCliente' => $servicio->telCliente,
+            'carro' => $servicio->carro,
             'fecha' => $servicio->fecha,
+            'fechaSiguiente' => $servicio->fechaSiguiente,
             'descripcion' => $servicio->descripcion,
             'modificacion' => $servicio->updated_at
         ]);
@@ -82,9 +92,15 @@ class ServiciosController extends Controller
         $id = $request->id;
 
         $servicio = Servicio::find($id);
+
         $servicio->servicio = $request->servicio;
         $servicio->costo = $request->costo;
+        $servicio->nombreCliente = $request->nombreCliente;
+        $servicio->apellidoCliente = $request->apellidoCliente;
+        $servicio->telCliente = $request->telCliente;
+        $servicio->carro = $request->carro;
         $servicio->fecha = $request->fecha;
+        $servicio->fechaSiguiente = $request->fechaSiguiente;
         $servicio->descripcion = $request->descripcion;
         if($servicio->save()){
             return redirect()->back()->with('success', 'Has editado un nuevo servicio correctamente');

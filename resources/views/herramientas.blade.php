@@ -17,10 +17,10 @@
 		</div>
 	@endif
 	<div class="row">
-		<div class="col s8">
-			<h2>Herramientas</h2>
+		<div class="col l7 s12">
+			<h2 style="text-align: center;margin-top: 5px;">Herramientas</h2>
 		</div>
-		<div class="col s4" style="text-align: right; margin-top: 20px;">
+		<div class="col l5 s12" style="text-align: center; margin-top: 15px;">
 			<a class="waves-effect waves-light btn modal-trigger" href="#modal_nueva_herramienta">
 				<i class="large material-icons" style="vertical-align: middle">add</i>
 				<span style="vertical-align: middle">Agregar</span>

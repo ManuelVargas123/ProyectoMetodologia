@@ -17,10 +17,10 @@
 		</div>
 	@endif
 	<div class="row">
-		<div class="col s8">
-			<h2>Servicios</h2>
+		<div class="col l7 s12">
+			<h2 style="text-align: center;margin-top: 5px;">Servicios</h2>
 		</div>
-		<div class="col s4" style="text-align: right; margin-top: 20px;">
+		<div class="col l5 s12" style="text-align: center; margin-top: 15px;">
 			<a class="waves-effect waves-light btn modal-trigger" href="#modal_nuevo_servicio">
 				<i class="large material-icons" style="vertical-align: middle">add</i>
 				<span style="vertical-align: middle">Agregar</span>
@@ -71,53 +71,53 @@
 	</table>
 
 	<!-- Modal - Nuevo servicio -->
-	<form id="modal_nuevo_servicio" class="modal" action="{{ route('servicios_store') }}" method="POST">
-		@csrf
-		<div class="modal-content">
-			<h4>Agregar un nuevo Servicio</h4>
-			<div class="row">
-				<div class="input-field col s6">
-					<input name="servicio" id="servicio" type="text" class="validate">
-					<label for="servicio">Servicio</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="costo" id="costo" type="number" min="0.00" max="10000.00" step="0.01" class="validate">
-					<label for="costo">Costo</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="nombreCliente" id="nombreCliente" type="text" class="validate">
-					<label for="nombreCliente">Nombre del Cliente</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="apellidoCliente" id="apellidoCliente" type="text" class="validate">
-					<label for="apellidoCliente">Apellido del Cliente</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="telCliente" id="telCliente" type="text" class="validate">
-					<label for="telCliente">Telefono del Cliente</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="carro" id="carro" type="text" class="validate">
-					<label for="carro">Carro</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="fecha" id="fecha" type="date" class="validate">
-					<label for="fecha">Fecha</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="fechaSiguiente" id="fechaSiguiente" type="date" class="validate">
-					<label for="fechaSiguiente">Siguiente Cita</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="descripcion" id="descripcion" type="text" class="validate">
-					<label for="descripcion">Descripcion</label>
+		<form id="modal_nuevo_servicio" class="modal" action="{{ route('servicios_store') }}" method="POST">
+			@csrf
+			<div class="modal-content">
+				<h4>Agregar un nuevo Servicio</h4>
+				<div class="row">
+					<div class="input-field col s6">
+						<input name="servicio" id="servicio" type="text" class="validate">
+						<label for="servicio">Servicio</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="costo" id="costo" type="number" min="0.00" max="10000.00" step="0.01" class="validate">
+						<label for="costo">Costo</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="nombreCliente" id="nombreCliente" type="text" class="validate">
+						<label for="nombreCliente">Nombre del Cliente</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="apellidoCliente" id="apellidoCliente" type="text" class="validate">
+						<label for="apellidoCliente">Apellido del Cliente</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="telCliente" id="telCliente" type="text" class="validate">
+						<label for="telCliente">Telefono del Cliente</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="carro" id="carro" type="text" class="validate">
+						<label for="carro">Carro</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="fecha" id="fecha" type="date" class="validate">
+						<label for="fecha">Fecha</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="fechaSiguiente" id="fechaSiguiente" type="date" class="validate">
+						<label for="fechaSiguiente">Siguiente Cita</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="descripcion" id="descripcion" type="text" class="validate">
+						<label for="descripcion">Descripcion</label>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="modal-footer">
-			<button type="submit" name="button" class="modal-close waves-effect waves-green btn-flat">Guardar</button>
-		</div>
-	</form>
+			<div class="modal-footer">
+				<button type="submit" name="button" class="modal-close waves-effect waves-green btn-flat">Guardar</button>
+			</div>
+		</form>
 
 	<!-- Modal - Editar servicio -->
 	<form id="modal_editar_servicio" class="modal" action="{{ route('servicios_update') }}" method="POST">

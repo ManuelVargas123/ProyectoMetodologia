@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Empleado; // Modelo
+use App\Http\Requests\EmpleadosRequest;
 
 class EmpleadosController extends Controller
 {
@@ -24,7 +25,7 @@ class EmpleadosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmpleadosRequest $request)
     {
         $empleado = new Empleado;
         $empleado->nombre = $request->nombre;
@@ -72,7 +73,7 @@ class EmpleadosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(EmpleadosRequest $request)
     {
         $id = $request->id;
 

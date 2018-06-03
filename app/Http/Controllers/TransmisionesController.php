@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Transmision; // Modelo para llamar a la tabla de transmisiones
 
+
 class TransmisionesController extends Controller
 {
     /**

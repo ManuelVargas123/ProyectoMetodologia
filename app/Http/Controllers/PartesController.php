@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Autoparte; // Modelo
+use App\Http\Requests\AutoparteRequest;
 
 class PartesController extends Controller
 {
@@ -34,7 +35,7 @@ class PartesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AutoparteRequest $request)
     {
         $autoparte = new Autoparte;
         $autoparte->parte = $request->parte;
@@ -96,7 +97,7 @@ class PartesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(AutoparteRequest $request)
     {
         $id = $request->id;
 

@@ -20,7 +20,12 @@
 		<thead>
 			<th>Servicio</th>
 			<th>Costo</th>
+			<th>Nombre del Cliente</th>
+			<th>Apellido del Cliente</th>
+			<th>Telefono del Cliente</th>
+			<th>Carro</th>
 			<th>Fecha</th>
+			<th>Siguiente Cita</th>
 			<th>Descripcion</th>
 			<th></th>
 		</thead>
@@ -29,9 +34,14 @@
 				<tr>
 					<td>{{ $servicio->servicio }}</td>
 					<td>{{ $servicio->costo }}</td>
+					<td>{{ $servicio->nombreCliente }}</td>
+					<td>{{ $servicio->apellidoCliente }}</td>
+					<td>{{ $servicio->telCliente }}</td>
+					<td>{{ $servicio->carro }}</td>
 					<td>{{ $servicio->fecha }}</td>
+					<td>{{ $servicio->fechaSiguiente }}</td>
 					<td>{{ $servicio->descripcion }}</td>
-					<td style="min-width: 60px;">
+					<td style="min-width: 70px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
 							<a data-id="{{ $servicio->id }}" class="modal-trigger" href="#modal_editar_servicio"><i class="material-icons">edit</i></a>
 						</div>
@@ -64,8 +74,28 @@
 					<label for="costo">Costo</label>
 				</div>
 				<div class="input-field col s6">
+					<input name="nombreCliente" id="nombreCliente" type="text" class="validate">
+					<label for="nombreCliente">Nombre del Cliente</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="apellidoCliente" id="apellidoCliente" type="text" class="validate">
+					<label for="apellidoCliente">Apellido del Cliente</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="telCliente" id="telCliente" type="text" class="validate">
+					<label for="telCliente">Telefono del Cliente</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="carro" id="carro" type="text" class="validate">
+					<label for="carro">Carro</label>
+				</div>
+				<div class="input-field col s6">
 					<input name="fecha" id="fecha" type="date" class="validate">
 					<label for="fecha">Fecha</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="fechaSiguiente" id="fechaSiguiente" type="date" class="validate">
+					<label for="fechaSiguiente">Siguiente Cita</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="descripcion" id="descripcion" type="text" class="validate">
@@ -90,12 +120,32 @@
 					<label for="editar_servicio">Servicio</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="costo" id="editar_costo" type="text" class="validate" placeholder="">
+					<input name="costo" id="editar_costo" type="number" min="0.00" max="10000.00" step="0.01" class="validate" placeholder="">
 					<label for="editar_costo">Costo</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="fecha" id="editar_fecha" type="text" class="validate" placeholder="">
+					<input name="nombreCliente" id="editar_nombreCliente" type="text" class="validate" placeholder="">
+					<label for="editar_nombreCliente">Nombre del Cliente</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="apellidoCliente" id="editar_apellidoCliente" type="text" class="validate" placeholder="">
+					<label for="editar_apellidoCliente">Apellido del Cliente</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="telCliente" id="editar_telCliente" type="text" class="validate" placeholder="">
+					<label for="editar_telCliente">Telefono del Cliente</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="carro" id="editar_carro" type="text" class="validate" placeholder="">
+					<label for="editar_carro">Carro</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="fecha" id="editar_fecha" type="date" class="validate" placeholder="">
 					<label for="editar_fecha">Fecha</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="fechaSiguiente" id="editar_fechaSiguiente" type="date" class="validate" placeholder="">
+					<label for="editar_fechaSiguiente">Siguiente Cita</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="descripcion" id="editar_descripcion" type="text" class="validate" placeholder="">
@@ -132,7 +182,12 @@
 					$('#editar_id').val(data['id']);
 					$('#editar_servicio').val(data['servicio']);
 					$('#editar_costo').val(data['costo']);
+					$('#editar_nombreCliente').val(data['nombreCliente']);
+					$('#editar_apellidoCliente').val(data['apellidoCliente']);
+					$('#editar_telCliente').val(data['telCliente']);
+					$('#editar_carro').val(data['carro']);
 					$('#editar_fecha').val(data['fecha']);
+					$('#editar_fechaSiguiente').val(data['fechaSiguiente']);
 					$('#editar_descripcion').val(data['descripcion']);
 				},
 				error: function(xhr, textStatus, errorThrown) {

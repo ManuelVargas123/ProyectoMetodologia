@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\CajaHerramienta;
+use App\Herramienta;
+use App\Empleado;
 
 class CajaHerramientasController extends Controller
 {
@@ -13,7 +16,8 @@ class CajaHerramientasController extends Controller
      */
     public function index()
     {
-        //return view('cajas_herramientas');
+        $cajaHerramienta = CajaHerramienta::get();
+        return view('cajaHerramienta', compact('cajaHerramienta'));
     }
 
     /**
@@ -34,7 +38,21 @@ class CajaHerramientasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id_empleado1 = $request->id_empleado1; //Se obtiene el id del empleado 1 (POSIBLEMENTE SE OBTENGA EL NOMBRE)
+        $id_empleado2 = $request->id_empleado2; //Se obtiene el id del empleado 2 (POSIBLEMENTE SE OBTENGA EL NOMBRE)
+
+        $empleado = Empleado::where('nombre', '=', $id_empleado1); //Se obtiene toda la fila del empleado 1
+        $empleado2 = Empleado::where('nombre', '=', $id_empleado2); //Se obtiene toda la fila del empleeado 2
+
+        $cajaHerramienta = new CajaHerramienta;
+        $cajaHerramienta->id_empleado1 = $empleado->id; 
+        $cajaHerramienta->id_empleado2 = $empleado2->id;
+        $cajaHerramienta->herramientas = $request->herramientas;
+        if($cajaHerramienta->save()){
+            return redirect()->back()->with('success', 'Has agregado una nueva Caja de Herramientas correctamente');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar agregar una Caja de Herramientas, intentalo de nuevo.');
+        }
     }
 
     /**
@@ -54,9 +72,24 @@ class CajaHerramientasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $id = $request->id;
+
+        $id_empleado1 = $request->id_empleado1; //Se obtiene el id del empleado 1 (POSIBLEMENTE SE OBTENGA EL NOMBRE)
+        $id_empleado2 = $request->id_empleado2; //Se obtiene el id del empleado 2 (POSIBLEMENTE SE OBTENGA EL NOMBRE)
+
+        $empleado = Empleado::where('nombre', '=', $id_empleado1); //Se obtiene toda la fila del empleado 1
+        $empleado2 = Empleado::where('nombre', '=', $id_empleado2); //Se obtiene toda la fila del empleeado 2
+
+        $cajaHerramienta = CajaHerramienta::find($id);
+        return response()->json([
+            'id' => $cajaHerramienta->id,
+            'id_empleado1' => $empleado->id,
+            'id_empleado2' => $empleado2->id,
+            'herramientas' => $cajaHerramienta->herramientas,
+            'modificacion' => $empleado->updated_at
+        ]);
     }
 
     /**
@@ -66,9 +99,26 @@ class CajaHerramientasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = $request->id;
+
+        $id_empleado1 = $request->id_empleado1; //Se obtiene el id del empleado 1 (POSIBLEMENTE SE OBTENGA EL NOMBRE)
+        $id_empleado2 = $request->id_empleado2; //Se obtiene el id del empleado 2 (POSIBLEMENTE SE OBTENGA EL NOMBRE)
+
+        $empleado = Empleado::where('nombre', '=', $id_empleado1); //Se obtiene toda la fila del empleado 1
+        $empleado2 = Empleado::where('nombre', '=', $id_empleado2); //Se obtiene toda la fila del empleeado 2
+        
+        $cajaHerramienta = CajaHerramienta::find($id);
+        $cajaHerramienta->id_empleado1 = $empleado->id; 
+        $cajaHerramienta->id_empleado2 = $empleado2->id;
+        $cajaHerramienta->herramientas = $request->herramientas;
+
+        if($cajaHerramienta->save()){
+            return redirect()->back()->with('success', 'Has editado una nueva Caja de Herramientas correctamente');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar editar una Caja de Herramientas, intentalo de nuevo.');
+        }
     }
 
     /**
@@ -79,6 +129,11 @@ class CajaHerramientasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cajaHerramienta = CajaHerramienta::find($id); // Buscamos el registro
+        if($cajaHerramienta->delete()) {   // Lo eliminamos
+            return redirect()->back()->with('success', 'Has eliminado una caja de herramientas correctamente.');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar eliminar una caja de herramientas, intentalo de nuevo.');
+        }
     }
 }

@@ -17,8 +17,8 @@ class CrearTablaHerramientas extends Migration
             $table->increments('id');
             $table->integer('cantidad');
             $table->string('marca');
-            $table->string('tipo');
-            $table->text('descripcion');
+            $table->string('nombre');
+            $table->text('descripcion')->nullable();
             $table->timestamps();
         });
     }

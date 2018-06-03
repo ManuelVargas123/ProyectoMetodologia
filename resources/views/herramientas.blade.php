@@ -20,7 +20,7 @@
 		<thead>
 			<th>Cantidad</th>
 			<th>Marca</th>
-			<th>Tipo</th>
+			<th>Nombre</th>
 			<th>Descripcion</th>
 			<th>Ultima actualizacion</th>
 			<th></th>
@@ -30,7 +30,7 @@
 				<tr>
 					<td>{{ $herramienta->cantidad }}</td>
 					<td>{{ $herramienta->marca }}</td>
-					<td>{{ $herramienta->tipo }}</td>
+					<td>{{ $herramienta->nombre }}</td>
 					<td>{{ $herramienta->descripcion }}</td>
 					<td>{{ $herramienta->updated_at }}</td>
 					<td style="min-width: 60px;">
@@ -66,8 +66,8 @@
 					<label for="marca">Marca</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="tipo" id="tipo" type="text" class="validate">
-					<label for="tipo">Tipo</label>
+					<input name="nombre" id="nombre" type="text" class="validate">
+					<label for="nombre">Nombre</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="descripcion" id="descripcion" type="text" class="validate">
@@ -96,8 +96,8 @@
 					<label for="editar_marca">Marca</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="tipo" id="editar_tipo" type="text" class="validate" placeholder="">
-					<label for="editar_tipo">Tipo</label>
+					<input name="nombre" id="editar_nombre" type="text" class="validate" placeholder="">
+					<label for="editar_nombre">Nombre</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="descripcion" id="editar_descripcion" type="text" class="validate" placeholder="">
@@ -136,7 +136,7 @@
 					$('#editar_id').val(data['id']);
 					$('#editar_cantidad').val(data['cantidad']);
 					$('#editar_marca').val(data['marca']);
-					$('#editar_tipo').val(data['tipo']);
+					$('#editar_nombre').val(data['nombre']);
 					$('#editar_descripcion').val(data['descripcion']);
 				},
 				error: function(xhr, textStatus, errorThrown) {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Herramienta; // Modelo
+use App\Http\Requests\HerramientasRequest;
 
 class HerramientasController extends Controller
 {
@@ -34,12 +35,12 @@ class HerramientasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HerramientasRequest $request)
     {
         $herramienta = new Herramienta;
         $herramienta->cantidad            = $request->cantidad;
         $herramienta->marca               = $request->marca;
-        $herramienta->tipo                = $request->tipo;
+        $herramienta->nombre              = $request->nombre;
         $herramienta->descripcion         = $request->descripcion;
         if($herramienta->save()) { // Insertar el registro
             return redirect()->back()->with('success', 'Has agregado una nueva herramienta correctamente.');
@@ -75,7 +76,7 @@ class HerramientasController extends Controller
             'id' => $herramienta->id,
             'cantidad' => $herramienta->cantidad,
             'marca' => $herramienta->marca,
-            'tipo' => $herramienta->tipo,
+            'nombre' => $herramienta->nombre,
             'descripcion' => $herramienta->descripcion,
         ]);
     }
@@ -94,7 +95,7 @@ class HerramientasController extends Controller
         $herramienta = Herramienta::find($id);
         $herramienta->cantidad            = $request->cantidad;
         $herramienta->marca               = $request->marca;
-        $herramienta->tipo                = $request->tipo;
+        $herramienta->nombre                = $request->nombre;
         $herramienta->descripcion         = $request->descripcion;
         if($herramienta->save()) { // Insertar el registro
             return redirect()->back()->with('info', 'Has editado una herramienta correctamente.');

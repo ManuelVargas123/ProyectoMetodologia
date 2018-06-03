@@ -33,7 +33,7 @@
 			<th>Marca</th>
 			<th>Nombre</th>
 			<th>Descripcion</th>
-			<th>Ultima actualizacion</th>
+			<th>Caja</th>
 			<th></th>
 		</thead>
 		<tbody>
@@ -43,7 +43,7 @@
 					<td>{{ $herramienta->marca }}</td>
 					<td>{{ $herramienta->nombre }}</td>
 					<td>{{ $herramienta->descripcion }}</td>
-					<td>{{ $herramienta->updated_at }}</td>
+					<td>{{ $herramienta->caja_id }}</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
 							<a data-id="{{ $herramienta->id }}" class="modal-trigger" href="#modal_editar_herramienta"><i class="material-icons">edit</i></a>
@@ -56,7 +56,7 @@
 								<button type="submit" name="button" style="border: 0; background: transparent; color: #2195d6; cursor: pointer;"><i class="material-icons">delete_forever</i></button>
 							</form>
 						</div>
-					</td>	
+					</td>
 				</tr>
 			@endforeach
 		</tbody>
@@ -83,6 +83,15 @@
 				<div class="input-field col s6">
 					<input name="descripcion" id="descripcion" type="text" class="validate">
 					<label for="descripcion">Descripción</label>
+				</div>
+				<div class="input-field col s12">
+					<select name="caja_herramientas">
+						<option value="" selected>Ninguno</option>
+						@foreach ($cajas as $caja)
+							<option value="{{ $caja->id }}">Caja #{{ $caja->id }}</option>
+						@endforeach
+					</select>
+					<label>Caja de herramienta</label>
 				</div>
 			</div>
 		</div>
@@ -113,6 +122,15 @@
 				<div class="input-field col s6">
 					<input name="descripcion" id="editar_descripcion" type="text" class="validate" placeholder="">
 					<label for="editar_descripcion">Descripción</label>
+				</div>
+				<div class="input-field col s12">
+					<select name="editar_caja_herramientas" id="editar_caja_herramientas">
+						<option value="">Ninguno</option>
+						@foreach ($cajas as $caja)
+							<option value="{{ $caja->id }}">Caja #{{ $caja->id }}</option>
+						@endforeach
+					</select>
+					<label>Caja de herramienta</label>
 				</div>
 			</div>
 		</div>
@@ -149,6 +167,7 @@
 					$('#editar_marca').val(data['marca']);
 					$('#editar_nombre').val(data['nombre']);
 					$('#editar_descripcion').val(data['descripcion']);
+					$('#editar_caja_herramientas option:eq('+data['caja_herramientas']+')').prop('selected', true);
 				},
 				error: function(xhr, textStatus, errorThrown) {
 					console.log("Ocurrió un error.");

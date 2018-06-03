@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\CajaHerramienta;
 use App\Herramienta; // Modelo
 use App\Http\Requests\HerramientasRequest;
 
@@ -15,8 +16,9 @@ class HerramientasController extends Controller
      */
     public function index()
     {
-        $herramientas = Herramienta::get();
-    	return view('herramientas', compact('herramientas'));
+        $herramientas = Herramienta::all();
+        $cajas = CajaHerramienta::all();
+    	return view('herramientas')->with(['herramientas' => $herramientas, 'cajas' => $cajas]);
     }
 
     /**
@@ -38,10 +40,11 @@ class HerramientasController extends Controller
     public function store(HerramientasRequest $request)
     {
         $herramienta = new Herramienta;
-        $herramienta->cantidad            = $request->cantidad;
-        $herramienta->marca               = $request->marca;
-        $herramienta->nombre              = $request->nombre;
-        $herramienta->descripcion         = $request->descripcion;
+        $herramienta->cantidad              = $request->cantidad;
+        $herramienta->marca                 = $request->marca;
+        $herramienta->nombre                = $request->nombre;
+        $herramienta->descripcion           = $request->descripcion;
+        $herramienta->caja_id               = $request->caja_herramientas;
         if($herramienta->save()) { // Insertar el registro
             return redirect()->back()->with('success', 'Has agregado una nueva herramienta correctamente.');
         } else {
@@ -78,6 +81,7 @@ class HerramientasController extends Controller
             'marca' => $herramienta->marca,
             'nombre' => $herramienta->nombre,
             'descripcion' => $herramienta->descripcion,
+            'caja_herramientas' => $herramienta->caja_id
         ]);
     }
 
@@ -93,10 +97,11 @@ class HerramientasController extends Controller
         $id = $request->id;
 
         $herramienta = Herramienta::find($id);
-        $herramienta->cantidad            = $request->cantidad;
-        $herramienta->marca               = $request->marca;
+        $herramienta->cantidad              = $request->cantidad;
+        $herramienta->marca                 = $request->marca;
         $herramienta->nombre                = $request->nombre;
-        $herramienta->descripcion         = $request->descripcion;
+        $herramienta->descripcion           = $request->descripcion;
+        $herramienta->caja_id               = $request->caja_herramientas;
         if($herramienta->save()) { // Insertar el registro
             return redirect()->back()->with('info', 'Has editado una herramienta correctamente.');
         } else {

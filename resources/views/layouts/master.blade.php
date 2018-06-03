@@ -61,8 +61,13 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/" style="margin-right: 10px;"><i  class="material-icons left">home</i>Inicio</a></li>
                     @isAdmin
+<<<<<<< HEAD
                     <li><a href="/" style="margin-right: 10px;"><i class="material-icons left">group</i>Administrar Gerentes</a></li>
                     <li><a class="dropdown-trigger" href="#" data-target="dropdown4" style="margin-right: 10px;"><i class="material-icons left">monetization_on</i>Ganancias<i class="material-icons right">arrow_drop_down</i></a></li>
+=======
+                    <li><a href="gerentes">Gerentes</a></li>
+                    <li><a class="dropdown-trigger" href="ventas" data-target="dropdown3">Ventas<i class="material-icons right">arrow_drop_down</i></a></li>
+>>>>>>> ManuelVargas
                     @endisAdmin
                         <!-- Dropdown Trigger -->
                         <li><a class="dropdown-trigger" href="#" data-target="dropdown2" style="margin-right: 10px;"><i class="material-icons left">build</i>Inventario<i class="material-icons right">arrow_drop_down</i></a></li>

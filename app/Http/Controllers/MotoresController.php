@@ -34,7 +34,7 @@ class MotoresController extends Controller
         $motor->descripcion         = $request->descripcion;
         $motor->modelosDisponibles  = $request->modelos_disponibles;
         $motor->cilindros           = $request->cilindros;
-        $motor->modelo              = $request->modelo;
+        $motor->modelo              = $request->modelo; //Esto se esta repitiendo, no?
         if($motor->save()) { // Insertar el registro
             return redirect()->back()->with('success', 'Has agregado un nuevo motor correctamente.');
         } else {

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Parte; // Modelo
+use App\Autoparte; // Modelo
 
 class PartesController extends Controller
 {
@@ -14,8 +14,8 @@ class PartesController extends Controller
      */
     public function index()
     { // TODO: Primero es necesario crear la tabla
-        //$partes = Table::get();
-        //return view('partes', compact('partes'));
+        $autopartes = Autoparte::get();
+        return view('partes', compact('autopartes'));
     }
 
     /**
@@ -36,7 +36,20 @@ class PartesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $autoparte = new Autoparte;
+        $autoparte->parte = $request->parte;
+        $autoparte->modelo = $request->modelo;
+        $autoparte->cantidad = $request->cantidad;
+        $autoparte->marca = $request->marca;
+        $autoparte->descripcion = $request->descripcion;
+        $autoparte->modelosDisponibles = $request->modelos_disponibles;
+        $autoparte->palancaCambios = $request->palancaCambios;
+        $autoparte->cilindros = $request->cilindros;
+        if($autoparte->save()) { // Insertar el registro
+            return redirect()->back()->with('success', 'Has agregado una nueva autoparte correctamente.');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar agregar una autoparte, intentalo de nuevo.');
+        }
     }
 
     /**
@@ -56,9 +69,24 @@ class PartesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $id = $request->id;
+
+        $autoparte = Autoparte::find($id);
+
+        return response()->json([
+            'id' => $autoparte->id,
+            'parte' => $autoparte->parte,
+            'modelo' => $autoparte->modelo,
+            'cantidad' => $autoparte->cantidad,
+            'marca' => $autoparte->marca,
+            'descripcion' => $autoparte->descripcion,
+            'modelos_disponibles' => $autoparte->modelosDisponibles,
+            'palancaCambios' => $autoparte->palancaCambios,
+            'cilindros' => $autoparte->cilindros,
+            'modificacion' => $autoparte->updated_at
+        ]);
     }
 
     /**
@@ -68,9 +96,24 @@ class PartesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = $request->id;
+
+        $autoparte = Autoparte::find($id);
+        $autoparte->parte = $request->parte;
+        $autoparte->modelo = $request->modelo;
+        $autoparte->cantidad = $request->cantidad;
+        $autoparte->marca = $request->marca;
+        $autoparte->descripcion = $request->descripcion;
+        $autoparte->modelosDisponibles = $request->modelos_disponibles;
+        $autoparte->palancaCambios = $request->palancaCambios;
+        $autoparte->cilindros = $request->cilindros;
+        if($autoparte->save()) { // Insertar el registro
+            return redirect()->back()->with('success', 'Has editado una nueva autoparte correctamente.');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar editar una autoparte, intentalo de nuevo.');
+        }
     }
 
     /**
@@ -81,6 +124,11 @@ class PartesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $autoparte = Autoparte::find($id); // Buscamos el registro
+        if($autoparte->delete()) { // Lo eliminamos
+            return redirect()->back()->with('success', 'Has eliminado una autoparte correctamente.');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar eliminar una autoparte, intentalo de nuevo.');
+        }
     }
 }

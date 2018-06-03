@@ -39,6 +39,18 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/agregar_gerente', 'ToDoController@agregar_gerente');        //<--------Falta implementar
 	Route::get('/eliminar_gerente', 'ToDoController@eliminar_gerente');       //<--------Falta implementar
 	Route::get('/ver_gerentes', 'ToDoController@ver_gerentes');          //<--------Falta implementar
+
+	Route::get('/servicios', 'ServiciosController@index');
+	Route::post('/servicios/store', 'ServiciosController@store')->name('servicios_store');
+	Route::delete('/servicios/delete/{id}', 'ServiciosController@destroy')->name('servicios_destroy');
+	Route::post('/servicios/edit', 'ServiciosController@edit')->name('servicios_edit');
+	Route::post('/servicios/update', 'ServiciosController@update')->name('servicios_update');
+
+	Route::get('/autopartes', 'PartesController@index');
+	Route::post('/autopartes/store', 'PartesController@store')->name('partes_store');
+	Route::delete('/autopartes/delete/{id}', 'PartesController@destroy')->name('partes_destroy');
+	Route::post('/autopartes/edit', 'PartesController@edit')->name('partes_edit');
+	Route::post('/autopartes/update', 'PartesController@update')->name('partes_update');
 });
 
 

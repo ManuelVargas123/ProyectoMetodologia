@@ -39,6 +39,12 @@
             <li><a href="eliminar_gerente">Eliminar Gerente</a></li>
             <li><a href="ver_gerentes">Ver tabla de Gerentes</a></li>
         </ul>
+        <ul id="dropdown3" class="dropdown-content">
+            <li><a href="servicios">Servicios</a></li>
+            <li><a href="ventas">Ventas</a></li>
+            <li><a href="clientesServicios">Clientes de Servicios</a></li>
+            <li><a href="clientesVentas">Clientes de Ventas</a></li>
+        </ul>
 
         <!-- La secciones que tengan el arroba isAdmin, endisAdmin,
         son las secciones que solo podra ver el Administrador -->
@@ -48,8 +54,8 @@
                 <a href="/" class="brand-logo" style="margin-left: 20px;"><img style="position: absolute;width: 270px;" src="/img/banner.png"></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     @isAdmin
-                    <li><a href="ventas">Ventas</a></li>
                     <li><a class="dropdown-trigger" href="ventas" data-target="dropdown2">Gerentes<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-trigger" href="ventas" data-target="dropdown3">Ventas<i class="material-icons right">arrow_drop_down</i></a></li>
                     @endisAdmin
                     <!-- Dropdown Trigger -->
                     <li><a class="dropdown-trigger" href="#" data-target="dropdown1" style="margin-right: 10px;">Inventario<i class="material-icons right">arrow_drop_down</i></a></li>

@@ -22,6 +22,11 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/motores/update', 'MotoresController@update')->name('motores_update');
 
 	Route::get('/transmisiones', 'TransmisionesController@index');
+	Route::post('/transmisiones/store', 'TransmisionesController@store')->name('transmisiones_store');
+	Route::delete('/transmisiones/delete/{id}', 'TransmisionesController@destroy')->name('transmisiones_destroy');
+	Route::post('/transmisiones/edit', 'TransmisionesController@edit')->name('transmisiones_edit');
+	Route::post('/transmisiones/update', 'TransmisionesController@update')->name('transmisiones_update');
+
 	Route::get('/partes', 'PartesController@index');                           //<--------Falta implementar
 	
 	//empleados

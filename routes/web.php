@@ -48,9 +48,6 @@ Route::middleware(['auth'])->group(function () {
 
 	//Administrar usuarios
 	Route::get('/edit','ToDoController@edit')->name('edit');
-	Route::get('/agregar_gerente', 'ToDoController@agregar_gerente');        //<--------Falta implementar
-	Route::get('/eliminar_gerente', 'ToDoController@eliminar_gerente');       //<--------Falta implementar
-	Route::get('/ver_gerentes', 'ToDoController@ver_gerentes');          //<--------Falta implementar
 
 	//servicios
 	Route::get('/servicios', 'ServiciosController@index');
@@ -66,12 +63,19 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/autopartes/edit', 'PartesController@edit')->name('partes_edit');
 	Route::post('/autopartes/update', 'PartesController@update')->name('partes_update');
 
+	Route::get('/gerentes', 'GerentesController@index');
+	Route::post('/gerentes/store', 'GerentesController@store')->name('gerentes_store');
+	Route::delete('/gerentes/delete/{id}', 'GerentesController@destroy')->name('gerentes_destroy');
+	Route::post('/gerentes/edit', 'GerentesController@edit')->name('gerentes_edit');
+	Route::post('/gerentes/update', 'GerentesController@update')->name('gerentes_update');
+
 	//herramientas
 	Route::get('/herramientas', 'HerramientasController@index');
 	Route::post('/herramientas/store', 'HerramientasController@store')->name('herramientas_store');
 	Route::delete('/herramientas/delete/{id}', 'HerramientasController@destroy')->name('herramientas_destroy');
 	Route::post('/herramientas/edit', 'HerramientasController@edit')->name('herramientas_edit');
 	Route::post('/herramientas/update', 'HerramientasController@update')->name('herramientas_update');
+
 });
 
 Auth::routes();

@@ -28,7 +28,7 @@ class TransmisionRequest extends FormRequest
             'modelo' => 'required|string|max:255',
             'cantidad' => 'required|integer|max:1000',
             'marca' => 'required|string|max:255',
-            'descripcion' => 'string|nullable|max:20000',
+            'descripcion' => 'string|required|max:20000',
             'modelos_disponibles' => 'required|string|max:20000',
             'palanca_cambios' => 'required|string|max:255'
         ];

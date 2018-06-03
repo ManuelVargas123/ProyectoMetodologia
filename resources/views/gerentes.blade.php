@@ -16,7 +16,7 @@
 			</a>
 		</div>
 	</div>
-	<table id="table_gerentes" class="display">
+	<table id="table_gerentes" class="display striped">
 		<thead>
 			<th>Nombre</th>
 			<th>Apellido paterno</th>
@@ -155,22 +155,51 @@
 			<div class="row">
 				<input id="editar_id" type="hidden" name="id" value="">
 				<div class="input-field col s6">
-					<input name="name" id="editar_name" type="text" class="validate" placeholder="">
-					<label for="editar_name">Nombre</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="primerApellido" id="editar_primerApellido" type="text" class="validate" placeholder="">
-					<label for="editar_primerApellido">Primer Apellido</label>
-				</div>
-				<div class="input-field col s6">
+				<div class="col-md-6">
+					<label for="name" class="col-md-4 col-form-label text-md-right">Nombre</label>
+                    <input id="editar_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
+
+                    @if ($errors->has('name'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif
+                </div>
+				<div class="col-md-6">
+					<label for="primerApellido" class="col-md-4 col-form-label text-md-right">Primer Apellido</label>
+                    <input id="editar_primerApellido" type="text" class="form-control{{ $errors->has('primerApellido') ? ' is-invalid' : '' }}" name="primerApellido" value="{{ old('primerApellido') }}" required>
+
+                    @if ($errors->has('primerApellido'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('primerApellido') }}</strong>
+                        </span>
+                    @endif
+                </div>
+				<!--<div class="for_group row">
 					<input name="email" id="editar_email" type="email" class="validate" placeholder="">
 					<label for="editar_email">Correo electrónico</label>
-				</div>
+				</div> -->
+				<div class="form-group row">
+                    <label for="email" class="col-md-4 col-form-label text-md-right">Correo electrónico</label>
+                        <div class="col-md-6">
+                            <input id="editar_email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                </div>
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="submit" name="button" class="modal-close waves-effect waves-green btn-flat">Guardar</button>
-		</div>
+                    <div class="col-md-6 offset-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            Guardar
+                        </button>
+                    </div>
+                </div>
 	</form>
 @endsection
 

@@ -18,21 +18,21 @@ class CajaHerramientasController extends Controller
     public function index()
     {
         $caja_herramientas = CajaHerramienta::get();
-        $empleados = User::where('is_admin', false)->get();
-
+        //$empleados = User::where('is_admin', false)->get();
+        $empleados = Empleado::get();
         foreach ($caja_herramientas as $caja) {
             if(!empty($caja->user_id)) {
-                if(User::where('id', $caja->user_id)->count() > 0)
-                    $caja->propietario1 = User::where('id', $caja->user_id)->first()->name;
+                if(Empleado::where('id', $caja->user_id)->count() > 0)
+                    $caja->propietario1 = Empleado::where('id', $caja->user_id)->first()->nombre;
                 else
                     $caja->propietario1 = "Ninguno";
             } else {
                 $caja->propietario1 = "Ninguno";
             }
             if(!empty($caja->user_id2)) {
-                $propietario = User::where('id', $caja->user_id2)->first();
-                if(User::where('id', $caja->user_id2)->count() > 0)
-                    $caja->propietario2 = User::where('id', $caja->user_id2)->first()->name;
+                $propietario = Empleado::where('id', $caja->user_id2)->first();
+                if(Empleado::where('id', $caja->user_id2)->count() > 0)
+                    $caja->propietario2 = Empleado::where('id', $caja->user_id2)->first()->nombre;
                 else
                     $caja->propietario2 = "Ninguno";
             } else {
@@ -127,12 +127,12 @@ class CajaHerramientasController extends Controller
         $id_empleado1 = $request->id_empleado1; //Se obtiene el id del empleado 1 (POSIBLEMENTE SE OBTENGA EL NOMBRE)
         $id_empleado2 = $request->id_empleado2; //Se obtiene el id del empleado 2 (POSIBLEMENTE SE OBTENGA EL NOMBRE)
 
-        $empleado = Empleado::where('nombre', '=', $id_empleado1); //Se obtiene toda la fila del empleado 1
-        $empleado2 = Empleado::where('nombre', '=', $id_empleado2); //Se obtiene toda la fila del empleeado 2
+        $empleado = Empleado::where('nombre', '=', $request->id_empleado1); //Se obtiene toda la fila del empleado 1
+        $empleado2 = Empleado::where('nombre', '=', $request->id_empleado2); //Se obtiene toda la fila del empleado 2
 
         $cajaHerramienta = CajaHerramienta::find($id);
-        $cajaHerramienta->id_empleado1 = $empleado->id;
-        $cajaHerramienta->id_empleado2 = $empleado2->id;
+        $cajaHerramienta->user_id = $empleado->id;
+        $cajaHerramienta->user_id2 = $empleado2->id;
         $cajaHerramienta->herramientas = $request->herramientas;
 
         if($cajaHerramienta->save()){

@@ -124,7 +124,7 @@
 					<label for="editar_descripcion">Descripción</label>
 				</div>
 				<div class="input-field col s12">
-					<select name="editar_caja_herramientas" id="editar_caja_herramientas">
+					<select name="caja_herramientas" id="editar_caja_herramientas">
 						<option value="">Ninguno</option>
 						@foreach ($cajas as $caja)
 							<option value="{{ $caja->id }}">Caja #{{ $caja->id }}</option>

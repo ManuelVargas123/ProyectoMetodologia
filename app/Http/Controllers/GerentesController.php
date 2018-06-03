@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 
 class GerentesController extends Controller
@@ -40,7 +41,7 @@ class GerentesController extends Controller
         $gerente->name = $request->name;
         $gerente->primerApellido = $request->primerApellido;
         $gerente->email = $request->email;
-        $gerente->password = $request->password;
+        $gerente->password = Hash::make($request->password);
         if($gerente->save()){
             return redirect()->back()->with('success', 'Has agregado un nuevo gerente correctamente');
         } else {

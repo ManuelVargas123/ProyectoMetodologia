@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('content')
 
-	<div class="row">
+	<div class="row" style="margin-top: 40px;">
 	@foreach($proximasCitas as $proximaCita)
-      	<div class="col s4">
+      	<div class="col l4 s6">
 		  <div class="card">
 		    <div class="card-content">
 		      <p><b>Se debe de agendar un cita.</b></p>

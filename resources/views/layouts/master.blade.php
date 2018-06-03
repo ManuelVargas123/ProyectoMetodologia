@@ -57,7 +57,7 @@
 
         <nav>
             <div class="nav-wrapper">
-                <a href="/" class="brand-logo" style="margin-left: 20px;"><img style="width: 260px;" src="/img/banner.png"></a>
+                <a href="/" class="brand-logo" style="margin-left: 20px;"><img style="width: 240px;" src="/img/banner.png"></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/" style="margin-right: 10px;"><i  class="material-icons left">home</i>Inicio</a></li>

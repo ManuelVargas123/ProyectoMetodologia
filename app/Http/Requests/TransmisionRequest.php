@@ -24,7 +24,13 @@ class TransmisionRequest extends FormRequest
     public function rules()
     {
         return [
-            
+            'nombre' => 'required|string',
+            'modelo' => 'required|string',
+            'cantidad' => 'required|integer',
+            'marca' => 'required|string',
+            'descripcion' => 'string|nullable',
+            'modelosDisponibles' => 'required|string',
+            'palancaCambios' => 'required|string'
         ];
     }
 }

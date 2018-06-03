@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TransmisionRequest extends FormRequest
+class MotorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,13 @@ class TransmisionRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|string',
-            'modelo' => 'required|string',
-            'cantidad' => 'required|integer',
-            'marca' => 'required|string',
-            'descripcion' => 'string|nullable',
-            'modelos_disponibles' => 'required|string',
-            'palanca_cambios' => 'required|string'
+            'nombre' => 'required|string|max:255',
+            'modelo' => 'required|string|max:255',
+            'cantidad' => 'required|integer|max:99999',
+            'marca' => 'required|string|max:255',
+            'descripcion' => 'string|nullable|max:20000',
+            'modelos_disponibles' => 'required|string|max:20000',
+            'cilindros' => 'required|digits_between:0,16'
         ];
     }
 }

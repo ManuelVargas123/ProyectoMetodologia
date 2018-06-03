@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Motor; // Modelo para llamar a la tabla de Motores
+use App\Http\Requests\MotorRequest;
 
 class MotoresController extends Controller
 {
@@ -24,7 +25,7 @@ class MotoresController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MotorRequest $request)
     {
         $motor = new Motor;
         $motor->nombre              = $request->nombre;

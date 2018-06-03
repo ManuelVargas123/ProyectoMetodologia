@@ -32,7 +32,7 @@ class ServiciosRequest extends FormRequest
             'carro' => 'required|string|max:255',
             'fecha' => 'required|date',
             'fechaSiguiente' => 'required|date',
-            'descripcion' => 'string|nullable|max:20000'
+            'descripcion' => 'string|required|max:20000'
         ];
     }
 }

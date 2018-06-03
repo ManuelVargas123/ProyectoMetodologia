@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/transmisiones/update', 'TransmisionesController@update')->name('transmisiones_update');
 
 	Route::get('/partes', 'PartesController@index');                           //<--------Falta implementar
-	
+
 	//empleados
 	Route::get('/empleados', 'EmpleadosController@index');
 	Route::post('/empleados/store', 'EmpleadosController@store')->name('empleados_store');
@@ -36,9 +36,11 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/empleados/edit', 'EmpleadosController@edit')->name('empleados_edit');
 	Route::post('/empleados/update', 'EmpleadosController@update')->name('empleados_update');
 
-	Route::get('/cajas_herramientas', 'CajaHerramientasController@index');  //<--------Falta implementar
+	// Caja de herramientas
+	Route::get('/cajas_herramientas', 'CajaHerramientasController@index');
+	Route::post('/cajas_herramientas/store', 'CajaHerramientasController@store')->name('caja_herramientas_store');
 
-	Route::get('/ventas', 'VentasController@index');   
+	Route::get('/ventas', 'VentasController@index');
 	Route::post('/ventas/store', 'VentasController@store')->name('ventas_store');
 	Route::delete('/ventas/delete/{id}', 'VentasController@destroy')->name('ventas_destroy');
 	Route::post('/ventas/edit', 'VentasController@edit')->name('ventas_edit');
@@ -46,9 +48,6 @@ Route::middleware(['auth'])->group(function () {
 
 	//Administrar usuarios
 	Route::get('/edit','ToDoController@edit')->name('edit');
-	Route::get('/agregar_gerente', 'ToDoController@agregar_gerente');        //<--------Falta implementar
-	Route::get('/eliminar_gerente', 'ToDoController@eliminar_gerente');       //<--------Falta implementar
-	Route::get('/ver_gerentes', 'ToDoController@ver_gerentes');          //<--------Falta implementar
 
 	//servicios
 	Route::get('/servicios', 'ServiciosController@index');
@@ -63,13 +62,20 @@ Route::middleware(['auth'])->group(function () {
 	Route::delete('/autopartes/delete/{id}', 'PartesController@destroy')->name('partes_destroy');
 	Route::post('/autopartes/edit', 'PartesController@edit')->name('partes_edit');
 	Route::post('/autopartes/update', 'PartesController@update')->name('partes_update');
-	
+
+	Route::get('/gerentes', 'GerentesController@index');
+	Route::post('/gerentes/store', 'GerentesController@store')->name('gerentes_store');
+	Route::delete('/gerentes/delete/{id}', 'GerentesController@destroy')->name('gerentes_destroy');
+	Route::post('/gerentes/edit', 'GerentesController@edit')->name('gerentes_edit');
+	Route::post('/gerentes/update', 'GerentesController@update')->name('gerentes_update');
+
 	//herramientas
 	Route::get('/herramientas', 'HerramientasController@index');
 	Route::post('/herramientas/store', 'HerramientasController@store')->name('herramientas_store');
 	Route::delete('/herramientas/delete/{id}', 'HerramientasController@destroy')->name('herramientas_destroy');
 	Route::post('/herramientas/edit', 'HerramientasController@edit')->name('herramientas_edit');
 	Route::post('/herramientas/update', 'HerramientasController@update')->name('herramientas_update');
+
 });
 
 Auth::routes();

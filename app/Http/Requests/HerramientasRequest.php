@@ -27,7 +27,8 @@ class HerramientasRequest extends FormRequest
             'cantidad' => 'required|numeric|max:99999',
             'marca' => 'required|string|max:255',
             'nombre' => 'required|string|max:255',
-            'descripcion' => 'string|nullable|max:20000'
+            'descripcion' => 'string|nullable|max:20000',
+            'caja_herramientas' => 'integer'
         ];
     }
 }

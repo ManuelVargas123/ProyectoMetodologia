@@ -42,10 +42,6 @@
             <li><a href="herramientas">Herramientas</a></li>
             <li><a href="cajas_herramientas">Cajas de herramientas</a></li>
         </ul>
-        <ul id="dropdown3" class="dropdown-content">
-            <li><a href="servicios">Servicios</a></li>
-            <li><a href="ventas">Ventas</a></li>
-        </ul>
         <ul id="dropdown4" class="dropdown-content">
             <li><a href="servicios">Servicios</a></li>
             <li><a href="ventas">Ventas</a></li>
@@ -61,8 +57,8 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/" style="margin-right: 10px;"><i  class="material-icons left">home</i>Inicio</a></li>
                     @isAdmin
-                    <li><a href="/" style="margin-right: 10px;"><i class="material-icons left">group</i>Administrar Gerentes</a></li>
                     <li><a class="dropdown-trigger" href="#" data-target="dropdown4" style="margin-right: 10px;"><i class="material-icons left">monetization_on</i>Ganancias<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a href="gerentes">Gerentes</a></li>
                     @endisAdmin
                         <!-- Dropdown Trigger -->
                         <li><a class="dropdown-trigger" href="#" data-target="dropdown2" style="margin-right: 10px;"><i class="material-icons left">build</i>Inventario<i class="material-icons right">arrow_drop_down</i></a></li>

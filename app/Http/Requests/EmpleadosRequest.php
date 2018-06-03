@@ -24,8 +24,8 @@ class EmpleadosRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|string',
-            'primerApellido' => 'required|string'
+            'nombre' => 'required|string|max:255',
+            'primerApellido' => 'required|string|max:255'
         ];
     }
 }

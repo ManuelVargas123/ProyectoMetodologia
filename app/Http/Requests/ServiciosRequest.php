@@ -24,10 +24,10 @@ class ServiciosRequest extends FormRequest
     public function rules()
     {
         return [
-            'servicio' => 'required|string',
-            'costo' => 'required|numeric',
+            'servicio' => 'required|string|max:255',
+            'costo' => 'required|numeric|max:999999',
             'fecha' => 'required|date',
-            'descripcion' => 'string|nullable'
+            'descripcion' => 'string|nullable|max:20000'
         ];
     }
 }

@@ -24,10 +24,10 @@ class HerramientasRequest extends FormRequest
     public function rules()
     {
         return [
-            'cantidad' => 'required|numeric',
-            'marca' => 'required|string',
-            'nombre' => 'required|string',
-            'descripcion' => 'string|nullable'
+            'cantidad' => 'required|numeric|max:99999',
+            'marca' => 'required|string|max:255',
+            'nombre' => 'required|string|max:255',
+            'descripcion' => 'string|nullable|max:20000'
         ];
     }
 }

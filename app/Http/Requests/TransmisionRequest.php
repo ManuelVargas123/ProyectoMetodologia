@@ -24,13 +24,13 @@ class TransmisionRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|string',
-            'modelo' => 'required|string',
-            'cantidad' => 'required|integer',
-            'marca' => 'required|string',
-            'descripcion' => 'string|nullable',
-            'modelos_disponibles' => 'required|string',
-            'palanca_cambios' => 'required|string'
+            'nombre' => 'required|string|max:255',
+            'modelo' => 'required|string|max:255',
+            'cantidad' => 'required|integer|max:1000',
+            'marca' => 'required|string|max:255',
+            'descripcion' => 'string|nullable|max:20000',
+            'modelos_disponibles' => 'required|string|max:20000',
+            'palanca_cambios' => 'required|string|max:255'
         ];
     }
 }

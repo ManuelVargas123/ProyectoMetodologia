@@ -24,13 +24,13 @@ class AutoparteRequest extends FormRequest
     public function rules()
     {
         return [
-            'parte' => 'required|string',
-            'modelo' => 'required|string',
-            'cantidad' => 'required|integer',
-            'marca' => 'required|string',
-            'descripcion' => 'string|nullable',
-            'modelosDisponibles' => 'required|string',
-            'palancaCambios' => 'string|nullable',
+            'parte' => 'required|string|max:255',
+            'modelo' => 'required|string|max:255',
+            'cantidad' => 'required|integer|max:99999',
+            'marca' => 'required|string|max:255',
+            'descripcion' => 'string|nullable|max:20000',
+            'modelosDisponibles' => 'required|string|max:255',
+            'palancaCambios' => 'string|nullable|max:255',
             'cilindros' => 'integer|nullable'
         ];
     }

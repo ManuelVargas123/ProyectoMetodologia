@@ -100,7 +100,7 @@
 				</div>
 
 				<div class="input-field col s6">
-					<input name="cilindros" id="cilindros" type="text" class="validate">
+					<input name="cilindros" id="cilindros" type="number" class="validate">
 					<label for="cilindros">Cilindros</label>
 				</div>
 			</div>

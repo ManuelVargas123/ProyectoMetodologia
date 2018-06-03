@@ -16,7 +16,7 @@
 			</a>
 		</div>
 	</div>
-	<table id="table_gerentes" class="display striped">
+	<table id="table_gerentes" class="display striped responsive-table">
 		<thead>
 			<th>Nombre</th>
 			<th>Apellido paterno</th>

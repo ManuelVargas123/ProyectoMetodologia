@@ -27,7 +27,7 @@
 			</a>
 		</div>
 	</div>
-	<table id="table_herramientas" class="display striped">
+	<table id="table_herramientas" class="display striped responsive-table">
 		<thead>
 			<th>Cantidad</th>
 			<th>Marca</th>

@@ -27,7 +27,7 @@
 			</a>
 		</div>
 	</div>
-	<table id="table_ventas" class="display striped">
+	<table id="table_ventas" class="display striped responsive-table">
 		<thead>
 			<th>Nombre</th>
 			<th>Apellido</th>

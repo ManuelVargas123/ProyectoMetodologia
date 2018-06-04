@@ -27,29 +27,27 @@
     <body background="{{asset('img/background.png')}}">
         <!--Menus desplegables-->
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="motores">Motores</a></li>
-            <li><a href="transmisiones">Transmisiones</a></li>
-            <li><a href="partes">Partes</a></li>
-            <li><a href="empleados">Empleados</a></li>
-            <li><a href="herramientas">Herramientas</a></li>
-            <li><a href="cajas_herramientas">Cajas de herramientas</a></li>
+            <li><a href="motores"><i class="material-icons left">time_to_leave</i>Motores</a></li>
+            <li><a href="transmisiones"><i class="material-icons left">event_seat</i>Transmisiones</a></li>
+            <li><a href="partes"><i class="material-icons left">extension</i>Partes</a></li>
+            <li><a href="herramientas"><i class="material-icons left">settings</i>Herramientas</a></li>
+            <li><a href="cajas_herramientas"><i class="material-icons left">business_center</i>Cajas de herramientas</a></li>
         </ul>
         <ul id="dropdown2" class="dropdown-content">
-            <li><a href="motores">Motores</a></li>
-            <li><a href="transmisiones">Transmisiones</a></li>
-            <li><a href="partes">Partes</a></li>
-            <li><a href="empleados">Empleados</a></li>
-            <li><a href="herramientas">Herramientas</a></li>
-            <li><a href="cajas_herramientas">Cajas de herramientas</a></li>
+            <li><a href="motores"><i class="material-icons left">time_to_leave</i>Motores</a></li>
+            <li><a href="transmisiones"><i class="material-icons left">event_seat</i>Transmisiones</a></li>
+            <li><a href="partes"><i class="material-icons left">extension</i>Partes</a></li>
+            <li><a href="herramientas"><i class="material-icons left">settings</i>Herramientas</a></li>
+            <li><a href="cajas_herramientas"><i class="material-icons left">business_center</i>Cajas de herramientas</a></li>
         </ul>
         <ul id="dropdown3" class="dropdown-content">
-            <li><a href="servicios">Servicios</a></li>
-            <li><a href="ventas">Ventas</a></li>
+            <li><a href="servicios"><i class="material-icons left">dvr</i>Servicios</a></li>
+            <li><a href="ventas"><i class="material-icons left">shopping_basket</i>Ventas</a></li>
         </ul>
 
         <ul id="dropdown4" class="dropdown-content">
-            <li><a href="servicios">Servicios</a></li>
-            <li><a href="ventas">Ventas</a></li>
+            <li><a href="servicios"><i class="material-icons left">dvr</i>Servicios</a></li>
+            <li><a href="ventas"><i class="material-icons left">shopping_basket</i>Ventas</a></li>
         </ul>
 
         <!-- La secciones que tengan el arroba isAdmin, endisAdmin,
@@ -60,7 +58,8 @@
                 <a href="/" class="brand-logo" style="margin-left: 20px;"><img style="width: 240px;" src="/img/banner.png"></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="/" style="margin-right: 10px;"><i  class="material-icons left">home</i>Inicio</a></li>
+                    <li><a href="/" style="margin-right: 10px;"><i class="material-icons left">home</i>Inicio</a></li>
+                    <li><a href="empleados" style="margin-right: 10px;"><i class="material-icons left">person</i>Empleados</a></li>
                     @isAdmin
                     <li><a href="gerentes"><i class="material-icons left">group</i>Administrar Gerentes</a></li>
                     <li><a class="dropdown-trigger" href="#" data-target="dropdown4" style="margin-right: 10px;"><i class="material-icons left">monetization_on</i>Ganancias<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -81,6 +80,7 @@
 
         <ul id="mobile-demo" class="sidenav">
             <li><a href="/" style="margin-right: 10px;"><i class="material-icons">home</i>Inicio</a></li>
+            <li><a href="empleados" style="margin-right: 10px;"><i  class="material-icons left">person</i>Empleados</a></li>
             @isAdmin
             <li><a href="/gerentes" style="margin-right: 10px;"><i class="material-icons">group</i>Administrar Gerentes</a></li>
             <li><a class="dropdown-trigger" href="#" data-target="dropdown3" style="margin-right: 10px;"><i class="material-icons">monetization_on</i>Ganancias<i class="material-icons right">arrow_drop_down</i></a></li>

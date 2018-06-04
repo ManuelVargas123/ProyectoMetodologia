@@ -5,6 +5,17 @@
 @endsection
 
 @section('content')
+    @if(count($errors) > 0)
+        <div style="background-color: #f15858; border-radius: 4px; border: 1px solid #de3c3c; color: #FFF; font-family: 'Roboto'; margin-top: 10px; padding: 0px 10px;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <ul>
+                        <li>• {{ $error }}</li>
+                    </ul>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 	<div class="row">
 		<div class="col l7 s12">
 			<h2 style="text-align: center;margin-top: 5px;">Gerentes</h2>
@@ -51,155 +62,61 @@
 	<form id="modal_nuevo_gerente" class="modal" action="{{ route('gerentes_store') }}" method="POST">
 		@csrf
 		<div class="modal-content">
-			<h4>Agregar un nuevo Gerente</h4>
-
-				<div class="form-group row">
-                    <label for="name" class="col-md-4 col-form-label text-md-right">Nombre</label>
-                    <div class="col-md-6">
-                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                            @if ($errors->has('name'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('name') }}</strong>
-                                </span>
-                            @endif
+                <h4>Agregar nuevo gerente</h4>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="name" id="name" type="text" class="validate">
+                        <label for="name">Nombre</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input name="primerApellido" id="primerApellido" type="text" class="validate">
+                        <label for="primerApellido">Primer apellido</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input name="email" id="email" type="email" class="validate">
+                        <label for="email">Correo electronico</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input name="password" id="password" type="password" class="validate">
+                        <label for="password">Contraseña</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input name="password_confirmation" id="password-confirm" type="password" class="validate">
+                        <label for="password-confirm">Confirmar contraseña</label>
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <label for="primerApellido" class="col-md-4 col-form-label text-md-right">Primer Apellido</label>
-                        <div class="col-md-6">
-                            <input id="primerApellido" type="text" class="form-control{{ $errors->has('primerApellido') ? ' is-invalid' : '' }}" name="primerApellido" value="{{ old('primerApellido') }}" required>
-
-                            @if ($errors->has('primerApellido'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('primerApellido') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">Correo electrónico</label>
-                        <div class="col-md-6">
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                            @if ($errors->has('email'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña</label>
-                    <div class="col-md-6">
-                        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                        @if ($errors->has('password'))
-                            <span class="invalid-feedback">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirmar Contraseña</label>
-
-                    <div class="col-md-6">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                    </div>
-                </div>
-
-                <div class="form-group row mb-0">
-                    <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-primary">
-                            Registrar Gerente
-                        </button>
-                    </div>
-                </div>
-        </div>
+            </div>
+            <div class="modal-footer">
+                <center><button class="btn waves-effect waves-light" type="submit" name="action">Agregar<i class="material-icons right">send</i></button></center>
+            </div>
     </form>
-
-			<!--div class="row">
-				<div class="input-field col s6">
-					<input name="name" id="name" type="text" class="validate">
-					<label for="name">Nombre</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="primerApellido" id="primerApellido" type="text" class="validate">
-					<label for="primerApellido">Primer Apellido</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="email" id="email" type="email" class="validate">
-					<label for="email">Correo electrónico</label>
-				</div>
-				<div class="input-field col s6">
-					<input name="password" id="password" type="password" class="validate">
-					<label for="password">Contraseña</label>
-				</div>
-			</div>
-		</div>
-		<div class="modal-footer">
-			<button type="submit" name="button" class="modal-close waves-effect waves-green btn-flat">Guardar</button>
-		</div>
-	</form-->
 
 	<!-- Modal - Editar gerente -->
 	<form id="modal_editar_gerente" class="modal" action="{{ route('gerentes_update') }}" method="POST">
 		@csrf
-		<div class="modal-content">
-			<h4>Editar Gerente</h4>
-			<div class="row">
-				<input id="editar_id" type="hidden" name="id" value="">
-				<div class="input-field col s6">
-				<div class="col-md-6">
-					<label for="name" class="col-md-4 col-form-label text-md-right">Nombre</label>
-                    <input id="editar_name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
-
-                    @if ($errors->has('name'))
-                        <span class="invalid-feedback">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
-                    @endif
-                </div>
-				<div class="col-md-6">
-					<label for="primerApellido" class="col-md-4 col-form-label text-md-right">Primer Apellido</label>
-                    <input id="editar_primerApellido" type="text" class="form-control{{ $errors->has('primerApellido') ? ' is-invalid' : '' }}" name="primerApellido" value="{{ old('primerApellido') }}" required>
-
-                    @if ($errors->has('primerApellido'))
-                        <span class="invalid-feedback">
-                            <strong>{{ $errors->first('primerApellido') }}</strong>
-                        </span>
-                    @endif
-                </div>
-				<!--<div class="for_group row">
-					<input name="email" id="editar_email" type="email" class="validate" placeholder="">
-					<label for="editar_email">Correo electrónico</label>
-				</div> -->
-				<div class="form-group row">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">Correo electrónico</label>
-                        <div class="col-md-6">
-                            <input id="editar_email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                            @if ($errors->has('email'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                </div>
-			</div>
-		</div>
-		<div class="modal-footer">
-                    <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-primary">
-                            Guardar
-                        </button>
+            <div class="modal-content">
+                <h4>Editar gerente</h4>
+                <div class="row">
+                    <input id="editar_id" type="hidden" name="id" value="">
+                    <div class="input-field col s6">
+                        <input name="name" id="editar_name" type="text" class="validate" placeholder="">
+                        <label for="name">Nombre</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input name="primerApellido" id="editar_primerApellido" type="text" class="validate" placeholder="">
+                        <label for="primerApellido">Primer apellido</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input name="email" id="editar_email" type="email" class="validate" placeholder="">
+                        <label for="email">Correo electronico</label>
                     </div>
                 </div>
+
+            </div>
+            <div class="modal-footer">
+                <center><button class="btn waves-effect waves-light" type="submit" name="action">Agregar<i class="material-icons right">send</i></button></center>
+            </div>
 	</form>
 @endsection
 

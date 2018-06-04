@@ -99,17 +99,17 @@
 					<label for="modelos_disponibles">Modelos disponibles</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="palancaCambios" id="" type="text" class="validate">
-					<label for="modelos_disponibles">Palanca de Cambios</label>
+					<input name="palancaCambios" id="palancaCambios" type="text" class="validate">
+					<label for="palancaCambios">Palanca de Cambios</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="cilindros" id="cilindros" type="text" class="validate">
+					<input name="cilindros" id="cilindros" type="number" class="validate">
 					<label for="cilindros">Cilindros</label>
 				</div>
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="submit" name="button" class="modal-close waves-effect waves-green btn-flat">Guardar</button>
+			<center><button class="btn waves-effect waves-light" type="submit" name="action">Agregar<i class="material-icons right">send</i></button></center>
 		</div>
 	</form>
 
@@ -155,7 +155,7 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="submit" name="button" class="modal-close waves-effect waves-green btn-flat">Guardar</button>
+			<center><button class="btn waves-effect waves-light" type="submit" name="action">Editar<i class="material-icons right">send</i></button></center>
 		</div>
 	</form>
 @endsection

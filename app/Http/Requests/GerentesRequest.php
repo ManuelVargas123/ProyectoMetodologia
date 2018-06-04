@@ -26,9 +26,9 @@ class GerentesRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'primerApellido' => 'required|string|max:255',
-            'email' => 'required|email',
+            'email' => 'required|unique:users,email',
             'password' => 'required|min:6',
-            'password-confirm' => 'required|min:6'
+            'password_confirmation' => 'required|min:6'
         ];
     }
 }

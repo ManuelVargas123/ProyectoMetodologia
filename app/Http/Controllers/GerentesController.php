@@ -89,7 +89,7 @@ class GerentesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(GerentesRequest $request)
+    public function update(Request $request)
     {
         $id = $request->id;
 

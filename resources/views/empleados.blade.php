@@ -75,7 +75,7 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="submit" name="button" class="modal-close waves-effect waves-green btn-flat">Guardar</button>
+			<center><button class="btn waves-effect waves-light" type="submit" name="action">Agregar<i class="material-icons right">send</i></button></center>
 		</div>
 	</form>
 
@@ -97,7 +97,7 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="submit" name="button" class="modal-close waves-effect waves-green btn-flat">Guardar</button>
+			<center><button class="btn waves-effect waves-light" type="submit" name="action">Editar<i class="material-icons right">send</i></button></center>
 		</div>
 	</form>
 @endsection

@@ -81,7 +81,7 @@
 						<label for="servicio">Servicio</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="costo" id="costo" type="number" min="0.00" max="10000.00" step="0.01" class="validate">
+						<input name="costo" id="costo" type="number" min="0.00" max="100000.00" step="0.01" class="validate">
 						<label for="costo">Costo</label>
 					</div>
 					<div class="input-field col s6">
@@ -93,7 +93,7 @@
 						<label for="apellidoCliente">Apellido del Cliente</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="telCliente" id="telCliente" type="text" class="validate">
+						<input name="telCliente" id="telCliente" type="number" class="validate">
 						<label for="telCliente">Telefono del Cliente</label>
 					</div>
 					<div class="input-field col s6">
@@ -115,7 +115,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" name="button" class="modal-close waves-effect waves-green btn-flat">Guardar</button>
+				<center><button class="btn waves-effect waves-light" type="submit" name="action">Agregar<i class="material-icons right">send</i></button></center>
 			</div>
 		</form>
 
@@ -165,7 +165,7 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="submit" name="button" class="modal-close waves-effect waves-green btn-flat">Guardar</button>
+			<center><button class="btn waves-effect waves-light" type="submit" name="action">Editar<i class="material-icons right">send</i></button></center>
 		</div>
 	</form>
 @endsection

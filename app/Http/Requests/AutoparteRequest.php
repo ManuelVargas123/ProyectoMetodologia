@@ -29,7 +29,7 @@ class AutoparteRequest extends FormRequest
             'cantidad' => 'required|integer|max:99999',
             'marca' => 'required|string|max:255',
             'descripcion' => 'string|required|max:20000',
-            'modelosDisponibles' => 'required|string|max:255',
+            'modelos_disponibles' => 'required|string|max:255',
             'palancaCambios' => 'string|nullable|max:255',
             'cilindros' => 'integer|nullable'
         ];

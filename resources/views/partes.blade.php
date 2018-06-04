@@ -27,7 +27,7 @@
 			</a>
 		</div>
 	</div>
-	<table id="table_autopartes" class="display striped">
+	<table id="table_autopartes" class="display striped responsive-table">
 		<thead>
 			<th>Parte</th>
 			<th>Modelo</th>

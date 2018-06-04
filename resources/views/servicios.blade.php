@@ -27,7 +27,7 @@
 			</a>
 		</div>
 	</div>
-	<table id="table_servicios" class="display striped">
+	<table id="table_servicios" class="display striped responsive-table">
 		<thead>
 			<th>Servicio</th>
 			<th>Costo</th>

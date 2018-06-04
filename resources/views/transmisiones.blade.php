@@ -27,7 +27,7 @@
 			</a>
 		</div>
 	</div>
-	<table id="table_transmisiones" class="display striped">
+	<table id="table_transmisiones" class="display striped responsive-table">
 		<thead>
 			<th>Nombre</th>
 			<th>Modelo</th>

@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/cajas_herramientas', 'CajaHerramientasController@index');
 	Route::post('/cajas_herramientas/store', 'CajaHerramientasController@store')->name('caja_herramientas_store');
 	Route::delete('/cajas_herramientas/delete/{id}', 'CajaHerramientasController@destroy')->name('caja_herramientas_destroy');
-	Route::post('/cajas_herramientas/edit', 'CajaHerramientasController@edit')->name('caja_herramientas_edit');
+	Route::get('/cajas_herramientas/edit/{id}', 'CajaHerramientasController@edit')->name('caja_herramientas_edit');
 	Route::post('/cajas_herramientas/update', 'CajaHerramientasController@update')->name('caja_herramientas_update');
 
 	//Ventas

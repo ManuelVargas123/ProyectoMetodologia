@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('header')
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @section('content')
@@ -90,9 +91,10 @@
 		<div class="modal-content">
 			<h4>Editar Caja</h4>
 			<div class="row">
+				<input id="editar_caja_id" type="hidden" name="id" value="">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i>
-					<select name="empleado1">
+					<select name="empleado1" id="editar_caja_empleado1">
 						<option value="" selected>Ninguno</option>
 						@foreach ($empleados as $empleado)
 							<option value="{{ $empleado->id }}">{{ $empleado->nombre }}</option>
@@ -102,7 +104,7 @@
 				</div>
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i>
-					<select name="empleado2">
+					<select name="empleado2" id="editar_caja_empleado2">
 						<option value="" selected>Ninguno</option>
 						@foreach ($empleados as $empleado)
 							<option value="{{ $empleado->id }}">{{ $empleado->nombre }}</option>
@@ -128,5 +130,28 @@
             });
 			$('.modal').modal(); // Inicializar Modal
         });
+
+		$('a[href$="modal_editar_caja"]').click(function() {
+			$.ajax({
+				type: "GET",
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
+				url: '/cajas_herramientas/edit/'+$(this).data('id'),
+				data: {"id": $(this).data('id')},
+				success: function(data) {
+					$('#editar_caja_id').val(data['id']);
+
+					$('#editar_caja_empleado1').val(data['id_empleado1']);
+					$('#editar_caja_empleado1').formSelect();
+
+					$('#editar_caja_empleado2').val(data['id_empleado2']);
+					$('#editar_caja_empleado2').formSelect();
+				},
+				error: function(xhr, textStatus, errorThrown) {
+					console.log("Ocurrió un error.");
+				}
+			});
+		});
     </script>
 @endsection

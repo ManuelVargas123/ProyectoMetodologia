@@ -35,10 +35,10 @@
         </ul>
         <ul id="dropdown2" class="dropdown-content">
             <li><a href="motores"><i class="material-icons left">time_to_leave</i>Motores</a></li>
-            <li><a href="transmisiones"><i class="material-icons left">event_seat</i>Transmisiones</a></li>
-            <li><a href="partes"><i class="material-icons left">extension</i>Partes</a></li>
-            <li><a href="herramientas"><i class="material-icons left">settings</i>Herramientas</a></li>
-            <li><a href="cajas_herramientas"><i class="material-icons left">business_center</i>Cajas de herramientas</a></li>
+            <li><a href="transmisiones" style="font-size: 15px"><i class="material-icons left">event_seat</i>Transmisiones</a></li>
+            <li><a href="partes" style="font-size: 15px"><i class="material-icons left">extension</i>Partes</a></li>
+            <li><a href="herramientas" style="font-size: 15px"><i class="material-icons left">settings</i>Herramientas</a></li>
+            <li><a href="cajas_herramientas" style="font-size: 15px"><i class="material-icons left">business_center</i>Cajas de Herramientas</a></li>
         </ul>
         <ul id="dropdown3" class="dropdown-content">
             <li><a href="servicios"><i class="material-icons left">dvr</i>Servicios</a></li>

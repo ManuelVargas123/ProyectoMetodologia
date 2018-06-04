@@ -10,7 +10,7 @@
 		    </div>
 		    <div class="card-tabs">
 		      <ul class="tabs tabs-fixed-width">
-		        <li class="tab"><a href="#proximaCita">Información del Cliente</a></li>
+		        <li class="tab">Información del Cliente</li>
 		      </ul>
 		    </div>
 		    <div class="card-content grey lighten-4">

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('header')
-<meta name="csrf-token" content="{{ csrf_token() }}"> <!-- Necesario para usar ajax -->
+	<meta name="csrf-token" content="{{ csrf_token() }}"> <!-- Necesario para usar ajax -->
 @endsection
 
 @section('content')
@@ -90,10 +90,38 @@
 					<input name="costo" id="costo" type="number" min="0.00" max="1000000.00" step="0.01" class="validate">
 					<label for="costo">Costo</label>
 				</div>
+				<div class="input-field col s6">
+					<select name="motor">
+						<option value="" selected>Ninguno</option>
+						@foreach ($motores as $motor)
+							<option value="{{ $motor->id }}">{{ $motor->nombre." ".$motor->modelo }}</option>
+						@endforeach
+					</select>
+					<label>Motor</label>
+				</div>
+				<div class="input-field col s6">
+					<select name="transmision">
+						<option value="" selected>Ninguno</option>
+						@foreach ($transmisiones as $transmision)
+							<option value="{{ $transmision->id }}">{{ $transmision->nombre." ".$transmision->modelo }}</option>
+						@endforeach
+					</select>
+					<label>Transmisión</label>
+				</div>
+				<div class="input-field col s6">
+					<select name="autoparte">
+						<option value="" selected>Ninguno</option>
+						@foreach ($autopartes as $autoparte)
+							<option value="{{ $autoparte->id }}">{{ $autoparte->parte." ".$autoparte->modelo }}</option>
+						@endforeach
+					</select>
+					<label>Autoparte</label>
+				</div>
 			</div>
 		</div>
 		<div class="modal-footer">
 			<center><button class="btn waves-effect waves-light" type="submit" name="action">Agregar<i class="material-icons right">send</i></button></center>
+		</div>
 	</form>
 
 	<!-- Modal - Editar venta-->
@@ -102,26 +130,53 @@
 		<div class="modal-content">
 			<h4>Editar venta</h4>
 			<div class="row">
-				<input id="editar_id" type="hidden" name="id" value="">
+				<input id="editar_id" type="hidden" name="id" value="" />
 				<div class="input-field col s6">
 					<input name="nombre" id="editar_nombre" type="text" class="validate" placeholder="">
 					<label for="editar_nombre">Nombre</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="apellido" id="editar_apellido" type="text" class="validate">
+					<input name="apellido" id="editar_apellido" type="text" class="validate" placeholder="">
 					<label for="editar_apellido">Apellido paterno</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="telefono" id="editar_telefono" type="number" class="validate">
+					<input name="telefono" id="editar_telefono" type="number" class="validate" placeholder="">
 					<label for="editar_telefono">Telefono</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="descripcion" id="editar_descripcion" type="text" class="validate">
+					<input name="descripcion" id="editar_descripcion" type="text" class="validate" placeholder="">
 					<label for="editar_descripcion">Descripcion</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="costo" id="editar_costo" type="number" min="0.00" max="1000000.00" step="0.01" class="validate">
+					<input name="costo" id="editar_costo" type="number" min="0.00" max="1000000.00" step="0.01" class="validate" placeholder="">
 					<label for="editar_costo">Costo</label>
+				</div>
+				<div class="input-field col s6">
+					<select name="motor" id="editar_motor">
+						<option value="" selected>Ninguno</option>
+						@foreach ($motoresall as $motor)
+							<option value="{{ $motor->id }}">{{ $motor->nombre." ".$motor->modelo }}</option>
+						@endforeach
+					</select>
+					<label>Motor</label>
+				</div>
+				<div class="input-field col s6">
+					<select name="transmision" id="editar_transmision">
+						<option value="" selected>Ninguno</option>
+						@foreach ($transmisionesall as $transmision)
+							<option value="{{ $transmision->id }}">{{ $transmision->nombre." ".$transmision->modelo }}</option>
+						@endforeach
+					</select>
+					<label>Transmisión</label>
+				</div>
+				<div class="input-field col s6">
+					<select name="autoparte" id="editar_autoparte">
+						<option value="" selected>Ninguno</option>
+						@foreach ($autopartesall as $autoparte)
+							<option value="{{ $autoparte->id }}">{{ $autoparte->parte." ".$autoparte->modelo }}</option>
+						@endforeach
+					</select>
+					<label>Autoparte</label>
 				</div>
 			</div>
 		</div>
@@ -158,6 +213,15 @@
 					$('#editar_telefono').val(data['telefono']);
 					$('#editar_descripcion').val(data['descripcion']);
 					$('#editar_costo').val(data['costo']);
+
+					$('#editar_motor').val(data['id_motor']);
+					$('#editar_motor').formSelect();
+
+					$('#editar_transmision').val(data['id_transmision']);
+					$('#editar_transmision').formSelect();
+
+					$('#editar_autoparte').val(data['id_autoparte']);
+					$('#editar_autoparte').formSelect();
 				},
 				error: function(xhr, textStatus, errorThrown) {
 					console.log("Ocurrió un error.");

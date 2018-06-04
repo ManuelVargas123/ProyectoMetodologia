@@ -32,6 +32,7 @@
 			<th>Nombre</th>
 			<th>Apellido paterno</th>
 			<th>Fecha de agregado</th>
+			<th>Caja asignada</th>
 			<th></th>
 		</thead>
 		<tbody>
@@ -40,6 +41,7 @@
 					<td>{{ $empleado->nombre }}</td>
 					<td>{{ $empleado->primerApellido }}</td>
 					<td>{{ $empleado->created_at }}</td>
+					<td>{{ $empleado->caja_asignada }}</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
 							<a data-id="{{ $empleado->id }}" class="modal-trigger" href="#modal_editar_empleado"><i class="material-icons">edit</i></a>

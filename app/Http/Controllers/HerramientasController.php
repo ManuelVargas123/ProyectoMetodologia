@@ -18,7 +18,10 @@ class HerramientasController extends Controller
     {
         $herramientas = Herramienta::all();
         $cajas = CajaHerramienta::all();
-    	return view('herramientas')->with(['herramientas' => $herramientas, 'cajas' => $cajas]);
+    	return view('herramientas')->with([
+            'herramientas' => $herramientas,
+            'cajas'         => $cajas
+        ]);
     }
 
     /**

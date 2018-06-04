@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Empleado; // Modelo
+use App\CajaHerramienta;
 use App\Http\Requests\EmpleadosRequest;
 
 class EmpleadosController extends Controller
@@ -15,7 +16,18 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::get();
+        $empleados = Empleado::all();
+
+        foreach ($empleados as $empleado) {
+            if($caja = CajaHerramienta::where('user_id', $empleado->id)->first()) {
+                $empleado->caja_asignada = $caja->id;
+            } elseif($caja = CajaHerramienta::where('user_id2', $empleado->id)->first()) {
+                $empleado->caja_asignada = $caja->id;
+            } else {
+                $empleado->caja_asignada = "Ninguna";
+            }
+        }
+
         return view('empleados', compact('empleados'));
     }
 

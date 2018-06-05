@@ -6,7 +6,7 @@
       	<div class="col l4 s6">
 		  <div class="card">
 		    <div class="card-content">
-		      <p><b>Se debe de agendar un cita.</b></p>
+		      <p><b>Se debe de agendar una cita.</b></p>
 		    </div>
 		    <div class="card-tabs">
 		      <ul class="tabs tabs-fixed-width">

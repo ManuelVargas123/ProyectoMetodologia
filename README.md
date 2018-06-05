@@ -1,5 +1,5 @@
 # Servicio Mecánico Andrés 
-Página web para manejo de un inventario junto a un sistema de ventas para el taller Servicio Mecánico Andrés
+Página web para el manejo de un inventario junto a un sistema de ventas para el taller Servicio Mecánico Andrés.
 
 ### Descripción
 Este programa está dirigido principalmente para manejar un sistema de ventas e inventario para el área de un servicio mecánico, donde el sistema de ventas se divide en dos secciones: ventas y servicios, y el inventario se divide en varias secciones las cuales se mencionarán más adelante. El sistema se enfoca en que el usuario que lo utilice pueda llevar un mejor control de su negocio mediante una base de datos, donde se guarda la información a la cual puede acceder mediante la página en cualquier momento para realizar diferentes acciones.

@@ -3,7 +3,7 @@
 
 	<div class="row" style="margin-top: 40px;">
 	@foreach($proximasCitas as $proximaCita)
-      	<div class="col l4 s6">
+      	<div class="col l4 s12">
 		  <div class="card">
 		    <div class="card-content">
 		      <p><b>Se debe de agendar una cita.</b></p>

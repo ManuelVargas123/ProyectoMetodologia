@@ -40,6 +40,7 @@ class CajaHerramientasController extends Controller
             foreach ($herramientas as $herramienta) {
                 $caja->herramientas .= $herramienta->nombre.", ";
             }
+            $caja->herramientas = substr($caja->herramientas, 0, -2);
         }
         return view('cajas_herramientas')->with([
             'caja_herramientas' => $caja_herramientas,

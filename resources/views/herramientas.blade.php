@@ -68,17 +68,18 @@
 		<div class="modal-content">
 			<h4>Agregar nueva herramienta</h4>
 			<div class="row">
+
 				<div class="input-field col s6">
-					<input name="cantidad" id="cantidad" type="number" class="validate">
-					<label for="cantidad">Cantidad</label>
+					<input name="nombre" id="nombre" type="text" class="validate">
+					<label for="nombre">Nombre</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="marca" id="marca" type="text" class="validate">
 					<label for="marca">Marca</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="nombre" id="nombre" type="text" class="validate">
-					<label for="nombre">Nombre</label>
+					<input name="cantidad" id="cantidad" type="number" class="validate">
+					<label for="cantidad">Cantidad</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="descripcion" id="descripcion" type="text" class="validate">
@@ -107,17 +108,18 @@
 			<h4>Editar herramienta</h4>
 			<div class="row">
 				<input id="editar_id" type="hidden" name="id" value="">
+
 				<div class="input-field col s6">
-					<input name="cantidad" id="editar_cantidad" type="number" class="validate" placeholder="">
-					<label for="editad_cantidad">Cantidad</label>
+					<input name="nombre" id="editar_nombre" type="text" class="validate" placeholder="">
+					<label for="editar_nombre">Nombre</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="marca" id="editar_marca" type="text" class="validate" placeholder="">
 					<label for="editar_marca">Marca</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="nombre" id="editar_nombre" type="text" class="validate" placeholder="">
-					<label for="editar_nombre">Nombre</label>
+					<input name="cantidad" id="editar_cantidad" type="number" class="validate" placeholder="">
+					<label for="editad_cantidad">Cantidad</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="descripcion" id="editar_descripcion" type="text" class="validate" placeholder="">

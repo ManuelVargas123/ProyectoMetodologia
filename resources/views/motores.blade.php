@@ -36,7 +36,6 @@
 			<th>Descripcion</th>
 			<th>Modelos disponibles</th>
 			<th>Cilindros</th>
-			<th>Ultima actualizacion</th>
 			<th></th>
 		</thead>
 		<tbody>
@@ -49,7 +48,6 @@
 					<td>{{ $motor->descripcion }}</td>
 					<td>{{ $motor->modelosDisponibles }}</td>
 					<td>{{ $motor->cilindros }}</td>
-					<td>{{ $motor->updated_at }}</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
 							<a data-id="{{ $motor->id }}" class="modal-trigger" href="#modal_editar_motor"><i class="material-icons">edit</i></a>

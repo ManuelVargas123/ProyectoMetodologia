@@ -36,7 +36,6 @@
 			<th>Descripción</th>
 			<th>Modelos disponibles</th>
 			<th>Palanca de cambios</th>
-			<th>Ultima actualización</th>
 			<th></th>
 		</thead>
 		<tbody>
@@ -49,7 +48,6 @@
 					<td>{{ $transmision->descripcion }}</td>
 					<td>{{ $transmision->modelosDisponibles }}</td>
 					<td>{{ $transmision->palancaCambios }}</td>
-					<td>{{ $transmision->updated_at }}</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
 							<a data-id="{{ $transmision->id }}" class="modal-trigger" href="#modal_editar_transmision"><i class="material-icons">edit</i></a>

@@ -11,15 +11,15 @@
         <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}"> <!-- Con asset, laravel va a la carpeta 'public' y busca la ruta dada -->
 
         <!-- JQuery -->
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="{{ asset('js/jquery-2.1.1.min') }}"></script>
 
         <!-- Datatable -->
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.10.16/datatables.min.css"/>
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}"/>
+        <script type="text/javascript" charset="utf8" src="{{ asset('js/jquery.dataTables.js') }}"></script>
 
         <!-- Mensajes de alerta -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+        <script src="{{ asset('js/toastr.min.js') }}" charset="utf-8"></script>
 
         @yield('header')
     </head>

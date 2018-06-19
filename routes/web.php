@@ -13,7 +13,7 @@
 
 Route::middleware(['auth'])->group(function () {
 	Route::get('/','ToDoController@index');
-
+	Route::post('/update', 'ToDoController@update')->name('update');
 	// Inventario
 	Route::get('/motores', 'MotoresController@index');
 	Route::post('/motores/store', 'MotoresController@store')->name('motores_store');
@@ -59,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::delete('/servicios/delete/{id}', 'ServiciosController@destroy')->name('servicios_destroy');
 	Route::post('/servicios/edit', 'ServiciosController@edit')->name('servicios_edit');
 	Route::post('/servicios/update', 'ServiciosController@update')->name('servicios_update');
+	Route::post('/servicios/change', 'ServiciosController@change')->name('servicios_change');
 
 	//autopartes
 	Route::get('/autopartes', 'PartesController@index');

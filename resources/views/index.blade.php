@@ -20,6 +20,24 @@
 		      <div id="proximaCita"><b>Servicio realizado:</b> {{ $proximaCita->servicio }}</div>
 		      <div id="proximaCita"><b>Fecha estimada para cita:</b> {{ $proximaCita->fechaSiguiente }}</div>
 		      <div id="proximaCita"><b>Descripción del servicio:</b> {{ $proximaCita->descripcion }}</div>
+		      <form action="{{ route('update') }}" method="POST">
+		      	<input type="hidden" name="id" value="{{ $proximaCita->id }}">
+		      	<p>
+      		  		<label>
+        				<input name="agendada" type="checkbox"/>
+        				<span>Agendada</span>
+      				</label>
+    			</p>
+		      	<p>
+      		  		<label>
+        				<input name="finalizado" type="checkbox"/>
+        				<span>Servicio terminado</span>
+      				</label>
+    			</p>
+    			<div class="modal-footer">
+					<center><button class="btn waves-effect waves-light" type="submit" name="action">Enviar<i class="material-icons right">send</i></button></center>
+				</div>
+    		  </form>
 		    </div>
 		  </div>
 		</div>

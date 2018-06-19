@@ -50,6 +50,7 @@ class VentasController extends Controller
         $ventas->telefono           = $request->telefono;
         $ventas->descripcion        = $request->descripcion;
         $ventas->costo              = $request->costo;
+        $ventas->moneda             = $request->moneda;
         $ventas->motor_id           = $request->motor;
         $ventas->transmision_id     = $request->transmision;
         $ventas->autoparte_id       = $request->autoparte;
@@ -104,6 +105,7 @@ class VentasController extends Controller
             'telefono' => $venta->telefono,
             'descripcion' => $venta->descripcion,
             'costo' => $venta->costo,
+            'moneda' => $venta->moneda,
             'id_motor' => $venta->motor_id,
             'id_transmision' => $venta->transmision_id,
             'id_autoparte' => $venta->autoparte_id
@@ -127,6 +129,7 @@ class VentasController extends Controller
         $ventas->telefono           = $request->telefono;
         $ventas->descripcion        = $request->descripcion;
         $ventas->costo              = $request->costo;
+        $ventas->moneda             = $request->moneda;
         $ventas->motor_id           = $request->motor;
         $ventas->transmision_id     = $request->transmision;
         $ventas->autoparte_id       = $request->autoparte;

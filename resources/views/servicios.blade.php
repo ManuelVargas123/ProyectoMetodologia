@@ -31,6 +31,7 @@
 		<thead>
 			<th>Servicio</th>
 			<th>Costo</th>
+			<th>Tipo de Moneda</th>
 			<th>Nombre del Cliente</th>
 			<th>Apellido del Cliente</th>
 			<th>Telefono del Cliente</th>
@@ -45,6 +46,7 @@
 				<tr>
 					<td>{{ $servicio->servicio }}</td>
 					<td>{{ $servicio->costo }}</td>
+					<td>{{ $servicio->moneda }}</td>
 					<td>{{ $servicio->nombreCliente }}</td>
 					<td>{{ $servicio->apellidoCliente }}</td>
 					<td>{{ $servicio->telCliente }}</td>
@@ -83,6 +85,14 @@
 					<div class="input-field col s6">
 						<input name="costo" id="costo" type="number" min="0.00" max="100000.00" step="0.01" class="validate">
 						<label for="costo">Costo</label>
+					</div>
+					<div class="input-field col s6">
+					    <select name="moneda">
+					      <option value="" disabled selected>Elija el Tipo de Moneda</option>
+					      <option value="MXN">MXN</option>
+					      <option value="USD">USD</option>
+					    </select>
+					    <label>Tipo de Moneda</label>
 					</div>
 					<div class="input-field col s6">
 						<input name="nombreCliente" id="nombreCliente" type="text" class="validate">
@@ -133,6 +143,14 @@
 				<div class="input-field col s6">
 					<input name="costo" id="editar_costo" type="number" min="0.00" max="10000.00" step="0.01" class="validate" placeholder="">
 					<label for="editar_costo">Costo</label>
+				</div>
+				<div class="input-field col s6">
+				    <select name="moneda" id="editar_moneda">
+				      <option value="" disabled selected>Elija el Tipo de Moneda</option>
+				      <option value="MXN">MXN</option>
+				      <option value="USD">USD</option>
+				    </select>
+				    <label for="editar_moneda">Tipo de Moneda</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="nombreCliente" id="editar_nombreCliente" type="text" class="validate" placeholder="">
@@ -193,6 +211,10 @@
 					$('#editar_id').val(data['id']);
 					$('#editar_servicio').val(data['servicio']);
 					$('#editar_costo').val(data['costo']);
+
+					$('#editar_moneda').val(data['moneda']);
+					$('#editar_moneda').formSelect();
+
 					$('#editar_nombreCliente').val(data['nombreCliente']);
 					$('#editar_apellidoCliente').val(data['apellidoCliente']);
 					$('#editar_telCliente').val(data['telCliente']);

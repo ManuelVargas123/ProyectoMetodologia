@@ -30,6 +30,7 @@ class ServiciosController extends Controller
         $servicio = new Servicio;
         $servicio->servicio = $request->servicio;
         $servicio->costo = $request->costo;
+        $servicio->moneda = $request->moneda;
         $servicio->nombreCliente = $request->nombreCliente;
         $servicio->apellidoCliente = $request->apellidoCliente;
         $servicio->telCliente = $request->telCliente;
@@ -69,6 +70,7 @@ class ServiciosController extends Controller
             'id' => $servicio->id,
             'servicio' => $servicio->servicio,
             'costo' => $servicio->costo,
+            'moneda' => $servicio->moneda,
             'nombreCliente' => $servicio->nombreCliente,
             'apellidoCliente' => $servicio->apellidoCliente,
             'telCliente' => $servicio->telCliente,
@@ -95,6 +97,7 @@ class ServiciosController extends Controller
 
         $servicio->servicio = $request->servicio;
         $servicio->costo = $request->costo;
+        $servicio->moneda = $request->moneda;
         $servicio->nombreCliente = $request->nombreCliente;
         $servicio->apellidoCliente = $request->apellidoCliente;
         $servicio->telCliente = $request->telCliente;
@@ -124,4 +127,19 @@ class ServiciosController extends Controller
             return redirect()->back()->with('error', 'Ocurrió un error al intentar eliminar un servicio, intentalo de nuevo.');
         }
     }
+
+    /*public function change(Request $request)
+    {
+        $id = $request->id;
+        $servicio = Servicio::find($id);
+
+        $servicio->agendada = $request->agendada;
+        $servicio->finalizado = $request->finalizado;
+        if($servicio->save()){
+            return redirect()->back()->with('success', 'Has agregado un nuevo servicio correctamente');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar agregar un servicio, intentalo de nuevo.');
+        }
+    }*/
+
 }

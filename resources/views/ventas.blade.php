@@ -31,9 +31,10 @@
 		<thead>
 			<th>Nombre</th>
 			<th>Apellido</th>
-			<th>Telefono</th>
-			<th>Descripcion</th>
+			<th>Teléfono</th>
+			<th>Descripción</th>
 			<th>Costo total</th>
+			<th>Tipo de Moneda</th>
 			<th>Fecha de venta</th>
 			<th></th>
 		</thead>
@@ -45,6 +46,7 @@
 					<td>{{ $venta->telefono }}</td>
 					<td>{{ $venta->descripcion }}</td>
 					<td>{{ $venta->costo }}</td>
+					<td>{{ $venta->moneda }}</td>
 					<td>{{ $venta->created_at }}</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
@@ -89,6 +91,14 @@
 				<div class="input-field col s6">
 					<input name="costo" id="costo" type="number" min="0.00" max="1000000.00" step="0.01" class="validate">
 					<label for="costo">Costo</label>
+				</div>
+				<div class="input-field col s6">
+				    <select name="moneda">
+				      <option value="" disabled selected>Elija el Tipo de Moneda</option>
+				      <option value="MXN">MXN</option>
+				      <option value="USD">USD</option>
+				    </select>
+				    <label>Tipo de Moneda</label>
 				</div>
 				<div class="input-field col s6">
 					<select name="motor">
@@ -152,6 +162,14 @@
 					<label for="editar_costo">Costo</label>
 				</div>
 				<div class="input-field col s6">
+				    <select name="moneda" id="editar_moneda">
+				      <option value="" disabled selected>Elija el Tipo de Moneda</option>
+				      <option value="MXN">MXN</option>
+				      <option value="USD">USD</option>
+				    </select>
+				    <label for="editar_moneda">Tipo de Moneda</label>
+				</div>
+				<div class="input-field col s6">
 					<select name="motor" id="editar_motor">
 						<option value="" selected>Ninguno</option>
 						@foreach ($motoresall as $motor)
@@ -213,6 +231,9 @@
 					$('#editar_telefono').val(data['telefono']);
 					$('#editar_descripcion').val(data['descripcion']);
 					$('#editar_costo').val(data['costo']);
+
+					$('#editar_moneda').val(data['moneda']);
+					$('#editar_moneda').formSelect();
 
 					$('#editar_motor').val(data['id_motor']);
 					$('#editar_motor').formSelect();

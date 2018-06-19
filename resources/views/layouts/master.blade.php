@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}"> <!-- Con asset, laravel va a la carpeta 'public' y busca la ruta dada -->
 
         <!-- JQuery -->
-        <script src="{{ asset('js/jquery-2.1.1.min') }}"></script>
+        <script src="{{ asset('js/jquery-2.1.1.min.js') }}"></script>
 
         <!-- Datatable -->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}"/>
@@ -116,8 +116,12 @@
                 var instances2 = M.FormSelect.init(elems2);
 
                 //Menu desplegable navbar
-                $(".dropdown-trigger").dropdown();
+                //$(".dropdown-trigger").dropdown();
             });
+        </script>
+
+        <script type="text/javascript">
+            $(".dropdown-trigger").dropdown();
         </script>
 
         @if(Session::has('info'))

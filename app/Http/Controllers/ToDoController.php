@@ -15,4 +15,18 @@ class ToDoController extends Controller
         return view('index')->with(['proximasCitas' => $proximasCitas]);
        // return view('index', compact('servicios'));
     }
+
+    public function update(Request $request)
+    {
+        $id = $request->id;
+        $servicio = Servicio::find($id);
+
+        $servicio->agendada = $request->agendada;
+        $servicio->finalizado = $request->finalizado;
+        if($servicio->save()){
+            return redirect()->back()->with('success', 'Has agregado un nuevo servicio correctamente');
+        } else {
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar agregar un servicio, intentalo de nuevo.');
+        }
+    }
 }

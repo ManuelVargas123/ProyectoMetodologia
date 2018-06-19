@@ -29,10 +29,10 @@
 	</div>
 	<table id="table_ventas" class="display striped responsive-table">
 		<thead>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>Telefono</th>
-			<th>Descripcion</th>
+			<th>Nombre del cliente</th>
+			<th>Apellido del cliente</th>
+			<th>Teléfono del cliente</th>
+			<th>Descripción</th>
 			<th>Costo total</th>
 			<th>Fecha de venta</th>
 			<th></th>

@@ -33,11 +33,11 @@
 			<th>Costo</th>
 			<th>Nombre del Cliente</th>
 			<th>Apellido del Cliente</th>
-			<th>Telefono del Cliente</th>
+			<th>Teléfono del Cliente</th>
 			<th>Carro</th>
 			<th>Fecha</th>
 			<th>Siguiente Cita</th>
-			<th>Descripcion</th>
+			<th>Descripción</th>
 			<th></th>
 		</thead>
 		<tbody>

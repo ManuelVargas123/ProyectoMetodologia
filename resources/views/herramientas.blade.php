@@ -32,7 +32,7 @@
 			<th>Cantidad</th>
 			<th>Marca</th>
 			<th>Nombre</th>
-			<th>Descripcion</th>
+			<th>Descripción</th>
 			<th>Caja</th>
 			<th></th>
 		</thead>

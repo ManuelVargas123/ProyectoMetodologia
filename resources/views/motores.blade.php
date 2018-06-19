@@ -33,10 +33,10 @@
 			<th>Modelo</th>
 			<th>Cantidad</th>
 			<th>Marca</th>
-			<th>Descripcion</th>
+			<th>Descripción</th>
 			<th>Modelos disponibles</th>
-			<th>Cilindros</th>
-			<th>Ultima actualizacion</th>
+			<th>Cilíndros</th>
+			<th>Última actualización</th>
 			<th></th>
 		</thead>
 		<tbody>

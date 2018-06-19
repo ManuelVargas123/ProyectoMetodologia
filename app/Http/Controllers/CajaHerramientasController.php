@@ -38,9 +38,9 @@ class CajaHerramientasController extends Controller
             $caja->herramientas = "";
             $herramientas = Herramienta::where('caja_id', $caja->id)->get();
             foreach ($herramientas as $herramienta) {
-                $caja->herramientas .= $herramienta->nombre.", ";
+                $caja->herramientas .= $herramienta->nombre." (".$herramienta->marca.", ".$herramienta->cantidad.")"." || ";
             }
-            $caja->herramientas = substr($caja->herramientas, 0, -2);
+            $caja->herramientas = substr($caja->herramientas, 0, -3);
         }
         return view('cajas_herramientas')->with([
             'caja_herramientas' => $caja_herramientas,

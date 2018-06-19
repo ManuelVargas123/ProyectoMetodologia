@@ -29,15 +29,9 @@
 	</div>
 	<table id="table_ventas" class="display striped responsive-table">
 		<thead>
-<<<<<<< HEAD
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>Teléfono</th>
-=======
 			<th>Nombre del cliente</th>
 			<th>Apellido del cliente</th>
 			<th>Teléfono del cliente</th>
->>>>>>> JohanBranch
 			<th>Descripción</th>
 			<th>Costo total</th>
 			<th>Tipo de Moneda</th>

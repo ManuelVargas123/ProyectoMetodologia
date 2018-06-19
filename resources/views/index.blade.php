@@ -20,7 +20,33 @@
 		      <div id="proximaCita"><b>Servicio realizado:</b> {{ $proximaCita->servicio }}</div>
 		      <div id="proximaCita"><b>Fecha estimada para cita:</b> {{ $proximaCita->fechaSiguiente }}</div>
 		      <div id="proximaCita"><b>Descripción del servicio:</b> {{ $proximaCita->descripcion }}</div>
-		      <form action="{{ route('update') }}" method="POST">
+		      {!! Form::open(['action' => ['ToDoController@update']]) !!}
+		      	<input type="hidden" name="id" value="{{ $proximaCita->id }}">
+			    <p>
+	      		  	<label>
+	      		  		@if($proximaCita->agendada == 1)
+	        				<input name="agendada" type="checkbox" checked="checked"/>
+	        			@else
+	        				<input name="agendada" type="checkbox"/>
+	        			@endif
+	        			<span>Agendada</span>
+	      			</label>
+	    		</p>
+		      	<p>
+      		  		<label>
+      		  			@if($proximaCita->finalizado == 1)
+        					<input name="finalizado" type="checkbox" checked="checked"/>
+	        			@else
+	        				<input name="finalizado" type="checkbox"/>
+	        			@endif
+        				<span>Servicio terminado</span>
+      				</label>
+    			</p>
+    			<div class="modal-footer">
+					<center><button class="btn waves-effect waves-light" type="submit" name="action">Enviar<i class="material-icons right">send</i></button></center>
+				</div>
+		      {!! Form::close() !!}
+		      <!--form action="{{ route('update') }}" method="POST">
 		      	<input type="hidden" name="id" value="{{ $proximaCita->id }}">
 		      	<p>
       		  		<label>
@@ -37,7 +63,7 @@
     			<div class="modal-footer">
 					<center><button class="btn waves-effect waves-light" type="submit" name="action">Enviar<i class="material-icons right">send</i></button></center>
 				</div>
-    		  </form>
+    		  </form-->
 		    </div>
 		  </div>
 		</div>

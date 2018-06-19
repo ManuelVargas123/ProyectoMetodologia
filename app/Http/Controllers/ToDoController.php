@@ -11,9 +11,11 @@ class ToDoController extends Controller
     public function index()
     {
         $fechaSemana = Carbon::now()->addWeeks(1);
-        $proximasCitas = Servicio::where('fechaSiguiente', '<=',  $fechaSemana)->get();
+        $proximasCitas = Servicio::where('fechaSiguiente', '<=',  $fechaSemana)
+        ->where(function ($query) {
+            $query->where('finalizado', '<', 1); 
+        })->get();
         return view('index')->with(['proximasCitas' => $proximasCitas]);
-       // return view('index', compact('servicios'));
     }
 
     public function update(Request $request)
@@ -21,8 +23,18 @@ class ToDoController extends Controller
         $id = $request->id;
         $servicio = Servicio::find($id);
 
-        $servicio->agendada = $request->agendada;
-        $servicio->finalizado = $request->finalizado;
+        if($request->agendada === "on")
+        	$servicio->agendada = 1;
+        else
+        	$servicio->agendada = 0;
+
+        if($request->finalizado === "on")
+        	$servicio->finalizado = 1;
+        else
+        	$servicio->finalizado = 0;
+       
+       // $servicio->agendada = $request->agendada; 
+        //$servicio->finalizado = $request->finalizado;
         if($servicio->save()){
             return redirect()->back()->with('success', 'Has agregado un nuevo servicio correctamente');
         } else {

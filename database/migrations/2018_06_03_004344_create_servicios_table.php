@@ -26,8 +26,8 @@ class CreateServiciosTable extends Migration
             $table->date('fecha');
             $table->date('fechaSiguiente');
             $table->text('descripcion');
-            $table->boolean('agendada')->default(false);
-            $table->boolean('finalizado')->default(false);
+            $table->boolean('agendada')->default(false)->nullable();
+            $table->boolean('finalizado')->default(false)->nullable();
             $table->timestamps();
         });
     }

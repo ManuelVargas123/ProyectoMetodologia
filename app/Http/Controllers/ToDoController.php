@@ -33,8 +33,6 @@ class ToDoController extends Controller
         else
         	$servicio->finalizado = 0;
        
-       // $servicio->agendada = $request->agendada; 
-        //$servicio->finalizado = $request->finalizado;
         if($servicio->save()){
             return redirect()->back()->with('success', 'Has agregado un nuevo servicio correctamente');
         } else {

@@ -49,20 +49,30 @@
             <li><a href="servicios"><i class="material-icons left">dvr</i>Servicios</a></li>
             <li><a href="ventas"><i class="material-icons left">shopping_basket</i>Ventas</a></li>
         </ul>
+        <ul id="dropdown5" class="dropdown-content">
+             <li><a href="historial"><i class="material-icons left">info_outline</i>Historial</a></li>
+            <li><a href="gerentes"><i class="material-icons left">group</i>Gerentes</a></li>
+        </ul>
+
+        <ul id="dropdown6" class="dropdown-content">
+             <li><a href="historial"><i class="material-icons left">info_outline</i>Historial</a></li>
+            <li><a href="gerentes"><i class="material-icons left">group</i>Gerentes</a></li>
+        </ul>
 
         <!-- La secciones que tengan el arroba isAdmin, endisAdmin,
         son las secciones que solo podra ver el Administrador -->
 
         <nav>
             <div class="nav-wrapper">
-                <a href="/" class="brand-logo" style="margin-left: 20px; margin-top: 6px;"><img style="width: 320px;" src="/img/banner.png"></a>
+                <a href="/" class="brand-logo" style="margin-left: 15px; margin-top: 6px;"><img style="width: 300px;" src="/img/banner.png"></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="/" style="margin-right: 10px;"><i class="material-icons left">home</i>Inicio</a></li>
-                    <li><a href="empleados" style="margin-right: 10px;"><i class="material-icons left">person</i>Empleados</a></li>
+                    <li><a href="/" style="margin-right: 10px; width: 92%;"><i class="material-icons left">home</i>Inicio</a></li>
+                    <li><a href="trabajos" style="margin-right: 10px; width: 93%;"><i class="material-icons left">assignment_ind</i>Trabajos</a></li>
+                    <li><a href="empleados" style="margin-right: 10px; width: 94%;"><i class="material-icons left">person</i>Empleados</a></li>
                     @isAdmin
-                    <li><a href="gerentes"><i class="material-icons left">group</i>Administrar Gerentes</a></li>
-                    <li><a class="dropdown-trigger" href="#" data-target="dropdown4" style="margin-right: 10px;"><i class="material-icons left">monetization_on</i>Ganancias<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-trigger" href="#" data-target="dropdown4" style="margin-right: 10px; width: 95%;"><i class="material-icons left">monetization_on</i>Ganancias<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-trigger" href="#" data-target="dropdown6" style="margin-right: 10px; width: 95%;"><i class="material-icons left">verified_user</i>Admin<i class="material-icons right">arrow_drop_down</i></a></li>
                     @endisAdmin
                         <!-- Dropdown Trigger -->
                         <li><a class="dropdown-trigger" href="#" data-target="dropdown2" style="margin-right: 10px;"><i class="material-icons left">build</i>Inventario<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -70,7 +80,7 @@
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <center><p>
-                                    <button type="submit" class="waves-effect waves-light btn-small #ef5350 red lighten-1" style="margin-bottom: 40px; margin-right: 15px;">Salir</button>
+                                    <button type="submit" class="waves-effect waves-light btn-small #ef5350 red lighten-1" style="margin-bottom: 40px; margin-right: 10px; width: 80%;">Salir</button>
                                 </p></center>
                             </form>
                         </li>
@@ -82,7 +92,7 @@
             <li><a href="/" style="margin-right: 10px;"><i class="material-icons">home</i>Inicio</a></li>
             <li><a href="empleados" style="margin-right: 10px;"><i  class="material-icons left">person</i>Empleados</a></li>
             @isAdmin
-            <li><a href="/gerentes" style="margin-right: 10px;"><i class="material-icons">group</i>Administrar Gerentes</a></li>
+            <li><a class="dropdown-trigger" href="#" data-target="dropdown5" style="margin-right: 10px; width: 95%;"><i class="material-icons left">verified_user</i>Admin<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a class="dropdown-trigger" href="#" data-target="dropdown3" style="margin-right: 10px;"><i class="material-icons">monetization_on</i>Ganancias<i class="material-icons right">arrow_drop_down</i></a></li>
             @endisAdmin
                 <!-- Dropdown Trigger -->

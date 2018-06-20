@@ -69,9 +69,9 @@ class VentasController extends Controller
         }
 
         if($ventas->save()) { // Insertar el registro
-            return redirect()->back()->with('success', 'Has agregado una nueva ventas correctamente.');
+            return redirect()->back()->with('success', 'Has agregado una nueva venta correctamente.');
         } else {
-            return redirect()->back()->with('error', 'Ocurrió un error al intentar agregar una ventas, intentalo de nuevo.');
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar agregar una venta, intentalo de nuevo.');
         }
     }
 
@@ -135,9 +135,9 @@ class VentasController extends Controller
         $ventas->autoparte_id       = $request->autoparte;
         
         if($ventas->save()) { // Insertar el registro
-            return redirect()->back()->with('info', 'Has editado una ventas correctamente.');
+            return redirect()->back()->with('info', 'Has editado una venta correctamente.');
         } else {
-            return redirect()->back()->with('error', 'Ocurrió un error al intentar editar una ventas, intentalo de nuevo.');
+            return redirect()->back()->with('error', 'Ocurrió un error al intentar editar una venta, intentalo de nuevo.');
         }
     }
 

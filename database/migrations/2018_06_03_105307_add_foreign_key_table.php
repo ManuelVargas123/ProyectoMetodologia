@@ -16,15 +16,25 @@ class AddForeignKeyTable extends Migration
         Schema::table('herramientas', function (Blueprint $table) {
             $table->foreign('caja_id')->references('id')->on('caja_herramientas');
         });
+
         Schema::table('caja_herramientas', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('user_id2')->references('id')->on('users');
         });
+
         Schema::table('ventas', function (Blueprint $table) {
             $table->foreign('motor_id')->references('id')->on('motores');
             $table->foreign('transmision_id')->references('id')->on('transmisiones');
             $table->foreign('autoparte_id')->references('id')->on('autopartes');
         });
+
+       /* Schema::table('historial', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('trabajos', function (Blueprint $table) {
+            $table->foreign('empleado_id')->references('id')->on('empleados');
+        });*/
     }
 
     /**
@@ -45,6 +55,12 @@ class AddForeignKeyTable extends Migration
             $table->dropForeign('ventas_motor_id_foreign');
             $table->dropForeign('ventas_transmision_id_foreign');
             $table->dropForeign('ventas_autoparte_id_foreign');
+        });
+       /* Schema::table('historial', function (Blueprint $table) {
+            $table->dropForeign('historial_user_id_foreign');
+        });*/
+        Schema::table('trabajos', function (Blueprint $table) {
+            $table->dropForeign('trabajos_empleado_id_foreign');
         });
     }
 }

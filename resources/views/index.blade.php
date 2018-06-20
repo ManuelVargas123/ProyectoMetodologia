@@ -43,27 +43,9 @@
       				</label>
     			</p>
     			<div class="modal-footer">
-					<center><button class="btn waves-effect waves-light" type="submit" name="action">Enviar<i class="material-icons right">send</i></button></center>
+					<center><button class="btn waves-effect waves-light" type="submit" name="action">Confirmar<i class="material-icons right">send</i></button></center>
 				</div>
 		      {!! Form::close() !!}
-		      <!--form action="{{ route('update') }}" method="POST">
-		      	<input type="hidden" name="id" value="{{ $proximaCita->id }}">
-		      	<p>
-      		  		<label>
-        				<input name="agendada" type="checkbox"/>
-        				<span>Agendada</span>
-      				</label>
-    			</p>
-		      	<p>
-      		  		<label>
-        				<input name="finalizado" type="checkbox"/>
-        				<span>Servicio terminado</span>
-      				</label>
-    			</p>
-    			<div class="modal-footer">
-					<center><button class="btn waves-effect waves-light" type="submit" name="action">Enviar<i class="material-icons right">send</i></button></center>
-				</div>
-    		  </form-->
 		    </div>
 		  </div>
 		</div>

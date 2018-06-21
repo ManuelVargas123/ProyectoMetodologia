@@ -36,7 +36,6 @@
 			<th>Descripción</th>
 			<th>Modelos disponibles</th>
 			<th>Palanca de cambios</th>
-			<th>Ultima actualización</th>
 			<th></th>
 		</thead>
 		<tbody>
@@ -49,7 +48,6 @@
 					<td>{{ $transmision->descripcion }}</td>
 					<td>{{ $transmision->modelosDisponibles }}</td>
 					<td>{{ $transmision->palancaCambios }}</td>
-					<td>{{ $transmision->updated_at }}</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
 							<a data-id="{{ $transmision->id }}" class="modal-trigger" href="#modal_editar_transmision"><i class="material-icons">edit</i></a>
@@ -100,8 +98,12 @@
 					</div>
 
 					<div class="input-field col s6">
-						<input name="palanca_cambios" id="palanca_cambios" type="text" class="validate">
-						<label for="palanca_cambios">Palanca de cambios</label>
+					    <select name="palanca_cambios">
+					      <option value="" disabled selected></option>
+					      <option value="Automatico">Automatico</option>
+					      <option value="Estandar">Estandar</option>
+					    </select>
+					    <label>Palanca de cambios</label>
 					</div>
 				</div>
 
@@ -143,10 +145,14 @@
 					<label for="editar_modelos_disponibles">Modelos disponibles</label>
 				</div>
 
-				<div class="input-field col s6">
-					<input name="palanca_cambios" id="editar_palanca_cambios" type="text" class="validate" placeholder="">
-					<label for="editar_palanca_cambios">Palanca de cambios</label>
-				</div>
+					<div class="input-field col s6">
+					    <select name="palanca_cambios" id="editar_palanca_cambios">
+					      <option value="" disabled selected></option>
+					      <option value="Automatico">Automatico</option>
+					      <option value="Estandar">Estandar</option>
+					    </select>
+					    <label for="editar_palanca_cambios">Palanca de cambios</label>
+					</div>
 			</div>
 		</div>
 		<div class="modal-footer">
@@ -182,7 +188,9 @@
 					$('#editar_marca').val(data['marca']);
 					$('#editar_descripcion').val(data['descripcion']);
 					$('#editar_modelos_disponibles').val(data['modelos_disponibles']);
+
 					$('#editar_palanca_cambios').val(data['palanca_cambios']);
+					$('#editar_palanca_cambios').formSelect();
 				},
 				error: function(xhr, textStatus, errorThrown) {
 					console.log("Ocurrió un error.");

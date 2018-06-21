@@ -17,10 +17,11 @@ class CreateHistorialTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('user_id');
+            //$table->foreign('user_id')->references('id')->on('users');
             $table->string('rol');
             $table->string('accion');
             $table->string('tabla');
-            $table->integer('objeto_id');
+            $table->string('objeto');
             $table->timestamps();
         });
     }

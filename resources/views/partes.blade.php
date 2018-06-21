@@ -98,10 +98,14 @@
 					<input name="modelos_disponibles" id="modelos_disponibles" type="text" class="validate">
 					<label for="modelos_disponibles">Modelos disponibles</label>
 				</div>
-				<div class="input-field col s6">
-					<input name="palancaCambios" id="palancaCambios" type="text" class="validate">
-					<label for="palancaCambios">Palanca de Cambios</label>
-				</div>
+					<div class="input-field col s6">
+					    <select name="palancaCambios">
+					      <option value="" disabled selected></option>
+					      <option value="Automatico">Automatico</option>
+					      <option value="Estandar">Estandar</option>
+					    </select>
+					    <label>Palanca de cambios</label>
+					</div>
 				<div class="input-field col s6">
 					<input name="cilindros" id="cilindros" type="number" class="validate">
 					<label for="cilindros">Cilindros</label>
@@ -144,10 +148,14 @@
 					<input name="modelos_disponibles" id="editar_modelos_disponibles" type="text" class="validate" placeholder="">
 					<label for="editar_modelos_disponibles">Modelos disponibles</label>
 				</div>
-				<div class="input-field col s6">
-					<input name="palancaCambios" id="editar_palancaCambios" type="text" class="validate" placeholder="">
-					<label for="editar_palancaCambios">Palanca de Cambios</label>
-				</div>
+					<div class="input-field col s6">
+					    <select name="palancaCambios" id="editar_palancaCambios">
+					      <option value="" disabled selected></option>
+					      <option value="Automatico">Automatico</option>
+					      <option value="Estandar">Estandar</option>
+					    </select>
+					    <label for="editar_palancaCambios">Palanca de cambios</label>
+					</div>
 				<div class="input-field col s6">
 					<input name="cilindros" id="editar_cilindros" type="text" class="validate" placeholder="">
 					<label for="editar_cilindros">Cilindros</label>
@@ -188,6 +196,8 @@
 					$('#editar_descripcion').val(data['descripcion']);
 					$('#editar_modelos_disponibles').val(data['modelos_disponibles']);
 					$('#editar_palancaCambios').val(data['palancaCambios']);
+					$('#editar_palancaCambios').formSelect();
+
 					$('#editar_cilindros').val(data['cilindros']);
 				},
 				error: function(xhr, textStatus, errorThrown) {

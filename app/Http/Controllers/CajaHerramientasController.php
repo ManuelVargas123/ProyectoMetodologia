@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 use App\CajaHerramienta;
 use App\Herramienta;
 use App\Empleado;
-use App\User;
+use App\Historial;
+
 class CajaHerramientasController extends Controller
 {
     /**
@@ -67,6 +68,28 @@ class CajaHerramientasController extends Controller
         $cajaHerramienta = new CajaHerramienta;
         $cajaHerramienta->user_id = $request->empleado1;
         $cajaHerramienta->user_id2 = $request->empleado2;
+
+        //Informacion del usuario
+        $usuario = auth()->user();
+
+        //Historial
+        $historial = new Historial;
+        $historial->user_id = $usuario->id;
+        if($usuario->is_admin === 1)
+            $historial->rol = "Administrador";
+        else
+            $historial->rol = "Gerente";
+        $historial->accion = "Agregar";
+        $historial->tabla = "Caja de Herramientas";
+
+        $caja_id = CajaHerramienta::orderBy('id', 'DESC')->first()->id;
+        $historial->objeto = "Caja #";
+        if(empty($caja_id))
+            $historial->objeto .= "1";
+        else
+            $historial->objeto .= $caja_id + 1;
+        $historial->save();
+
         if($cajaHerramienta->save()){
             return redirect()->back()->with('success', 'Has agregado una nueva Caja de Herramientas correctamente');
         } else {
@@ -122,6 +145,22 @@ class CajaHerramientasController extends Controller
         $cajaHerramienta->user_id = $request->empleado1;
         $cajaHerramienta->user_id2 = $request->empleado2;
 
+        //Informacion del usuario
+        $usuario = auth()->user();
+
+        //Historial
+        $historial = new Historial;
+        $historial->user_id = $usuario->id;
+        if($usuario->is_admin === 1)
+            $historial->rol = "Administrador";
+        else
+            $historial->rol = "Gerente";
+        $historial->accion = "Modificar";
+        $historial->tabla = "Caja de Herramientas";
+        $historial->objeto = "Caja #";
+        $historial->objeto .= $id;
+        $historial->save();
+
         if($cajaHerramienta->save()){
             return redirect()->back()->with('success', 'Has editado una nueva Caja de Herramientas correctamente');
         } else {
@@ -137,6 +176,23 @@ class CajaHerramientasController extends Controller
     public function destroy($id)
     {
         $cajaHerramienta = CajaHerramienta::find($id); // Buscamos el registro
+
+        //Informacion del usuario
+        $usuario = auth()->user();
+
+        //Historial
+        $historial = new Historial;
+        $historial->user_id = $usuario->id;
+        if($usuario->is_admin === 1)
+            $historial->rol = "Administrador";
+        else
+            $historial->rol = "Gerente";
+        $historial->accion = "Eliminar";
+        $historial->tabla = "Caja de Herramientas";
+        $historial->objeto = "Caja #";
+        $historial->objeto .= $cajaHerramienta->id;
+        $historial->save();
+
         if($cajaHerramienta->delete()) {   // Lo eliminamos
             return redirect()->back()->with('success', 'Has eliminado una caja de herramientas correctamente.');
         } else {

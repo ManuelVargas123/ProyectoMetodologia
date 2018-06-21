@@ -27,18 +27,18 @@
 			<th>Rol</th>
 			<th>Acción</th>
 			<th>Tabla</th>
-			<th>ID de lo modificado</th>
+			<th>Objeto</th>
 			<th>Fecha</th>
 		</thead>
 		<tbody>
 			@foreach($historias as $historia)
 				<tr>
-					<td>{{ $historia->usuario }}</td>
+					<td>{{ $historia->user }}</td>
 					<td>{{ $historia->rol }}</td>
 					<td>{{ $historia->accion }}</td>
 					<td>{{ $historia->tabla }}</td>
-					<td>{{ $historia->id_objeto }}</td>
-					<td>{{ $empleado->created_at }}</td>
+					<td>{{ $historia->objeto }}</td>
+					<td>{{ $historia->created_at }}</td>
 				</tr>
 			@endforeach
 		</tbody>

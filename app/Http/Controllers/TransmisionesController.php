@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Transmision; // Modelo para llamar a la tabla de transmisiones
+use App\Historial;
 use App\Http\Requests\TransmisionRequest;
 
 
@@ -36,6 +37,23 @@ class TransmisionesController extends Controller
         $transmision->descripcion         = $request->descripcion;
         $transmision->modelosDisponibles  = $request->modelos_disponibles;
         $transmision->palancaCambios      = $request->palanca_cambios ;
+
+        //Informacion del usuario
+        $usuario = auth()->user();
+
+        //Historial
+        $historial = new Historial;
+        $historial->user_id = $usuario->id;
+        if($usuario->is_admin === 1)
+            $historial->rol = "Administrador";
+        else
+            $historial->rol = "Gerente";
+        $historial->accion = "Agregar";
+        $historial->tabla = "Transmisiones";
+        $historial->objeto = $request->nombre;
+        $historial->objeto .= " ". $request->marca;
+        $historial->save();
+
         if($transmision->save()) { // Insertar el registro
             return redirect()->back()->with('success', 'Has agregado una nueva transmision correctamente.');
         } else {
@@ -97,7 +115,24 @@ class TransmisionesController extends Controller
         $transmision->marca               = $request->marca;
         $transmision->descripcion         = $request->descripcion;
         $transmision->modelosDisponibles  = $request->modelos_disponibles;
-        $transmision->palancaCambios      = $request->palanca_cambios ;
+        $transmision->palancaCambios      = $request->palanca_cambios;
+
+        //Informacion del usuario
+        $usuario = auth()->user();
+
+        //Historial
+        $historial = new Historial;
+        $historial->user_id = $usuario->id;
+        if($usuario->is_admin === 1)
+            $historial->rol = "Administrador";
+        else
+            $historial->rol = "Gerente";
+        $historial->accion = "Modificar";
+        $historial->tabla = "Transmisiones";
+        $historial->objeto = $request->nombre;
+        $historial->objeto .= " ". $request->marca;
+        $historial->save();
+
         if($transmision->save()) { // Insertar el registro
             return redirect()->back()->with('info', 'Has editado una transmision correctamente.');
         } else {
@@ -114,6 +149,24 @@ class TransmisionesController extends Controller
     public function destroy($id)
     {
         $transmision = Transmision::find($id); // Buscamos el registro
+
+        //Informacion del usuario
+        $usuario = auth()->user();
+
+        //Historial
+        $historial = new Historial;
+        $historial->user_id = $usuario->id;
+        if($usuario->is_admin === 1)
+            $historial->rol = "Administrador";
+        else
+            $historial->rol = "Gerente";
+
+        $historial->accion = "Eliminar";
+        $historial->tabla = "Transmisiones";
+        $historial->objeto = $transmision->nombre;
+        $historial->objeto .= " ". $transmision->marca;
+        $historial->save();
+
         if($transmision->delete()) { // Lo eliminamos
             return redirect()->back()->with('success', 'Has eliminado una transmision correctamente.');
         } else {

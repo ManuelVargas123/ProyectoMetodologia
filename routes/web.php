@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/transmisiones/edit', 'TransmisionesController@edit')->name('transmisiones_edit');
 	Route::post('/transmisiones/update', 'TransmisionesController@update')->name('transmisiones_update');
 
-	Route::get('/historial', 'HistorialController@index');                           //<--------Falta implementar
+	Route::get('/historial', 'HistorialController@index');                      
 
 	//empleados
 	Route::get('/empleados', 'EmpleadosController@index');
@@ -61,7 +61,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/servicios/update', 'ServiciosController@update')->name('servicios_update');
 
 	//autopartes
-	Route::get('/autopartes', 'PartesController@index');
+	Route::get('/partes', 'PartesController@index');
 	Route::post('/autopartes/store', 'PartesController@store')->name('partes_store');
 	Route::delete('/autopartes/delete/{id}', 'PartesController@destroy')->name('partes_destroy');
 	Route::post('/autopartes/edit', 'PartesController@edit')->name('partes_edit');

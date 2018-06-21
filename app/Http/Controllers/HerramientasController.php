@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CajaHerramienta;
 use App\Herramienta; // Modelo
+use App\Historial;
 use App\Http\Requests\HerramientasRequest;
 
 class HerramientasController extends Controller
@@ -48,6 +49,23 @@ class HerramientasController extends Controller
         $herramienta->nombre                = $request->nombre;
         $herramienta->descripcion           = $request->descripcion;
         $herramienta->caja_id               = $request->caja_herramientas;
+
+        //Informacion del usuario
+        $usuario = auth()->user();
+
+        //Historial
+        $historial = new Historial;
+        $historial->user_id = $usuario->id;
+        if($usuario->is_admin === 1)
+            $historial->rol = "Administrador";
+        else
+            $historial->rol = "Gerente";
+        $historial->accion = "Agregar";
+        $historial->tabla = "Herramientas";
+        $historial->objeto = $request->nombre;
+        $historial->objeto .= " ". $request->marca;
+        $historial->save();
+
         if($herramienta->save()) { // Insertar el registro
             return redirect()->back()->with('success', 'Has agregado una nueva herramienta correctamente.');
         } else {
@@ -105,6 +123,24 @@ class HerramientasController extends Controller
         $herramienta->nombre                = $request->nombre;
         $herramienta->descripcion           = $request->descripcion;
         $herramienta->caja_id               = $request->caja_herramientas;
+
+        //Informacion del usuario
+        $usuario = auth()->user();
+
+        //Historial
+        $historial = new Historial;
+        $historial->user_id = $usuario->id;
+        if($usuario->is_admin === 1)
+            $historial->rol = "Administrador";
+        else
+            $historial->rol = "Gerente";
+
+        $historial->accion = "Modificar";
+        $historial->tabla = "Herramientas";
+        $historial->objeto = $request->nombre;
+        $historial->objeto .= " ". $request->marca;
+        $historial->save();
+
         if($herramienta->save()) { // Insertar el registro
             return redirect()->back()->with('info', 'Has editado una herramienta correctamente.');
         } else {
@@ -121,6 +157,24 @@ class HerramientasController extends Controller
     public function destroy($id)
     {
         $herramienta = Herramienta::find($id); // Buscamos el registro
+
+        //Informacion del usuario
+        $usuario = auth()->user();
+
+        //Historial
+        $historial = new Historial;
+        $historial->user_id = $usuario->id;
+        if($usuario->is_admin === 1)
+            $historial->rol = "Administrador";
+        else
+            $historial->rol = "Gerente";
+
+        $historial->accion = "Eliminar";
+        $historial->tabla = "Herramientas";
+        $historial->objeto = $herramienta->nombre;
+        $historial->objeto .= " ". $herramienta->marca;
+        $historial->save();
+
         if($herramienta->delete()) { // Lo eliminamos
             return redirect()->back()->with('success', 'Has eliminado una herramienta correctamente.');
         } else {

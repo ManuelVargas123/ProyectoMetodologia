@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Autoparte; // Modelo
+use App\Historial;
 use App\Http\Requests\AutoparteRequest;
 
 class PartesController extends Controller
@@ -46,6 +47,23 @@ class PartesController extends Controller
         $autoparte->modelosDisponibles = $request->modelos_disponibles;
         $autoparte->palancaCambios = $request->palancaCambios;
         $autoparte->cilindros = $request->cilindros;
+
+        //Informacion del usuario
+        $usuario = auth()->user();
+
+        //Historial
+        $historial = new Historial;
+        $historial->user_id = $usuario->id;
+        if($usuario->is_admin === 1)
+            $historial->rol = "Administrador";
+        else
+            $historial->rol = "Gerente";
+        $historial->accion = "Agregar";
+        $historial->tabla = "Autopartes";
+        $historial->objeto = $request->parte;
+        $historial->objeto .= " ". $request->marca;
+        $historial->save();
+
         if($autoparte->save()) { // Insertar el registro
             return redirect()->back()->with('success', 'Has agregado una nueva autoparte correctamente.');
         } else {
@@ -110,6 +128,23 @@ class PartesController extends Controller
         $autoparte->modelosDisponibles = $request->modelos_disponibles;
         $autoparte->palancaCambios = $request->palancaCambios;
         $autoparte->cilindros = $request->cilindros;
+
+        //Informacion del usuario
+        $usuario = auth()->user();
+
+        //Historial
+        $historial = new Historial;
+        $historial->user_id = $usuario->id;
+        if($usuario->is_admin === 1)
+            $historial->rol = "Administrador";
+        else
+            $historial->rol = "Gerente";
+        $historial->accion = "Modificar";
+        $historial->tabla = "Autopartes";
+        $historial->objeto = $request->parte;
+        $historial->objeto .= " ". $request->marca;
+        $historial->save();
+
         if($autoparte->save()) { // Insertar el registro
             return redirect()->back()->with('success', 'Has editado una nueva autoparte correctamente.');
         } else {
@@ -126,6 +161,24 @@ class PartesController extends Controller
     public function destroy($id)
     {
         $autoparte = Autoparte::find($id); // Buscamos el registro
+
+        //Informacion del usuario
+        $usuario = auth()->user();
+
+        //Historial
+        $historial = new Historial;
+        $historial->user_id = $usuario->id;
+        if($usuario->is_admin === 1)
+            $historial->rol = "Administrador";
+        else
+            $historial->rol = "Gerente";
+
+        $historial->accion = "Eliminar";
+        $historial->tabla = "Autopartes";
+        $historial->objeto = $autoparte->parte;
+        $historial->objeto .= " ". $autoparte->marca;
+        $historial->save();
+
         if($autoparte->delete()) { // Lo eliminamos
             return redirect()->back()->with('success', 'Has eliminado una autoparte correctamente.');
         } else {

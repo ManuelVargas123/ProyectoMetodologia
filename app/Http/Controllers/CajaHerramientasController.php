@@ -5,6 +5,7 @@ use App\CajaHerramienta;
 use App\Herramienta;
 use App\Empleado;
 use App\Historial;
+use App\HerramientaEnCaja;
 
 class CajaHerramientasController extends Controller
 {
@@ -36,12 +37,8 @@ class CajaHerramientasController extends Controller
             } else {
                 $caja->propietario2 = "Ninguno";
             }
-            $caja->herramientas = "";
-            $herramientas = Herramienta::where('caja_id', $caja->id)->get();
-            foreach ($herramientas as $herramienta) {
-                $caja->herramientas .= $herramienta->nombre." (".$herramienta->marca.", ".$herramienta->cantidad.")"." || ";
-            }
-            $caja->herramientas = substr($caja->herramientas, 0, -3);
+            if(count($caja->herramientas) == 0)
+                $caja->herramientas = "Ninguna";
         }
         return view('cajas_herramientas')->with([
             'caja_herramientas' => $caja_herramientas,
@@ -81,8 +78,11 @@ class CajaHerramientasController extends Controller
             $historial->rol = "Gerente";
         $historial->accion = "Agregar";
         $historial->tabla = "Caja de Herramientas";
+        
+        $caja = CajaHerramienta::all();
+        if ($caja->count())
+            $caja_id = CajaHerramienta::orderBy('id', 'DESC')->first()->id;
 
-        $caja_id = CajaHerramienta::orderBy('id', 'DESC')->first()->id;
         $historial->objeto = "Caja #";
         if(empty($caja_id))
             $historial->objeto .= "1";

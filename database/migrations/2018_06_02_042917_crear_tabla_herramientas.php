@@ -20,7 +20,7 @@ class CrearTablaHerramientas extends Migration
             $table->string('marca');
             $table->string('nombre');
             $table->text('descripcion')->nullable();
-            $table->integer('caja_id')->unsigned()->nullable();
+            //$table->integer('caja_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

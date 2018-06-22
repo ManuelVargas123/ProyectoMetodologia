@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\CajaHerramienta;
 use App\Herramienta; // Modelo
 use App\Historial;
+use App\HerramientaEnCaja;
 use App\Http\Requests\HerramientasRequest;
 
 class HerramientasController extends Controller
@@ -18,6 +19,13 @@ class HerramientasController extends Controller
     public function index()
     {
         $herramientas = Herramienta::all();
+        foreach ($herramientas as $herramienta) 
+        {
+            $herramienta->caja = HerramientaEnCaja::select('caja_id')->where('herramienta_id', $herramienta->id)
+                ->get();
+            if(count($herramienta->caja) == 0)
+                $herramienta->caja = "Ninguna";
+        }
         $cajas = CajaHerramienta::all();
     	return view('herramientas')->with([
             'herramientas' => $herramientas,
@@ -48,7 +56,7 @@ class HerramientasController extends Controller
         $herramienta->marca                 = $request->marca;
         $herramienta->nombre                = $request->nombre;
         $herramienta->descripcion           = $request->descripcion;
-        $herramienta->caja_id               = $request->caja_herramientas;
+        //$herramienta->caja_id               = $request->caja_herramientas;
 
         //Informacion del usuario
         $usuario = auth()->user();
@@ -67,6 +75,10 @@ class HerramientasController extends Controller
         $historial->save();
 
         if($herramienta->save()) { // Insertar el registro
+            //Para la tabla de la relacion
+            $herramienta_id = Herramienta::orderBy('id', 'DESC')->first()->id;
+            $herramienta->cajaHerramientas()->sync($request->caja_herramientas, $herramienta_id);
+           
             return redirect()->back()->with('success', 'Has agregado una nueva herramienta correctamente.');
         } else {
             return redirect()->back()->with('error', 'Ocurrió un error al intentar agregar una herramienta, intentalo de nuevo.');
@@ -122,7 +134,10 @@ class HerramientasController extends Controller
         $herramienta->marca                 = $request->marca;
         $herramienta->nombre                = $request->nombre;
         $herramienta->descripcion           = $request->descripcion;
-        $herramienta->caja_id               = $request->caja_herramientas;
+       // $herramienta->caja_id               = $request->caja_herramientas;
+
+        //Para la tabla de la relacion
+        $herramienta->cajaHerramientas()->sync($request->caja_herramientas);
 
         //Informacion del usuario
         $usuario = auth()->user();

@@ -29,9 +29,9 @@
 	</div>
 	<table id="table_herramientas" class="display striped responsive-table">
 		<thead>
-			<th>Cantidad</th>
-			<th>Marca</th>
 			<th>Nombre</th>
+			<th>Marca</th>
+			<th>Cantidad</th>
 			<th>Descripción</th>
 			<th>Caja</th>
 			<th></th>
@@ -39,11 +39,11 @@
 		<tbody>
 			@foreach($herramientas as $herramienta)
 				<tr>
-					<td>{{ $herramienta->cantidad }}</td>
-					<td>{{ $herramienta->marca }}</td>
 					<td>{{ $herramienta->nombre }}</td>
+					<td>{{ $herramienta->marca }}</td>
+					<td>{{ $herramienta->cantidad }}</</td>
 					<td>{{ $herramienta->descripcion }}</td>
-					<td>{{ $herramienta->caja_id }}</td>
+					<td>{{ $herramienta->caja }}</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
 							<a data-id="{{ $herramienta->id }}" class="modal-trigger" href="#modal_editar_herramienta"><i class="material-icons">edit</i></a>

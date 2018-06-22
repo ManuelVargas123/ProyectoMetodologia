@@ -13,9 +13,9 @@ class AddForeignKeyTable extends Migration
      */
     public function up()
     {
-        Schema::table('herramientas', function (Blueprint $table) {
+       /* Schema::table('herramientas', function (Blueprint $table) {
             $table->foreign('caja_id')->references('id')->on('caja_herramientas');
-        });
+        });*/
 
         Schema::table('caja_herramientas', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('empleados');

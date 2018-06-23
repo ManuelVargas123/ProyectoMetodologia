@@ -85,7 +85,7 @@
 					<input name="descripcion" id="descripcion" type="text" class="validate">
 					<label for="descripcion">Descripción</label>
 				</div>
-				<div class="input-field col s12">
+				<div class="input-field col s4" id="campoCaja">
 					<select name="caja_herramientas">
 						<option value="" selected>Ninguno</option>
 						@foreach ($cajas as $caja)
@@ -94,10 +94,17 @@
 					</select>
 					<label>Caja de herramienta</label>
 				</div>
+				<div class="input-field col s4" id="campoCantidad">
+					<input name="cantidadCaja" id="cantidadCaja" type="number" class="validate">
+					<label for="cantidadCaja">Cantidad en la Caja</label>
+				</div>
+				<div class="input-field col s4">
+					<button id="myBtn" class="btn add-more #2196f3 blue" type="button" style="margin-top: 5px; margin-left: 30px;">Pedir otra caja</button>
+				</div>
 			</div>
 		</div>
-		<div class="modal-footer">
-			<center><button class="btn waves-effect waves-light" type="submit" name="action">Agregar<i class="material-icons right">send</i></button></center>
+		<div class="modal-footer" id="modalFooter">
+			<center><button class="btn waves-effect waves-light" type="submit" name="action" >Agregar<i class="material-icons right">send</i></button></center>
 		</div>
 	</form>
 
@@ -176,5 +183,23 @@
 				}
 			});
 		});
+
+		/*$(function(){
+			$("#myBtn").on('click', function(){
+				$(".modal-footer").clone().removeClass('input-field col s4').before("#campoCaja");
+				$(".modal-footer").clone().removeClass('input-field col s4').before("#campoCantidad");
+			});
+		});
+
+		document.getElementById("myBtn").addEventListener("click", addInput);
+		function addInput(){
+			/*caja = document.getElementById("campoCaja");
+			cantidad = document.getElementById("campoCantidad");
+			$( "#modal_nueva_herramienta" ).preend( [caja, cantidad] );
+			campoCantidad = '<input name="cantidadCaja[]" id="cantidadCaja" type="number" class="validate">';
+			campoCantidad += '<label for="cantidadCaja">Cantidad en la Caja</label>';
+			$("#campoCaja").clone().removeClass('input-field col s4').appendTo("#modal_nueva_herramienta");
+			$(campoCantidad).clone().addClass('input-field col s4').appendTo("#modal_nueva_herramienta");
+		}*/
     </script>
 @endsection

@@ -20,7 +20,7 @@
 	<div>
 		<table id="table_caja_herramientas" class="display striped responsive-table">
 			<thead>
-				<th>#</th>
+				<th>Caja</th>
 				<th>Propietario 1</th>
 				<th>Propietario 2</th>
 				<th>Herramientas</th>

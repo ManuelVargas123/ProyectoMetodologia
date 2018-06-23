@@ -23,8 +23,20 @@ class HerramientasController extends Controller
         {
             $herramienta->caja = HerramientaEnCaja::select('caja_id')->where('herramienta_id', $herramienta->id)
                 ->get();
+
+            //Esto es para saber las cajas donde se encuentra la herramienta
             if(count($herramienta->caja) == 0)
                 $herramienta->caja = "Ninguna";
+            else
+            {
+                $json = $herramienta->caja;
+                $herramienta->caja = "";
+                for($i=0; $i<count($json); $i++)
+                {
+                    $arr[$i] = $json[$i]->caja_id;
+                }
+                $herramienta->caja = implode(", ", $arr);
+            }
         }
         $cajas = CajaHerramienta::all();
     	return view('herramientas')->with([
@@ -107,6 +119,7 @@ class HerramientasController extends Controller
         $id = $request->id;
 
         $herramienta = Herramienta::find($id);
+        //$caja_id = HerramientaEnCaja::where('caja_id', $request->caja_herramientas)->first()->id;
 
         return response()->json([
             'id' => $herramienta->id,
@@ -114,7 +127,7 @@ class HerramientasController extends Controller
             'marca' => $herramienta->marca,
             'nombre' => $herramienta->nombre,
             'descripcion' => $herramienta->descripcion,
-            'caja_herramientas' => $herramienta->caja_id
+            'caja_herramientas' => $herramienta->caja_herramientas
         ]);
     }
 
@@ -137,7 +150,7 @@ class HerramientasController extends Controller
        // $herramienta->caja_id               = $request->caja_herramientas;
 
         //Para la tabla de la relacion
-        $herramienta->cajaHerramientas()->sync($request->caja_herramientas);
+        $herramienta->cajaHerramientas()->sync($request->caja_herramientas, $id);
 
         //Informacion del usuario
         $usuario = auth()->user();

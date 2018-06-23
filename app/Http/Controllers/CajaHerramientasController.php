@@ -19,10 +19,13 @@ class CajaHerramientasController extends Controller
         $caja_herramientas = CajaHerramienta::get();
 
         $empleados = Empleado::all();
-        foreach ($caja_herramientas as $caja) {
+        foreach ($caja_herramientas as $caja) 
+        {
             if(!empty($caja->user_id)) {
-                if(Empleado::where('id', $caja->user_id)->count() > 0)
+                if(Empleado::where('id', $caja->user_id)->count() > 0){
                     $caja->propietario1 = Empleado::where('id', $caja->user_id)->first()->nombre;
+                    $caja->propietario1 .= ' '. Empleado::where('id', $caja->user_id)->first()->primerApellido;
+                }
                 else
                     $caja->propietario1 = "Ninguno";
             } else {
@@ -30,16 +33,32 @@ class CajaHerramientasController extends Controller
             }
             if(!empty($caja->user_id2)) {
                 $propietario = Empleado::where('id', $caja->user_id2)->first();
-                if(Empleado::where('id', $caja->user_id2)->count() > 0)
+                if(Empleado::where('id', $caja->user_id2)->count() > 0){
                     $caja->propietario2 = Empleado::where('id', $caja->user_id2)->first()->nombre;
+                    $caja->propietario2 .= ' '. Empleado::where('id', $caja->user_id2)->first()->primerApellido;
+                }
                 else
                     $caja->propietario2 = "Ninguno";
             } else {
                 $caja->propietario2 = "Ninguno";
             }
+
+            //Esto es para saber las herramientas que tiene cada caja
             if(count($caja->herramientas) == 0)
                 $caja->herramientas = "Ninguna";
+            else{
+                $json = $caja->herramientas;
+                $caja->herramientas = "";
+                for($i=0; $i<count($json); $i++)
+                {
+                    $caja->herramientas .= ' '.$json[$i]->nombre;
+                    $caja->herramientas .= '(';
+                    $caja->herramientas .= $json[$i]->marca; 
+                    $caja->herramientas .= '),';
+                }
+            }
         }
+
         return view('cajas_herramientas')->with([
             'caja_herramientas' => $caja_herramientas,
             'empleados' => $empleados

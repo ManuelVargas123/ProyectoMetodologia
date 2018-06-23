@@ -17,6 +17,7 @@ class CreateHerramientaCajaTable extends Migration
             $table->increments('id');
             $table->integer('herramienta_id')->unsigned();
             $table->integer('caja_id')->unsigned();
+            $table->integer('cantidad')->unsigned()->nullable();
 
             $table->foreign('herramienta_id')->references('id')->on('herramientas');
             $table->foreign('caja_id')->references('id')->on('caja_herramientas');

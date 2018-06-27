@@ -54,7 +54,10 @@ class CajaHerramientasController extends Controller
                     $caja->herramientas .= ' '.$json[$i]->nombre;
                     $caja->herramientas .= '(';
                     $caja->herramientas .= $json[$i]->marca; 
+                    $caja->herramientas .= ', ';
+                    $caja->herramientas .= $json[$i]->pivot->cantidad;
                     $caja->herramientas .= '),';
+
                 }
             }
         }
@@ -211,6 +214,9 @@ class CajaHerramientasController extends Controller
         $historial->objeto = "Caja #";
         $historial->objeto .= $cajaHerramienta->id;
         $historial->save();
+
+        //Para eliminar de la tabla de relacion
+        $cajaHerramienta->herramientas()->detach();
 
         if($cajaHerramienta->delete()) {   // Lo eliminamos
             return redirect()->back()->with('success', 'Has eliminado una caja de herramientas correctamente.');

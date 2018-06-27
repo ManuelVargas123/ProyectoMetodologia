@@ -31,6 +31,7 @@ class HerramientasController extends Controller
             {
                 $json = $herramienta->caja;
                 $herramienta->caja = "";
+                $arr = [];
                 for($i=0; $i<count($json); $i++)
                 {
                     $arr[$i] = $json[$i]->caja_id;
@@ -86,11 +87,40 @@ class HerramientasController extends Controller
         $historial->objeto .= " ". $request->marca;
         $historial->save();
 
+        //Para la tabla de la relacion
+        $cantidadCaja = $request->input('cantidadCaja'); // array de textbox
+        $cajas = $request->input('caja_herramientas');  // array de checkbox
+
+        $j = 0;
+        $total = 0;
+        for($i=0; $i<count($cantidadCaja); $i++)
+            if(!empty($cantidadCaja[$i])){  //Verificar que no estén vacíos
+                $cantidadReal[$j] = $cantidadCaja[$i]; // Se agrega al array los valores no vacíos 
+                $total += $cantidadReal[$j];
+                $j++;
+            }
+
+        if(intval($total) > intval($request->cantidad))
+            return redirect()->back()->with('error', 'La cantidad de piezas que hay en las cajas es mayor a la cantidad que se tiene de la herramienta.');
+
+        if(!empty($cantidadReal))
+        {
+            if(count($cantidadReal) < count($cajas))
+                return redirect()->back()->with('error', 'No todas las cajas marcadas tienen cantidad de herramienta.');
+            elseif (count($cantidadReal) > count($cajas)) 
+            {
+                return redirect()->back()->with('error','Hay menos cajas marcadas que cantidad de herramienta por caja.');
+            }
+        }
+
         if($herramienta->save()) { // Insertar el registro
             //Para la tabla de la relacion
             $herramienta_id = Herramienta::orderBy('id', 'DESC')->first()->id;
-            $herramienta->cajaHerramientas()->sync($request->caja_herramientas, $herramienta_id);
-           
+            if(!empty($cajas) && !empty($cantidadReal))
+                for ($i=0; $i<count($cajas) ; $i++) { 
+                    $herramienta->cajaHerramientas()->attach($cajas[$i], ['cantidad' => $cantidadReal[$i]]);
+                }
+
             return redirect()->back()->with('success', 'Has agregado una nueva herramienta correctamente.');
         } else {
             return redirect()->back()->with('error', 'Ocurrió un error al intentar agregar una herramienta, intentalo de nuevo.');
@@ -119,7 +149,8 @@ class HerramientasController extends Controller
         $id = $request->id;
 
         $herramienta = Herramienta::find($id);
-        //$caja_id = HerramientaEnCaja::where('caja_id', $request->caja_herramientas)->first()->id;
+        $herramientaCaja = HerramientaEnCaja::select('caja_id')->where('herramienta_id', $id)->get();
+        $cantidadCaja = HerramientaEnCaja::select('cantidad')->where('herramienta_id', $id)->get();
 
         return response()->json([
             'id' => $herramienta->id,
@@ -127,7 +158,8 @@ class HerramientasController extends Controller
             'marca' => $herramienta->marca,
             'nombre' => $herramienta->nombre,
             'descripcion' => $herramienta->descripcion,
-            'caja_herramientas' => $herramienta->caja_herramientas
+            'caja_herramientas' => $herramientaCaja,
+            'cantidadCaja' => $cantidadCaja
         ]);
     }
 
@@ -150,7 +182,30 @@ class HerramientasController extends Controller
        // $herramienta->caja_id               = $request->caja_herramientas;
 
         //Para la tabla de la relacion
-        $herramienta->cajaHerramientas()->sync($request->caja_herramientas, $id);
+        $cantidadCaja = $request->input('cantidadCaja'); // array de textbox
+        $cajas = $request->input('caja_herramientas');  // array de checkbox
+
+        $j = 0;
+        $total = 0;
+        for($i=0; $i<count($cantidadCaja); $i++)
+            if(!empty($cantidadCaja[$i])){  //Verificar que no estén vacíos
+                $cantidadReal[$j] = $cantidadCaja[$i]; // Se agrega al array los valores no vacíos 
+                $total += $cantidadReal[$j];
+                $j++;
+            }
+
+        if(intval($total) > intval($request->cantidad))
+            return redirect()->back()->with('error', 'La cantidad de piezas que hay en las cajas es mayor a la cantidad que se tiene de la herramienta.');
+
+        if(!empty($cantidadReal))
+        {
+            if(count($cantidadReal) < count($cajas))
+                return redirect()->back()->with('error', 'No todas las cajas marcadas tienen cantidad de herramienta.');
+            elseif (count($cantidadReal) > count($cajas)) 
+            {
+                return redirect()->back()->with('error','Hay menos cajas marcadas que cantidad de herramienta por caja.');
+            }
+        }
 
         //Informacion del usuario
         $usuario = auth()->user();
@@ -170,6 +225,17 @@ class HerramientasController extends Controller
         $historial->save();
 
         if($herramienta->save()) { // Insertar el registro
+
+            //Para la tabla de la relacion
+            $herramienta_id = Herramienta::orderBy('id', 'DESC')->first()->id;
+            if(!empty($cajas))
+            {
+                $herramienta->cajaHerramientas()->detach();
+                for ($i=0; $i<count($cajas) ; $i++) { 
+                    $herramienta->cajaHerramientas()->attach($cajas[$i], ['cantidad' => $cantidadReal[$i]]);
+                }
+            }
+
             return redirect()->back()->with('info', 'Has editado una herramienta correctamente.');
         } else {
             return redirect()->back()->with('error', 'Ocurrió un error al intentar editar una herramienta, intentalo de nuevo.');
@@ -202,6 +268,9 @@ class HerramientasController extends Controller
         $historial->objeto = $herramienta->nombre;
         $historial->objeto .= " ". $herramienta->marca;
         $historial->save();
+
+        //Para eliminar de la tabla de relacion
+        $herramienta->cajaHerramientas()->detach();
 
         if($herramienta->delete()) { // Lo eliminamos
             return redirect()->back()->with('success', 'Has eliminado una herramienta correctamente.');

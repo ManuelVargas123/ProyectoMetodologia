@@ -11,6 +11,6 @@ class CajaHerramienta extends Model
     public function herramientas()
     {
     	return $this->belongsToMany(Herramienta::class, 'herramienta_caja', 'caja_id', 'herramienta_id')
-    		->withPivot('herramienta_id');
+    		->withPivot('herramienta_id', 'cantidad');
     }
 }

@@ -63,7 +63,7 @@
 	</table>
 
 	<!-- Modal - Nueva herramienta -->
-	<form id="modal_nueva_herramienta" class="modal" action="{{ route('herramientas_store') }}" method="POST">
+	<form name="Herramienta" id="modal_nueva_herramienta" class="modal" action="{{ route('herramientas_store') }}" method="POST">
 		@csrf
 		<div class="modal-content">
 			<h4>Agregar nueva herramienta</h4>
@@ -85,22 +85,20 @@
 					<input name="descripcion" id="descripcion" type="text" class="validate">
 					<label for="descripcion">Descripción</label>
 				</div>
-				<div class="input-field col s4" id="campoCaja">
-					<select name="caja_herramientas">
-						<option value="" selected>Ninguno</option>
-						@foreach ($cajas as $caja)
-							<option value="{{ $caja->id }}">Caja #{{ $caja->id }}</option>
-						@endforeach
-					</select>
-					<label>Caja de herramienta</label>
-				</div>
-				<div class="input-field col s4" id="campoCantidad">
-					<input name="cantidadCaja" id="cantidadCaja" type="number" class="validate">
-					<label for="cantidadCaja">Cantidad en la Caja</label>
-				</div>
-				<div class="input-field col s4">
-					<button id="myBtn" class="btn add-more #2196f3 blue" type="button" style="margin-top: 5px; margin-left: 30px;">Pedir otra caja</button>
-				</div>
+				@foreach ($cajas as $caja)
+					<div class="input-field col s7">
+						<p>
+					      <label>
+					        <input name="caja_herramientas[]" id="caja_herramientas{{ $caja->id }}" type="checkbox" class="filled-in" value="{{ $caja->id }}" />
+					        <span>Caja #{{ $caja->id }}</span>
+					      </label>
+					    </p>
+					</div>
+					<div class="input-field col s5">
+						<input name="cantidadCaja[]" id="cantidadCaja{{ $caja->id }}" type="number" class="validate">
+						<label for="cantidadCaja{{ $caja->id }}">Cantidad en la Caja</label>
+					</div>
+				@endforeach
 			</div>
 		</div>
 		<div class="modal-footer" id="modalFooter">
@@ -132,15 +130,20 @@
 					<input name="descripcion" id="editar_descripcion" type="text" class="validate" placeholder="">
 					<label for="editar_descripcion">Descripción</label>
 				</div>
-				<div class="input-field col s12">
-					<select name="caja_herramientas" id="editar_caja_herramientas">
-						<option value="">Ninguno</option>
-						@foreach ($cajas as $caja)
-							<option value="{{ $caja->id }}">Caja #{{ $caja->id }}</option>
-						@endforeach
-					</select>
-					<label>Caja de herramienta</label>
-				</div>
+				@foreach ($cajas as $caja)
+					<div class="input-field col s7">
+						<p>
+					      <label>
+					        <input name="caja_herramientas[]" id="editar_caja_herramientas{{ $caja->id }}" type="checkbox" class="filled-in" value="{{ $caja->id }}" />
+					        <span>Caja #{{ $caja->id }}</span>
+					      </label>
+					    </p>
+					</div>
+					<div class="input-field col s5">
+						<input name="cantidadCaja[]" id="editar_cantidadCaja{{ $caja->id }}" type="number" class="validate">
+						<label for="editar_cantidadCaja{{ $caja->id }}">Cantidad en la Caja</label>
+					</div>
+				@endforeach
 			</div>
 		</div>
 		<div class="modal-footer">
@@ -152,6 +155,7 @@
 
 @section('footer')
 	<script type="text/javascript">
+
         $(document).ready(function() {
             $('#table_herramientas').DataTable({ // Inicializar tabla
                 "language": {
@@ -171,35 +175,27 @@
 				url: '{{ route('herramientas_edit') }}',
 				data: {"id": $(this).data('id')},
 				success: function(data) {
+					console.log(data.caja_herramientas);
+					console.log(data.cantidadCaja);
+
 					$('#editar_id').val(data['id']);
 					$('#editar_cantidad').val(data['cantidad']);
 					$('#editar_marca').val(data['marca']);
 					$('#editar_nombre').val(data['nombre']);
 					$('#editar_descripcion').val(data['descripcion']);
-					$('#editar_caja_herramientas option:eq('+data['caja_herramientas']+')').prop('selected', true);
+
+					for (var i = 0; i < data.caja_herramientas.length; i++) 
+					{
+						var j = data.caja_herramientas[i].caja_id;
+						console.log(j);
+						$('#editar_caja_herramientas'+j).prop("checked",true);
+						$('#editar_cantidadCaja'+j).val(data.cantidadCaja[i].cantidad);
+					}
 				},
 				error: function(xhr, textStatus, errorThrown) {
 					console.log("Ocurrió un error.");
 				}
 			});
 		});
-
-		/*$(function(){
-			$("#myBtn").on('click', function(){
-				$(".modal-footer").clone().removeClass('input-field col s4').before("#campoCaja");
-				$(".modal-footer").clone().removeClass('input-field col s4').before("#campoCantidad");
-			});
-		});
-
-		document.getElementById("myBtn").addEventListener("click", addInput);
-		function addInput(){
-			/*caja = document.getElementById("campoCaja");
-			cantidad = document.getElementById("campoCantidad");
-			$( "#modal_nueva_herramienta" ).preend( [caja, cantidad] );
-			campoCantidad = '<input name="cantidadCaja[]" id="cantidadCaja" type="number" class="validate">';
-			campoCantidad += '<label for="cantidadCaja">Cantidad en la Caja</label>';
-			$("#campoCaja").clone().removeClass('input-field col s4').appendTo("#modal_nueva_herramienta");
-			$(campoCantidad).clone().addClass('input-field col s4').appendTo("#modal_nueva_herramienta");
-		}*/
     </script>
 @endsection

@@ -17,7 +17,7 @@ class CrearTablaHerramientas extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->integer('cantidad');
-            $table->integer('cantidadCajas')->nullable();
+            //$table->integer('cantidadCajas')->nullable();
             $table->string('marca');
             $table->string('nombre');
             $table->text('descripcion')->nullable();

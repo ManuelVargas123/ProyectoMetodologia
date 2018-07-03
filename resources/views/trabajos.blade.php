@@ -79,19 +79,19 @@
 						<label>Trabajador</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="descripcion" id="descripcion" type="text" class="validate">
+						<input name="descripcion" id="descripcion" type="text" class="active">
 						<label for="descripcion">Descripción</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="fechaLlegada" id="fechaLlegada" type="date" class="validate">
+						<input name="fechaLlegada" id="fechaLlegada" type="date" class="active">
 						<label for="fechaLlegada">Fecha de Llegada</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="fechaInicio" id="fechaInicio" type="date" class="validate">
+						<input name="fechaInicio" id="fechaInicio" type="date" class="active">
 						<label for="fechaInicio">Fecha de Inicio</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="fechaFinal" id="fechaFinal" type="date" class="validate">
+						<input name="fechaFinal" id="fechaFinal" type="date" class="active">
 						<label for="fechaFinal">Fecha de Finalización</label>
 					</div>
 				</div>
@@ -118,19 +118,19 @@
 						<label>Trabajador</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="editar_descripcion" id="editar_descripcion" type="text" class="validate">
+						<input name="editar_descripcion" id="editar_descripcion" type="text" class="active">
 						<label for="editar_descripcion">Descripción</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="editar_fechaLlegada" id="editar_fechaLlegada" type="date" class="validate">
+						<input name="editar_fechaLlegada" id="editar_fechaLlegada" type="date" class="active">
 						<label for="editar_fechaLlegada">Fecha de Llegada</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="editar_fechaInicio" id="editar_fechaInicio" type="date" class="validate">
+						<input name="editar_fechaInicio" id="editar_fechaInicio" type="date" class="active">
 						<label for="editar_fechaInicio">Fecha de Inicio</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="editar_fechaFinal" id="editar_fechaFinal" type="date" class="validate">
+						<input name="editar_fechaFinal" id="editar_fechaFinal" type="date" class="active">
 						<label for="editar_fechaFinal">Fecha de Finalización</label>
 					</div>
 			</div>

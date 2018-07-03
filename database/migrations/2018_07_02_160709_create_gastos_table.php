@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMotoresTable extends Migration
+class CreateGastosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class CreateMotoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('motores', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('gastos', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->string('nombre');
-            $table->string('modelo');
-            $table->integer('cantidad');
-            $table->string('marca');
             $table->float('precio');
-            $table->string('descripcion')->nullable();
-            $table->text('modelosDisponibles');
-            $table->integer('cilindros');
+            $table->string('moneda');
+            $table->date('fecha');
+            $table->text('descripcion');
             $table->timestamps();
         });
     }
@@ -35,6 +30,6 @@ class CreateMotoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('motores');
+        Schema::dropIfExists('gastos');
     }
 }

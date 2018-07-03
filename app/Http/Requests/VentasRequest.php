@@ -27,7 +27,7 @@ class VentasRequest extends FormRequest
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'telefono' => 'required|numeric',
-            'descripcion' => 'required|string|max:20000',
+            'descripcion' => 'nullable|string|max:20000',
             'costo' => 'required|numeric',
             'motor' => 'nullable|numeric',
             'transmision' => 'nullable|numeric',

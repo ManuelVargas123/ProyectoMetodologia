@@ -15,9 +15,9 @@ class CreateClienteVentasTable extends Migration
     {
         Schema::create('cliente_ventas', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->string('nombre');
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
             $table->date('fecha');
             $table->integer('venta_id');
             $table->timestamps();

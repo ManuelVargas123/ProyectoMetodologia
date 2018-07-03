@@ -79,11 +79,11 @@
 				<h4>Agregar un nuevo Servicio</h4>
 				<div class="row">
 					<div class="input-field col s6">
-						<input name="servicio" id="servicio" type="text" class="validate">
+						<input name="servicio" id="servicio" type="text" class="active">
 						<label for="servicio">Servicio</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="costo" id="costo" type="number" min="0.00" max="100000.00" step="0.01" class="validate">
+						<input name="costo" id="costo" type="number" min="0.00" max="100000.00" step="0.01" class="active">
 						<label for="costo">Costo</label>
 					</div>
 					<div class="input-field col s6">
@@ -95,31 +95,31 @@
 					    <label>Tipo de Moneda</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="nombreCliente" id="nombreCliente" type="text" class="validate">
+						<input name="nombreCliente" id="nombreCliente" type="text" class="active">
 						<label for="nombreCliente">Nombre del Cliente</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="apellidoCliente" id="apellidoCliente" type="text" class="validate">
+						<input name="apellidoCliente" id="apellidoCliente" type="text" class="active">
 						<label for="apellidoCliente">Apellido del Cliente</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="telCliente" id="telCliente" type="number" class="validate">
+						<input name="telCliente" id="telCliente" type="number" class="active">
 						<label for="telCliente">Telefono del Cliente</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="carro" id="carro" type="text" class="validate">
+						<input name="carro" id="carro" type="text" class="active">
 						<label for="carro">Carro</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="fecha" id="fecha" type="date" class="validate">
+						<input name="fecha" id="fecha" type="date" class="active">
 						<label for="fecha">Fecha</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="fechaSiguiente" id="fechaSiguiente" type="date" class="validate">
+						<input name="fechaSiguiente" id="fechaSiguiente" type="date" class="active">
 						<label for="fechaSiguiente">Siguiente Cita</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="descripcion" id="descripcion" type="text" class="validate">
+						<input name="descripcion" id="descripcion" type="text" class="active">
 						<label for="descripcion">Descripcion</label>
 					</div>
 				</div>
@@ -137,11 +137,11 @@
 			<div class="row">
 				<input id="editar_id" type="hidden" name="id" value="">
 				<div class="input-field col s6">
-					<input name="servicio" id="editar_servicio" type="text" class="validate" placeholder="">
+					<input name="servicio" id="editar_servicio" type="text" class="active" placeholder="">
 					<label for="editar_servicio">Servicio</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="costo" id="editar_costo" type="number" min="0.00" max="10000.00" step="0.01" class="validate" placeholder="">
+					<input name="costo" id="editar_costo" type="number" min="0.00" max="10000.00" step="0.01" class="active" placeholder="">
 					<label for="editar_costo">Costo</label>
 				</div>
 				<div class="input-field col s6">
@@ -153,31 +153,31 @@
 				    <label for="editar_moneda">Tipo de Moneda</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="nombreCliente" id="editar_nombreCliente" type="text" class="validate" placeholder="">
+					<input name="nombreCliente" id="editar_nombreCliente" type="text" class="active" placeholder="">
 					<label for="editar_nombreCliente">Nombre del Cliente</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="apellidoCliente" id="editar_apellidoCliente" type="text" class="validate" placeholder="">
+					<input name="apellidoCliente" id="editar_apellidoCliente" type="text" class="active" placeholder="">
 					<label for="editar_apellidoCliente">Apellido del Cliente</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="telCliente" id="editar_telCliente" type="text" class="validate" placeholder="">
+					<input name="telCliente" id="editar_telCliente" type="text" class="active" placeholder="">
 					<label for="editar_telCliente">Telefono del Cliente</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="carro" id="editar_carro" type="text" class="validate" placeholder="">
+					<input name="carro" id="editar_carro" type="text" class="active" placeholder="">
 					<label for="editar_carro">Carro</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="fecha" id="editar_fecha" type="date" class="validate" placeholder="">
+					<input name="fecha" id="editar_fecha" type="date" class="active" placeholder="">
 					<label for="editar_fecha">Fecha</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="fechaSiguiente" id="editar_fechaSiguiente" type="date" class="validate" placeholder="">
+					<input name="fechaSiguiente" id="editar_fechaSiguiente" type="date" class="active" placeholder="">
 					<label for="editar_fechaSiguiente">Siguiente Cita</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="descripcion" id="editar_descripcion" type="text" class="validate" placeholder="">
+					<input name="descripcion" id="editar_descripcion" type="text" class="active" placeholder="">
 					<label for="editar_descripcion">Descripcion</label>
 				</div>
 			</div>

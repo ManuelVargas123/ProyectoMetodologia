@@ -73,23 +73,23 @@
 			<h4>Agregar nueva venta</h4>
 			<div class="row">
 				<div class="input-field col s6">
-					<input name="nombre" id="nombre" type="text" class="validate">
+					<input name="nombre" id="nombre" type="text" class="active">
 					<label for="nombre">Nombre</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="apellido" id="apellido" type="text" class="validate">
+					<input name="apellido" id="apellido" type="text" class="active">
 					<label for="apellido">Apellido paterno</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="telefono" id="telefono" type="number" class="validate">
+					<input name="telefono" id="telefono" type="number" class="active">
 					<label for="telefono">Telefono</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="descripcion" id="descripcion" type="text" class="validate">
+					<input name="descripcion" id="descripcion" type="text" class="active">
 					<label for="descripcion">Descripcion</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="costo" id="costo" type="number" min="0.00" max="1000000.00" step="0.01" class="validate">
+					<input name="costo" id="costo" type="number" min="0.00" max="1000000.00" step="0.01" class="active">
 					<label for="costo">Costo</label>
 				</div>
 				<div class="input-field col s6">
@@ -142,23 +142,23 @@
 			<div class="row">
 				<input id="editar_id" type="hidden" name="id" value="" />
 				<div class="input-field col s6">
-					<input name="nombre" id="editar_nombre" type="text" class="validate" placeholder="">
+					<input name="nombre" id="editar_nombre" type="text" class="active" placeholder="">
 					<label for="editar_nombre">Nombre</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="apellido" id="editar_apellido" type="text" class="validate" placeholder="">
+					<input name="apellido" id="editar_apellido" type="text" class="active" placeholder="">
 					<label for="editar_apellido">Apellido paterno</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="telefono" id="editar_telefono" type="number" class="validate" placeholder="">
+					<input name="telefono" id="editar_telefono" type="number" class="active" placeholder="">
 					<label for="editar_telefono">Telefono</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="descripcion" id="editar_descripcion" type="text" class="validate" placeholder="">
+					<input name="descripcion" id="editar_descripcion" type="text" class="active" placeholder="">
 					<label for="editar_descripcion">Descripcion</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="costo" id="editar_costo" type="number" min="0.00" max="1000000.00" step="0.01" class="validate" placeholder="">
+					<input name="costo" id="editar_costo" type="number" min="0.00" max="1000000.00" step="0.01" class="active" placeholder="">
 					<label for="editar_costo">Costo</label>
 				</div>
 				<div class="input-field col s6">

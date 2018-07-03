@@ -70,19 +70,19 @@
 			<div class="row">
 
 				<div class="input-field col s6">
-					<input name="nombre" id="nombre" type="text" class="validate">
+					<input name="nombre" id="nombre" type="text" class="active">
 					<label for="nombre">Nombre</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="marca" id="marca" type="text" class="validate">
+					<input name="marca" id="marca" type="text" class="active">
 					<label for="marca">Marca</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="cantidad" id="cantidad" type="number" class="validate">
+					<input name="cantidad" id="cantidad" type="number" class="active">
 					<label for="cantidad">Cantidad</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="descripcion" id="descripcion" type="text" class="validate">
+					<input name="descripcion" id="descripcion" type="text" class="active">
 					<label for="descripcion">Descripción</label>
 				</div>
 				@foreach ($cajas as $caja)
@@ -95,7 +95,7 @@
 					    </p>
 					</div>
 					<div class="input-field col s5">
-						<input name="cantidadCaja[]" id="cantidadCaja{{ $caja->id }}" type="number" class="validate">
+						<input name="cantidadCaja[]" id="cantidadCaja{{ $caja->id }}" type="number" class="active">
 						<label for="cantidadCaja{{ $caja->id }}">Cantidad en la Caja</label>
 					</div>
 				@endforeach
@@ -115,20 +115,20 @@
 				<input id="editar_id" type="hidden" name="id" value="">
 
 				<div class="input-field col s6">
-					<input name="nombre" id="editar_nombre" type="text" class="validate" placeholder="">
-					<label for="editar_nombre">Nombre</label>
+					<input name="nombre" id="editar_nombre" type="text" class="active" placeholder="">
+					<label class="active" for="editar_nombre">Nombre</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="marca" id="editar_marca" type="text" class="validate" placeholder="">
-					<label for="editar_marca">Marca</label>
+					<input name="marca" id="editar_marca" type="text" class="active" placeholder="">
+					<label class="active" for="editar_marca">Marca</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="cantidad" id="editar_cantidad" type="number" class="validate" placeholder="">
-					<label for="editad_cantidad">Cantidad</label>
+					<input name="cantidad" id="editar_cantidad" type="number" class="active" placeholder="">
+					<label class="active" for="editad_cantidad">Cantidad</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="descripcion" id="editar_descripcion" type="text" class="validate" placeholder="">
-					<label for="editar_descripcion">Descripción</label>
+					<input name="descripcion" id="editar_descripcion" type="text" class="active" placeholder="">
+					<label class="active" for="editar_descripcion">Descripción</label>
 				</div>
 				@foreach ($cajas as $caja)
 					<div class="input-field col s7">
@@ -140,8 +140,8 @@
 					    </p>
 					</div>
 					<div class="input-field col s5">
-						<input name="cantidadCaja[]" id="editar_cantidadCaja{{ $caja->id }}" type="number" class="validate">
-						<label for="editar_cantidadCaja{{ $caja->id }}">Cantidad en la Caja</label>
+						<input name="cantidadCaja[]" id="editar_cantidadCaja{{ $caja->id }}" type="number" class="active">
+						<label class="active" for="editar_cantidadCaja{{ $caja->id }}">Cantidad en la Caja</label>
 					</div>
 				@endforeach
 			</div>
@@ -165,6 +165,10 @@
 			$('.modal').modal(); // Inicializar Modal
 			$('.tooltipped').tooltip(); // Inicializar tooltips
         });
+        	//Para que los campos esten llenos al editar
+		  $(document).ready(function() {
+		    M.updateTextFields();
+		  });
 
 		$('a[href$="modal_editar_herramienta"]').click(function() {
 			$.ajax({
@@ -175,6 +179,7 @@
 				url: '{{ route('herramientas_edit') }}',
 				data: {"id": $(this).data('id')},
 				success: function(data) {
+					document.getElementById('modal_editar_herramienta').reset();
 					console.log(data.caja_herramientas);
 					console.log(data.cantidadCaja);
 

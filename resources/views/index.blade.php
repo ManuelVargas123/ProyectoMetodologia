@@ -18,7 +18,7 @@
 		      <div id="proximaCita"><b>Apellido:</b> {{ $proximaCita->apellidoCliente }}</div>
 		      <div id="proximaCita"><b>Telefono:</b> {{ $proximaCita->telCliente }}</div>
 		      <div id="proximaCita"><b>Servicio realizado:</b> {{ $proximaCita->servicio }}</div>
-		      <div id="proximaCita"><b>Fecha estimada para cita:</b> {{ $proximaCita->fechaSiguiente }}</div>
+		      <div id="proximaCita"><b>Fecha estimada para siguiente cita:</b> {{ $proximaCita->fechaSiguiente }}</div>
 		      <div id="proximaCita"><b>Descripción del servicio:</b> {{ $proximaCita->descripcion }}</div>
 		      {!! Form::open(['action' => ['ToDoController@update']]) !!}
 		      	<input type="hidden" name="id" value="{{ $proximaCita->id }}">

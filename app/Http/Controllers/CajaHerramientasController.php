@@ -57,7 +57,6 @@ class CajaHerramientasController extends Controller
                     $caja->herramientas .= ', ';
                     $caja->herramientas .= $json[$i]->pivot->cantidad;
                     $caja->herramientas .= '),';
-
                 }
             }
         }

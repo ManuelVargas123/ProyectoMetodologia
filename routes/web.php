@@ -21,6 +21,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/motores/edit', 'MotoresController@edit')->name('motores_edit');
 	Route::post('/motores/update', 'MotoresController@update')->name('motores_update');
 
+	//tranmisiones
 	Route::get('/transmisiones', 'TransmisionesController@index');
 	Route::post('/transmisiones/store', 'TransmisionesController@store')->name('transmisiones_store');
 	Route::delete('/transmisiones/delete/{id}', 'TransmisionesController@destroy')->name('transmisiones_destroy');
@@ -67,6 +68,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/autopartes/edit', 'PartesController@edit')->name('partes_edit');
 	Route::post('/autopartes/update', 'PartesController@update')->name('partes_update');
 
+	//gerentes
 	Route::get('/gerentes', 'GerentesController@index');
 	Route::post('/gerentes/store', 'GerentesController@store')->name('gerentes_store');
 	Route::delete('/gerentes/delete/{id}', 'GerentesController@destroy')->name('gerentes_destroy');
@@ -87,6 +89,19 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/trabajos/edit', 'TrabajoController@edit')->name('trabajos_edit');
 	Route::post('/trabajos/update', 'TrabajoController@update')->name('trabajos_update');
 
+	//gastos
+	Route::get('/gastos', 'GastosController@index');
+	Route::post('/gastos/store', 'GastosController@store')->name('gastos_store');
+	Route::delete('/gastos/delete/{id}', 'GastosController@destroy')->name('gastos_destroy');
+	Route::post('/gastos/edit', 'GastosController@edit')->name('gastos_edit');
+	Route::post('/gastos/update', 'GastosController@update')->name('gastos_update');
+
+	//faltas
+	Route::get('/faltas', 'FaltasController@index');
+	Route::post('/faltas/store', 'FaltasController@store')->name('faltas_store');
+	Route::delete('/faltas/delete/{id}', 'FaltasController@destroy')->name('faltas_destroy');
+	Route::post('/faltas/edit', 'FaltasController@edit')->name('faltas_edit');
+	Route::post('/faltas/update', 'FaltasController@update')->name('faltas_update');
 });
 
 Auth::routes();

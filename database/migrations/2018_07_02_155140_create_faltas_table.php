@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHistorialTable extends Migration
+class CreateFaltasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateHistorialTable extends Migration
      */
     public function up()
     {
-        Schema::create('historial', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('faltas', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer('user_id')->unsigned();
-            $table->string('rol');
-            $table->string('accion');
-            $table->string('tabla');
-            $table->string('objeto');
+            $table->integer('empleado_id');
+            $table->boolean('justificacion')->default(false);
+            $table->string('razon');
+            $table->date('fecha');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateHistorialTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('historial');
+        Schema::dropIfExists('faltas');
     }
 }

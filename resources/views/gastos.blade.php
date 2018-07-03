@@ -18,37 +18,37 @@
 	@endif
 	<div class="row">
 		<div class="col l7 s12">
-			<h2 style="text-align: center;margin-top: 5px;">Empleados</h2>
+			<h2 style="text-align: center;margin-top: 5px;">Gastos</h2>
 		</div>
 		<div class="col l5 s12" style="text-align: center; margin-top: 15px;">
-			<a class="waves-effect waves-light btn modal-trigger" href="#modal_nuevo_empleado">
+			<a class="waves-effect waves-light btn modal-trigger" href="#modal_nuevo_gasto">
 				<i class="large material-icons" style="vertical-align: middle">add</i>
 				<span style="vertical-align: middle">Agregar</span>
 			</a>
 		</div>
 	</div>
-	<table id="table_empleados" class="display striped responsive-table">
+	<table id="table_gastos" class="display striped responsive-table">
 		<thead>
-			<th>Nombre</th>
-			<th>Apellido paterno</th>
-			<th>Fecha de agregado</th>
-			<th>Caja asignada</th>
+			<th>Precio</th>
+			<th>Moneda</th>
+			<th>Fecha</th>
+			<th>Descripción</th>
 			<th></th>
 		</thead>
 		<tbody>
-			@foreach($empleados as $empleado)
+			@foreach($gastos as $gasto)
 				<tr>
-					<td>{{ $empleado->nombre }}</td>
-					<td>{{ $empleado->primerApellido }}</td>
-					<td>{{ $empleado->created_at }}</td>
-					<td>{{ $empleado->caja_asignada }}</td>
+					<td>{{ $gasto->precio }}</td>
+					<td>{{ $gasto->moneda }}</td>
+					<td>{{ $gasto->fecha }}</td>
+					<td>{{ $gasto->descripcion }}</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
-							<a data-id="{{ $empleado->id }}" class="modal-trigger" href="#modal_editar_empleado"><i class="material-icons">edit</i></a>
+							<a data-id="{{ $gasto->id }}" class="modal-trigger" href="#modal_editar_gasto"><i class="material-icons">edit</i></a>
 						</div>
 
 						<div  class="tooltipped" data-position="top" data-tooltip="Borrar" style="display: inline-block;">
-							<form action="{{ route('empleados_destroy', $empleado->id) }}" method="POST">
+							<form action="{{ route('gastos_destroy', $gasto->id) }}" method="POST">
 								@csrf
 								<input type="hidden" name="_method" value="delete" />
 								<button type="submit" name="button" style="border: 0; background: transparent; color: #2195d6; cursor: pointer;"><i class="material-icons">delete_forever</i></button>
@@ -60,19 +60,31 @@
 		</tbody>
 	</table>
 
-	<!-- Modal - Nuevo empleado -->
-	<form id="modal_nuevo_empleado" class="modal" action="{{ route('empleados_store') }}" method="POST">
+	<!-- Modal - Nuevo egasto -->
+	<form id="modal_nuevo_gasto" class="modal" action="{{ route('gastos_store') }}" method="POST">
 		@csrf
 		<div class="modal-content">
-			<h4>Agregar un nuevo Empleado</h4>
+			<h4>Agregar un nuevo Gasto</h4>
 			<div class="row">
 				<div class="input-field col s6">
-					<input name="nombre" id="nombre" type="text" class="active">
-					<label for="nombre">Nombre</label>
+					<input name="precio" id="precio" type="number" min="1" max="100000" class="active">
+					<label for="precio">Precio</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="primerApellido" id="primerApellido" type="text" class="active">
-					<label for="primerApellido">Primer Apellido</label>
+				    <select name="moneda">
+				      <option value="" disabled selected>Elija el Tipo de Moneda</option>
+				      <option value="MXN">MXN</option>
+				      <option value="USD">USD</option>
+				    </select>
+				    <label>Tipo de Moneda</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="fecha" id="fecha" type="date" class="active">
+					<label for="fecha">Fecha</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="descripcion" id="descripcion" type="text" class="active">
+					<label for="descripcion">Descripción</label>
 				</div>
 			</div>
 		</div>
@@ -81,20 +93,32 @@
 		</div>
 	</form>
 
-	<!-- Modal - Editar empleado -->
-	<form id="modal_editar_empleado" class="modal" action="{{ route('empleados_update') }}" method="POST">
+	<!-- Modal - Editar gasto -->
+	<form id="modal_editar_gasto" class="modal" action="{{ route('gastos_update') }}" method="POST">
 		@csrf
 		<div class="modal-content">
-			<h4>Editar Empleado</h4>
+			<h4>Editar Gasto</h4>
 			<div class="row">
 				<input id="editar_id" type="hidden" name="id" value="">
 				<div class="input-field col s6">
-					<input name="nombre" id="editar_nombre" type="text" class="active" placeholder="">
-					<label for="editar_nombre">Nombre</label>
+					<input name="precio" id="editar_precio" type="number" min="1" max="100000" class="active">
+					<label for="editar_precio">Precio</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="primerApellido" id="editar_primerApellido" type="text" class="active" placeholder="">
-					<label for="editar_primerApellido">Primer Apellido</label>
+				    <select name="moneda" id="editar_moneda">
+				      <option value="" disabled selected>Elija el Tipo de Moneda</option>
+				      <option value="MXN">MXN</option>
+				      <option value="USD">USD</option>
+				    </select>
+				    <label for="editar_moneda">Tipo de Moneda</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="fecha" id="editar_fecha" type="date" class="active">
+					<label for="editar_fecha">Fecha</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="descripcion" id="editar_descripcion" type="text" class="active">
+					<label for="editar_descripcion">Descripción</label>
 				</div>
 			</div>
 		</div>
@@ -107,7 +131,7 @@
 @section('footer')
 	<script type="text/javascript">
         $(document).ready(function() {
-            $('#table_empleados').DataTable({
+            $('#table_gastos').DataTable({
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
                 }
@@ -115,18 +139,23 @@
             $('.modal').modal(); // Inicializar Modal
 			$('.tooltipped').tooltip(); // Inicializar tooltips
         });
-        $('a[href$="modal_editar_empleado"]').click(function() {
+        $('a[href$="modal_editar_gasto"]').click(function() {
 			$.ajax({
 				type: "POST",
 				headers: {
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 				},
-				url: '{{ route('empleados_edit') }}',
+				url: '{{ route('gastos_edit') }}',
 				data: {"id": $(this).data('id')},
 				success: function(data) {
 					$('#editar_id').val(data['id']);
-					$('#editar_nombre').val(data['nombre']);
-					$('#editar_primerApellido').val(data['primerApellido']);
+					$('#editar_precio').val(data['precio']);
+
+					$('#editar_moneda').val(data['moneda']);
+					$('#editar_moneda').formSelect();
+
+					$('#editar_fecha').val(data['fecha']);
+					$('#editar_descripcion').val(data['descripcion']);					
 				},
 				error: function(xhr, textStatus, errorThrown) {
 					console.log("Ocurrió un error.");

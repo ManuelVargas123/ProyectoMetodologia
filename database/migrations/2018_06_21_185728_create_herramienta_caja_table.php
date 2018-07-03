@@ -14,7 +14,7 @@ class CreateHerramientaCajaTable extends Migration
     public function up()
     {
         Schema::create('herramienta_caja', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->integer('herramienta_id')->unsigned();
             $table->integer('caja_id')->unsigned();
             $table->integer('cantidad')->unsigned()->nullable();

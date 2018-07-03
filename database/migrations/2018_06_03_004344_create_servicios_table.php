@@ -15,7 +15,7 @@ class CreateServiciosTable extends Migration
     {
         Schema::create('servicios', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->string('servicio');
             $table->float('costo');
             $table->string('moneda');
@@ -24,8 +24,8 @@ class CreateServiciosTable extends Migration
             $table->string('telCliente');
             $table->text('carro');
             $table->date('fecha');
-            $table->date('fechaSiguiente');
-            $table->text('descripcion');
+            $table->date('fechaSiguiente')->nullable();
+            $table->text('descripcion')->nullable();
             $table->boolean('agendada')->default(false)->nullable();
             $table->boolean('finalizado')->default(false)->nullable();
             $table->timestamps();

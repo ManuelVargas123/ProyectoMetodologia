@@ -124,7 +124,7 @@ class TrabajoController extends Controller
     public function destroy($id)
     {
         $trabajo = Trabajo::find($id); // Buscamos el registro
-        if($Trabajo->delete()) { // Lo eliminamos
+        if($trabajo->delete()) { // Lo eliminamos
             return redirect()->back()->with('success', 'Has eliminado un trabajo correctamente.');
         } else {
             return redirect()->back()->with('error', 'Ocurrió un error al intentar eliminar un trabajo, intentalo de nuevo.');

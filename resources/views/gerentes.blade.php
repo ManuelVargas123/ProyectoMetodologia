@@ -65,24 +65,30 @@
                 <h4>Agregar nuevo gerente</h4>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input name="name" id="name" type="text" class="validate">
+                        <input name="name" id="name" type="text" class="active">
                         <label for="name">Nombre</label>
                     </div>
                     <div class="input-field col s6">
-                        <input name="primerApellido" id="primerApellido" type="text" class="validate">
+                        <input name="primerApellido" id="primerApellido" type="text" class="active">
                         <label for="primerApellido">Primer apellido</label>
                     </div>
                     <div class="input-field col s6">
-                        <input name="email" id="email" type="email" class="validate">
+                        <input name="email" id="email" type="email" class="active">
                         <label for="email">Correo electronico</label>
                     </div>
                     <div class="input-field col s6">
-                        <input name="password" id="password" type="password" class="validate">
+                        <input name="password" id="password" type="password" class="active">
                         <label for="password">Contraseña</label>
                     </div>
                     <div class="input-field col s6">
-                        <input name="password_confirmation" id="password-confirm" type="password" class="validate">
+                        <input name="password_confirmation" id="password-confirm" type="password" class="active">
                         <label for="password-confirm">Confirmar contraseña</label>
+                    </div>
+                    <div class="form-check">
+                        <input name="is_admin" class="form-check-input" type="checkbox" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Register as an admin
+                            </label>
                     </div>
                 </div>
 
@@ -100,15 +106,15 @@
                 <div class="row">
                     <input id="editar_id" type="hidden" name="id" value="">
                     <div class="input-field col s6">
-                        <input name="name" id="editar_name" type="text" class="validate" placeholder="">
+                        <input name="name" id="editar_name" type="text" class="active" placeholder="">
                         <label for="name">Nombre</label>
                     </div>
                     <div class="input-field col s6">
-                        <input name="primerApellido" id="editar_primerApellido" type="text" class="validate" placeholder="">
+                        <input name="primerApellido" id="editar_primerApellido" type="text" class="active" placeholder="">
                         <label for="primerApellido">Primer apellido</label>
                     </div>
                     <div class="input-field col s6">
-                        <input name="email" id="editar_email" type="email" class="validate" placeholder="">
+                        <input name="email" id="editar_email" type="email" class="active" placeholder="">
                         <label for="email">Correo electronico</label>
                     </div>
                 </div>

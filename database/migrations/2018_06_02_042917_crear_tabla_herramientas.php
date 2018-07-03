@@ -15,13 +15,11 @@ class CrearTablaHerramientas extends Migration
     {
         Schema::create('herramientas', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->integer('cantidad');
-            //$table->integer('cantidadCajas')->nullable();
             $table->string('marca');
             $table->string('nombre');
             $table->text('descripcion')->nullable();
-            //$table->integer('caja_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

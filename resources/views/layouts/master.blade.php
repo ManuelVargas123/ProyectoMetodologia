@@ -43,11 +43,13 @@
         <ul id="dropdown3" class="dropdown-content">
             <li><a href="servicios"><i class="material-icons left">dvr</i>Servicios</a></li>
             <li><a href="ventas"><i class="material-icons left">shopping_basket</i>Ventas</a></li>
+            <li><a href="gastos"><i class="material-icons left">money_off</i>Gastos</a></li>
         </ul>
 
         <ul id="dropdown4" class="dropdown-content">
             <li><a href="servicios"><i class="material-icons left">dvr</i>Servicios</a></li>
             <li><a href="ventas"><i class="material-icons left">shopping_basket</i>Ventas</a></li>
+            <li><a href="gastos"><i class="material-icons left">money_off</i>Gastos</a></li>
         </ul>
         <ul id="dropdown5" class="dropdown-content">
              <li><a href="historial"><i class="material-icons left">info_outline</i>Historial</a></li>
@@ -57,6 +59,16 @@
         <ul id="dropdown6" class="dropdown-content">
              <li><a href="historial"><i class="material-icons left">info_outline</i>Historial</a></li>
             <li><a href="gerentes"><i class="material-icons left">group</i>Gerentes</a></li>
+        </ul>
+
+        <ul id="dropdown7" class="dropdown-content">
+             <li><a href="historial"><i class="material-icons left">assignment_ind</i>Empleados</a></li>
+            <li><a href="gerentes"><i class="material-icons left">event_busy</i>Faltas</a></li>
+        </ul>
+
+        <ul id="dropdown8" class="dropdown-content">
+             <li><a href="empleados"><i class="material-icons left">assignment_ind</i>Empleados</a></li>
+            <li><a href="faltas"><i class="material-icons left">event_busy</i>Faltas</a></li>
         </ul>
 
         <!-- La secciones que tengan el arroba isAdmin, endisAdmin,
@@ -69,12 +81,12 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/" style="margin-right: 10px; width: 92%;"><i class="material-icons left">home</i>Inicio</a></li>
                     <li><a href="trabajos" style="margin-right: 10px; width: 93%;"><i class="material-icons left">assignment_ind</i>Trabajos</a></li>
-                    <li><a href="empleados" style="margin-right: 10px; width: 94%;"><i class="material-icons left">person</i>Empleados</a></li>
                     @isAdmin
-                    <li><a class="dropdown-trigger" href="#" data-target="dropdown4" style="margin-right: 10px; width: 95%;"><i class="material-icons left">monetization_on</i>Ganancias<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-trigger" href="#" data-target="dropdown4" style="margin-right: 10px; width: 95%;"><i class="material-icons left">monetization_on</i>Finanzas<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li><a class="dropdown-trigger" href="#" data-target="dropdown6" style="margin-right: 10px; width: 95%;"><i class="material-icons left">verified_user</i>Admin<i class="material-icons right">arrow_drop_down</i></a></li>
                     @endisAdmin
                         <!-- Dropdown Trigger -->
+                        <li><a class="dropdown-trigger" href="#" data-target="dropdown8" style="margin-right: 10px; width: 95%;"><i class="material-icons left">person</i>Empleados<i class="material-icons right">arrow_drop_down</i></a></li>
                         <li><a class="dropdown-trigger" href="#" data-target="dropdown2" style="margin-right: 10px;"><i class="material-icons left">build</i>Inventario<i class="material-icons right">arrow_drop_down</i></a></li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST">

@@ -93,12 +93,16 @@ class HerramientasController extends Controller
 
         $j = 0;
         $total = 0;
-        for($i=0; $i<count($cantidadCaja); $i++)
-            if(!empty($cantidadCaja[$i])){  //Verificar que no estén vacíos
-                $cantidadReal[$j] = $cantidadCaja[$i]; // Se agrega al array los valores no vacíos 
-                $total += $cantidadReal[$j];
-                $j++;
-            }
+        if(!empty($cantidadCaja))
+        {
+            for($i=0; $i<count($cantidadCaja); $i++)
+                if(!empty($cantidadCaja[$i]))
+                {  //Verificar que no estén vacíos
+                    $cantidadReal[$j] = $cantidadCaja[$i]; // Se agrega al array los valores no vacíos 
+                    $total += $cantidadReal[$j];
+                    $j++;
+                }
+        }
 
         if(intval($total) > intval($request->cantidad))
             return redirect()->back()->with('error', 'La cantidad de piezas que hay en las cajas es mayor a la cantidad que se tiene de la herramienta.');

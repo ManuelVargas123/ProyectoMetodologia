@@ -75,32 +75,32 @@
 			<h4>Agregar nuevo motor</h4>
 			<div class="row">
 				<div class="input-field col s6">
-					<input name="nombre" id="nombre" type="text" class="validate">
+					<input name="nombre" id="nombre" type="text" class="active">
 					<label for="nombre">Nombre</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="modelo" id="modelo" type="text" class="validate">
+					<input name="modelo" id="modelo" type="text" class="active">
 					<label for="modelo">Modelo</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="cantidad" id="cantidad" type="number" class="validate">
+					<input name="cantidad" id="cantidad" type="number" class="active">
 					<label for="cantidad">Cantidad</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="marca" id="marca" type="text" class="validate">
+					<input name="marca" id="marca" type="text" class="active">
 					<label for="marca">Marca</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="descripcion" id="descripcion" type="text" class="validate">
+					<input name="descripcion" id="descripcion" type="text" class="active">
 					<label for="descripcion">Descripción</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="modelos_disponibles" id="modelos_disponibles" type="text" class="validate">
+					<input name="modelos_disponibles" id="modelos_disponibles" type="text" class="active">
 					<label for="modelos_disponibles">Modelos disponibles</label>
 				</div>
 
 				<div class="input-field col s6">
-					<input name="cilindros" id="cilindros" type="number" class="validate">
+					<input name="cilindros" id="cilindros" type="number" class="active">
 					<label for="cilindros">Cilindros</label>
 				</div>
 			</div>
@@ -118,32 +118,32 @@
 			<div class="row">
 				<input id="editar_id" type="hidden" name="id" value="">
 				<div class="input-field col s6">
-					<input name="nombre" id="editar_nombre" type="text" class="validate" placeholder="">
+					<input name="nombre" id="editar_nombre" type="text" class="active" placeholder="">
 					<label for="editar_nombre">Nombre</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="modelo" id="editar_modelo" type="text" class="validate" placeholder="">
+					<input name="modelo" id="editar_modelo" type="text" class="active" placeholder="">
 					<label for="editar_modelo">Modelo</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="cantidad" id="editar_cantidad" type="number" class="validate" placeholder="">
+					<input name="cantidad" id="editar_cantidad" type="number" class="active" placeholder="">
 					<label for="editar_cantidad">Cantidad</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="marca" id="editar_marca" type="text" class="validate" placeholder="">
+					<input name="marca" id="editar_marca" type="text" class="active" placeholder="">
 					<label for="editar_marca">Marca</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="descripcion" id="editar_descripcion" type="text" class="validate" placeholder="">
+					<input name="descripcion" id="editar_descripcion" type="text" class="active" placeholder="">
 					<label for="editar_descripcion">Descripción</label>
 				</div>
 				<div class="input-field col s6">
-					<input name="modelos_disponibles" id="editar_modelos_disponibles" type="text" class="validate" placeholder="">
+					<input name="modelos_disponibles" id="editar_modelos_disponibles" type="text" class="active" placeholder="">
 					<label for="editar_modelos_disponibles">Modelos disponibles</label>
 				</div>
 
 				<div class="input-field col s6">
-					<input name="cilindros" id="editar_cilindros" type="text" class="validate" placeholder="">
+					<input name="cilindros" id="editar_cilindros" type="text" class="active" placeholder="">
 					<label for="editar_cilindros">Cilindros</label>
 				</div>
 			</div>

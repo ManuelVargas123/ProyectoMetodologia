@@ -15,14 +15,14 @@ class CreateTrabajosTable extends Migration
     {
         Schema::create('trabajos', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->integer('empleado_id')->unsigned();
+            $table->increments('id')->unsigned();
+            $table->integer('empleado_id')->unsigned()->nullable();
             $table->foreign('empleado_id')->references('id')->on('empleados'); //No sé porque, pero, funcionó para
                                                                                //hacer una llave foránea 
-            $table->text('descripcion');
-            $table->date('fechaLlegada');
-            $table->date('fechaInicio');
-            $table->date('fechaFinal');
+            $table->text('descripcion')->nullable();
+            $table->date('fechaLlegada')->nullable();
+            $table->date('fechaInicio')->nullable();
+            $table->date('fechaFinal')->nullable();
             $table->timestamps();
         });
     }

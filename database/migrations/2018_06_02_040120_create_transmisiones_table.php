@@ -15,11 +15,12 @@ class CreateTransmisionesTable extends Migration
     {
         Schema::create('transmisiones', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->string('nombre');
             $table->string('modelo');
             $table->integer('cantidad');
             $table->string('marca');
+            $table->float('precio');
             $table->text('descripcion')->nullable();
             $table->text('modelosDisponibles');
             $table->string('palancaCambios');

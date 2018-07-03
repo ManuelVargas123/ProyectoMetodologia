@@ -15,12 +15,13 @@ class CreateAutopartesTable extends Migration
     {
         Schema::create('autopartes', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->string('parte');
             $table->string('modelo');
             $table->integer('cantidad');
             $table->string('marca');
-            $table->string('descripcion');
+            $table->float('precio');
+            $table->string('descripcion')->nullable();
             $table->text('modelosDisponibles');
             $table->string('palancaCambios')->nullable();
             $table->integer('cilindros')->nullable();

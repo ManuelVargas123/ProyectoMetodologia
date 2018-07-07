@@ -33,6 +33,7 @@
 			<th>Modelo</th>
 			<th>Cantidad</th>
 			<th>Marca</th>
+			<th>Costo</th>
 			<th>Descripción</th>
 			<th>Modelos disponibles</th>
 			<th>Palanca de Cambios</th>
@@ -44,12 +45,13 @@
 				<tr>
 					<td>{{ $autoparte->parte }}</td>
 					<td>{{ $autoparte->modelo }}</td>
-					<td>{{ $autoparte->cantidad }}</td>
-					<td>{{ $autoparte->marca }}</td>
-					<td>{{ $autoparte->descripcion }}</td>
-					<td>{{ $autoparte->modelosDisponibles }}</td>
-					<td>{{ $autoparte->palancaCambios }}</td>
-					<td>{{ $autoparte->cilindros }}</td>
+					<td style="width: 10px;">{{ $autoparte->cantidad }}</td>
+					<td style="width: 30px;">{{ $autoparte->marca }}</td>
+					<td style="width: 10px;">{{ $autoparte->costo }}</td>
+					<td style="width: 100px;">{{ $autoparte->descripcion }}</td>
+					<td style="width: 100px;">{{ $autoparte->modelosDisponibles }}</td>
+					<td style="width: 50px;">{{ $autoparte->palancaCambios }}</td>
+					<td style="width: 10px;">{{ $autoparte->cilindros }}</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
 							<a data-id="{{ $autoparte->id }}" class="modal-trigger" href="#modal_editar_autoparte"><i class="material-icons">edit</i></a>
@@ -91,6 +93,10 @@
 					<label for="marca">Marca</label>
 				</div>
 				<div class="input-field col s6">
+					<input name="costo" id="costo" type="number" min="0.00" max="1000000.00" step="0.01" class="active">
+					<label for="costo">Costo</label>
+				</div>
+				<div class="input-field col s6">
 					<input name="descripcion" id="descripcion" type="text" class="active">
 					<label for="descripcion">Descripción</label>
 				</div>
@@ -100,7 +106,7 @@
 				</div>
 					<div class="input-field col s6">
 					    <select name="palancaCambios">
-					      <option value="" disabled selected></option>
+					      <option value="" selected></option>
 					      <option value="Automatico">Automatico</option>
 					      <option value="Estandar">Estandar</option>
 					    </select>
@@ -141,6 +147,10 @@
 					<label for="editar_marca">Marca</label>
 				</div>
 				<div class="input-field col s6">
+					<input name="costo" id="editar_costo" type="number" min="0.00" max="1000000.00" step="0.01" class="active" placeholder="">
+					<label for="editar_costo">Costo</label>
+				</div>
+				<div class="input-field col s6">
 					<input name="descripcion" id="editar_descripcion" type="text" class="active" placeholder="">
 					<label for="editar_descripcion">Descripción</label>
 				</div>
@@ -150,7 +160,7 @@
 				</div>
 					<div class="input-field col s6">
 					    <select name="palancaCambios" id="editar_palancaCambios">
-					      <option value="" disabled selected></option>
+					      <option value=""></option>
 					      <option value="Automatico">Automatico</option>
 					      <option value="Estandar">Estandar</option>
 					    </select>
@@ -193,6 +203,7 @@
 					$('#editar_modelo').val(data['modelo']);
 					$('#editar_cantidad').val(data['cantidad']);
 					$('#editar_marca').val(data['marca']);
+					$('#editar_costo').val(data['costo']);
 					$('#editar_descripcion').val(data['descripcion']);
 					$('#editar_modelos_disponibles').val(data['modelos_disponibles']);
 					$('#editar_palancaCambios').val(data['palancaCambios']);

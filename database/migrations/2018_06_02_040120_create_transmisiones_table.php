@@ -20,7 +20,7 @@ class CreateTransmisionesTable extends Migration
             $table->string('modelo');
             $table->integer('cantidad');
             $table->string('marca');
-            $table->float('precio');
+            $table->float('costo');
             $table->text('descripcion')->nullable();
             $table->text('modelosDisponibles');
             $table->string('palancaCambios');

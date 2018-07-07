@@ -33,6 +33,7 @@ class MotoresController extends Controller
         $motor->modelo              = $request->modelo;
         $motor->cantidad            = $request->cantidad;
         $motor->marca               = $request->marca;
+        $motor->costo               = $request->costo;
         $motor->descripcion         = $request->descripcion;
         $motor->modelosDisponibles  = $request->modelos_disponibles;
         $motor->cilindros           = $request->cilindros;
@@ -90,6 +91,7 @@ class MotoresController extends Controller
             'modelo' => $motor->modelo,
             'cantidad' => $motor->cantidad,
             'marca' => $motor->marca,
+            'costo' => $motor->costo,
             'descripcion' => $motor->descripcion,
             'modelos_disponibles' => $motor->modelosDisponibles,
             'cilindros' => $motor->cilindros,
@@ -113,6 +115,7 @@ class MotoresController extends Controller
         $motor->modelo              = $request->modelo;
         $motor->cantidad            = $request->cantidad;
         $motor->marca               = $request->marca;
+        $motor->costo               = $request->costo;
         $motor->descripcion         = $request->descripcion;
         $motor->modelosDisponibles  = $request->modelos_disponibles;
         $motor->cilindros           = $request->cilindros;

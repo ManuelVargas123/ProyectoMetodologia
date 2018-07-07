@@ -18,6 +18,7 @@ class CreateEmpleadosTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('nombre');
             $table->string('primerApellido');
+            $table->string('telefono')->nullable();
             $table->timestamps();
         });
     }

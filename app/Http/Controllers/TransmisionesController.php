@@ -34,6 +34,7 @@ class TransmisionesController extends Controller
         $transmision->modelo              = $request->modelo;
         $transmision->cantidad            = $request->cantidad;
         $transmision->marca               = $request->marca;
+        $transmision->costo               = $request->costo;
         $transmision->descripcion         = $request->descripcion;
         $transmision->modelosDisponibles  = $request->modelos_disponibles;
         $transmision->palancaCambios      = $request->palanca_cambios ;
@@ -90,6 +91,7 @@ class TransmisionesController extends Controller
             'modelo' => $transmision->modelo,
             'cantidad' => $transmision->cantidad,
             'marca' => $transmision->marca,
+            'costo' => $transmision->costo,
             'descripcion' => $transmision->descripcion,
             'modelos_disponibles' => $transmision->modelosDisponibles,
             'palanca_cambios' => $transmision->palancaCambios ,
@@ -113,6 +115,7 @@ class TransmisionesController extends Controller
         $transmision->modelo              = $request->modelo;
         $transmision->cantidad            = $request->cantidad;
         $transmision->marca               = $request->marca;
+        $transmision->costo               = $request->costo;
         $transmision->descripcion         = $request->descripcion;
         $transmision->modelosDisponibles  = $request->modelos_disponibles;
         $transmision->palancaCambios      = $request->palanca_cambios;

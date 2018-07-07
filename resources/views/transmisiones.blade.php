@@ -33,6 +33,7 @@
 			<th>Modelo</th>
 			<th>Cantidad</th>
 			<th>Marca</th>
+			<th>Costo</th>
 			<th>Descripción</th>
 			<th>Modelos disponibles</th>
 			<th>Palanca de cambios</th>
@@ -45,8 +46,9 @@
 					<td>{{ $transmision->modelo }}</td>
 					<td>{{ $transmision->cantidad }}</td>
 					<td>{{ $transmision->marca }}</td>
+					<td>{{ $transmision->costo }}</td>
 					<td>{{ $transmision->descripcion }}</td>
-					<td>{{ $transmision->modelosDisponibles }}</td>
+					<td style="width: 120px;">{{ $transmision->modelosDisponibles }}</td>
 					<td>{{ $transmision->palancaCambios }}</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
@@ -87,6 +89,10 @@
 					<div class="input-field col s6">
 						<input name="marca" id="marca" type="text" class="active">
 						<label for="marca">Marca</label>
+					</div>
+					<div class="input-field col s6">
+						<input name="costo" id="costo" type="number" min="0.00" max="1000000.00" step="0.01" class="active">
+						<label for="costo">Costo</label>
 					</div>
 					<div class="input-field col s6">
 						<input name="descripcion" id="descripcion" type="text" class="active">
@@ -135,6 +141,10 @@
 				<div class="input-field col s6">
 					<input name="marca" id="editar_marca" type="text" class="active" placeholder="">
 					<label for="editar_marca">Marca</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="costo" id="editar_costo" type="number" min="0.00" max="1000000.00" step="0.01" class="active" placeholder="">
+					<label for="editar_costo">Costo</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="descripcion" id="editar_descripcion" type="text" class="active" placeholder="">
@@ -186,6 +196,7 @@
 					$('#editar_modelo').val(data['modelo']);
 					$('#editar_cantidad').val(data['cantidad']);
 					$('#editar_marca').val(data['marca']);
+					$('#editar_costo').val(data['costo']);
 					$('#editar_descripcion').val(data['descripcion']);
 					$('#editar_modelos_disponibles').val(data['modelos_disponibles']);
 

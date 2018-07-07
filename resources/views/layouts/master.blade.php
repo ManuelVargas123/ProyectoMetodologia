@@ -14,7 +14,8 @@
         <script src="{{ asset('js/jquery-2.1.1.min.js') }}"></script>
 
         <!-- Datatable -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.min.css') }}"/>
+        
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css') }}">
         <script type="text/javascript" charset="utf8" src="{{ asset('js/jquery.dataTables.js') }}"></script>
 
         <!-- Mensajes de alerta -->

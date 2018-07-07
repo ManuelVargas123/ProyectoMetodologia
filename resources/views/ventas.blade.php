@@ -81,7 +81,11 @@
 					<label for="apellido">Apellido paterno</label>
 				</div>
 				<div class="input-field col s6">
+<<<<<<< HEAD
 					<input name="telefono" id="telefono" type="number" class="active">
+=======
+					<input name="telefono" id="telefono" type="text" class="active">
+>>>>>>> ManuelInputsDinamicos
 					<label for="telefono">Telefono</label>
 				</div>
 				<div class="input-field col s6">
@@ -150,7 +154,11 @@
 					<label for="editar_apellido">Apellido paterno</label>
 				</div>
 				<div class="input-field col s6">
+<<<<<<< HEAD
 					<input name="telefono" id="editar_telefono" type="number" class="active" placeholder="">
+=======
+					<input name="telefono" id="editar_telefono" type="text" class="active" placeholder="">
+>>>>>>> ManuelInputsDinamicos
 					<label for="editar_telefono">Telefono</label>
 				</div>
 				<div class="input-field col s6">

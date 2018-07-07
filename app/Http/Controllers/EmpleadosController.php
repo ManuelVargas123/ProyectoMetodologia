@@ -42,6 +42,7 @@ class EmpleadosController extends Controller
         $empleado = new Empleado;
         $empleado->nombre = $request->nombre;
         $empleado->primerApellido = $request->primerApellido;
+        $empleado->telefono = $request->telefono;
         if($empleado->save()){
             return redirect()->back()->with('success', 'Has agregado un nuevo empleado correctamente');
         } else {
@@ -74,6 +75,7 @@ class EmpleadosController extends Controller
             'id' => $empleado->id,
             'nombre' => $empleado->nombre,
             'primerApellido' => $empleado->primerApellido,
+            'telefono' => $$empleado->telefono,
             'modificacion' => $empleado->updated_at
         ]);
     }
@@ -92,6 +94,7 @@ class EmpleadosController extends Controller
         $empleado = Empleado::find($id);
         $empleado->nombre = $request->nombre;
         $empleado->primerApellido = $request->primerApellido;
+        $empleado->telefono = $request->telefono;
         if($empleado->save()) {
             return redirect()->back()->with('success', 'Has editado un empleado correctamente');
         } else {

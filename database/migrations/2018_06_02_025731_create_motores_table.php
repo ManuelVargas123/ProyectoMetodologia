@@ -20,7 +20,11 @@ class CreateMotoresTable extends Migration
             $table->string('modelo');
             $table->integer('cantidad');
             $table->string('marca');
+<<<<<<< HEAD
             $table->float('precio');
+=======
+            $table->float('costo');
+>>>>>>> ManuelInputsDinamicos
             $table->string('descripcion')->nullable();
             $table->text('modelosDisponibles');
             $table->integer('cilindros');

@@ -25,6 +25,7 @@ class EmpleadosRequest extends FormRequest
     {
         return [
             'nombre' => 'required|string|max:255',
+            'telefono' => 'nullable|string|max:25',
             'primerApellido' => 'required|string|max:255'
         ];
     }

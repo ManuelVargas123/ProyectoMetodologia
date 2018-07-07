@@ -32,6 +32,7 @@
 			<th>Nombre</th>
 			<th>Apellido paterno</th>
 			<th>Fecha de agregado</th>
+			<th>Teléfono</th>
 			<th>Caja asignada</th>
 			<th></th>
 		</thead>
@@ -41,6 +42,7 @@
 					<td>{{ $empleado->nombre }}</td>
 					<td>{{ $empleado->primerApellido }}</td>
 					<td>{{ $empleado->created_at }}</td>
+					<td>{{ $empleado->telefono }}</td>
 					<td>{{ $empleado->caja_asignada }}</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
@@ -74,6 +76,10 @@
 					<input name="primerApellido" id="primerApellido" type="text" class="active">
 					<label for="primerApellido">Primer Apellido</label>
 				</div>
+				<div class="input-field col s6">
+					<input name="telefono" id="telefono" type="text" class="active">
+					<label for="telefono">Telefono</label>
+				</div>
 			</div>
 		</div>
 		<div class="modal-footer">
@@ -95,6 +101,10 @@
 				<div class="input-field col s6">
 					<input name="primerApellido" id="editar_primerApellido" type="text" class="active" placeholder="">
 					<label for="editar_primerApellido">Primer Apellido</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="telefono" id="editar_telefono" type="text" class="active" placeholder="">
+					<label for="editar_telefono">Telefono</label>
 				</div>
 			</div>
 		</div>
@@ -127,6 +137,7 @@
 					$('#editar_id').val(data['id']);
 					$('#editar_nombre').val(data['nombre']);
 					$('#editar_primerApellido').val(data['primerApellido']);
+					$('#editar_telefono').val(data['telefono']);
 				},
 				error: function(xhr, textStatus, errorThrown) {
 					console.log("Ocurrió un error.");

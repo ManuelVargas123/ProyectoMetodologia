@@ -26,7 +26,11 @@ class VentasRequest extends FormRequest
         return [
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
+<<<<<<< HEAD
             'telefono' => 'required|numeric',
+=======
+            'telefono' => 'required|string',
+>>>>>>> ManuelInputsDinamicos
             'descripcion' => 'nullable|string|max:20000',
             'costo' => 'required|numeric',
             'motor' => 'nullable|numeric',

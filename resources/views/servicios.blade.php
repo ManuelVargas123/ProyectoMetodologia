@@ -103,7 +103,11 @@
 						<label for="apellidoCliente">Apellido del Cliente</label>
 					</div>
 					<div class="input-field col s6">
+<<<<<<< HEAD
 						<input name="telCliente" id="telCliente" type="number" class="active">
+=======
+						<input name="telCliente" id="telCliente" type="text" class="active">
+>>>>>>> ManuelInputsDinamicos
 						<label for="telCliente">Telefono del Cliente</label>
 					</div>
 					<div class="input-field col s6">

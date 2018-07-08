@@ -14,8 +14,7 @@
 		      </ul>
 		    </div>
 		    <div class="card-content grey lighten-4">
-		      <div id="proximaCita"><b>Nombre:</b> {{ $proximaCita->nombreCliente }}</div>
-		      <div id="proximaCita"><b>Apellido:</b> {{ $proximaCita->apellidoCliente }}</div>
+		      <div id="proximaCita"><b>Nombre:</b> {{ $proximaCita->nombreCliente }} {{ $proximaCita->apellidoCliente }}</div>
 		      <div id="proximaCita"><b>Telefono:</b> {{ $proximaCita->telCliente }}</div>
 		      <div id="proximaCita"><b>Servicio realizado:</b> {{ $proximaCita->servicio }}</div>
 		      <div id="proximaCita"><b>Fecha estimada para siguiente cita:</b> {{ $proximaCita->fechaSiguiente }}</div>

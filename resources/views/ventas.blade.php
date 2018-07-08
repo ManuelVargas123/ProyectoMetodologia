@@ -74,7 +74,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<input name="nombre" id="nombre" type="text" class="active">
-					<label for="nombre">Nombre</label>
+					<label for="nombre">Nombre de Cliente</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="apellido" id="apellido" type="text" class="active">
@@ -143,7 +143,7 @@
 				<input id="editar_id" type="hidden" name="id" value="" />
 				<div class="input-field col s6">
 					<input name="nombre" id="editar_nombre" type="text" class="active" placeholder="">
-					<label for="editar_nombre">Nombre</label>
+					<label for="editar_nombre">Nombre del Cliente</label>
 				</div>
 				<div class="input-field col s6">
 					<input name="apellido" id="editar_apellido" type="text" class="active" placeholder="">

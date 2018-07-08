@@ -32,7 +32,13 @@
 						<td>Caja #{{ $caja_herramienta->id }}</td>
 						<td>{{ $caja_herramienta->propietario1 }}</td>
 						<td>{{ $caja_herramienta->propietario2 }}</td>
-						<td style="width: 380px;">{{ $caja_herramienta->herramientas }}</td>
+						<td style="width: 380px;">
+							@forelse($caja_herramienta->herramientas as $herramientas)
+								{{ $herramientas->nombre }} (<b>Marca:</b> {{ $herramientas->marca }}, <b>Cantidad:</b> {{ $herramientas->pivot->cantidad }})<br>
+							@empty
+								Ninguna
+							@endforelse
+						</td>
 						<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
 							<a data-id="{{ $caja_herramienta->id }}" class="modal-trigger" href="#modal_editar_caja"><i class="material-icons">edit</i></a>

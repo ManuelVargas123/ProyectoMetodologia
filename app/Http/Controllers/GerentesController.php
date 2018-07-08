@@ -16,7 +16,7 @@ class GerentesController extends Controller
      */
     public function index()
     {
-        $gerentes = User::where('is_admin', false)->get();
+        $gerentes = User::all();
         return view('gerentes', compact('gerentes'));
     }
 
@@ -42,6 +42,7 @@ class GerentesController extends Controller
         $gerente->name = $request->name;
         $gerente->primerApellido = $request->primerApellido;
         $gerente->email = $request->email;
+        $gerente->is_admin = isset($request->is_admin) ? true : false;
         $gerente->password = Hash::make($request->password);
         if($gerente->save()){
             return redirect()->back()->with('success', 'Has agregado un nuevo gerente correctamente');
@@ -77,6 +78,7 @@ class GerentesController extends Controller
             'name' => $gerente->name,
             'primerApellido' => $gerente->primerApellido,
             'email' => $gerente->email,
+            'is_admin' => $gerente->is_admin,
             //'password' => $gerente->password,
             'modificacion' => $gerente->updated_at
         ]);
@@ -96,6 +98,7 @@ class GerentesController extends Controller
         $gerente = User::find($id);
         $gerente->name = $request->name;
         $gerente->primerApellido = $request->primerApellido;
+        $gerente->is_admin = isset($request->is_admin) ? true : false;
         $gerente->email = $request->email;
         if($gerente->save()){
             return redirect()->back()->with('success', 'Has editado un nuevo gerente correctamente');
@@ -112,7 +115,7 @@ class GerentesController extends Controller
      */
     public function destroy($id)
     {
-        $gerente = Gerente::find($id); // Buscamos el registro
+        $gerente = User::find($id); // Buscamos el registro
         if($gerente->delete()) {   // Lo eliminamos
             return redirect()->back()->with('success', 'Has eliminado un gerente correctamente.');
         } else {

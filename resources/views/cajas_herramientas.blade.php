@@ -48,7 +48,7 @@
 							<form action="{{ route('caja_herramientas_destroy', $caja_herramienta->id) }}" method="POST">
 								@csrf
 								<input type="hidden" name="_method" value="delete" />
-								<button type="submit" name="button" style="border: 0; background: transparent; color: #2195d6; cursor: pointer;"><i class="material-icons">delete_forever</i></button>
+								<button type="submit" name="button" style="border: 0; background: transparent; color: #2195d6; cursor: pointer;" onclick="return confirm('¿Desea eliminar?')"><i class="material-icons">delete_forever</i></button>
 							</form>
 						</div>
 					</td>

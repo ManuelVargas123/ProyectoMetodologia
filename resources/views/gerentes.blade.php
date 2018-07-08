@@ -32,6 +32,7 @@
 			<th>Nombre</th>
 			<th>Apellido paterno</th>
 			<th>Correo electrónico</th>
+            <th>Rol</th>
 			<th></th>
 		</thead>
 		<tbody>
@@ -40,6 +41,11 @@
 					<td>{{ $gerente->name }}</td>
 					<td>{{ $gerente->primerApellido }}</td>
 					<td>{{ $gerente->email }}</td>
+                    @if($gerente->is_admin == 1)
+                        <td>Administrador</td>
+                    @else
+                        <td>Gerente</td>
+                    @endif
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
 							<a data-id="{{ $gerente->id }}" class="modal-trigger" href="#modal_editar_gerente"><i class="material-icons">edit</i></a>
@@ -49,7 +55,7 @@
 							<form action="{{ route('gerentes_destroy', $gerente->id) }}" method="POST">
 								@csrf
 								<input type="hidden" name="_method" value="delete" />
-								<button type="submit" name="button" style="border: 0; background: transparent; color: #2195d6; cursor: pointer;"><i class="material-icons">delete_forever</i></button>
+								<button type="submit" name="button" style="border: 0; background: transparent; color: #2195d6; cursor: pointer;" onclick="return confirm('¿Desea eliminar?')"><i class="material-icons">delete_forever</i></button>
 							</form>
 						</div>
 					</td>
@@ -84,11 +90,13 @@
                         <input name="password_confirmation" id="password-confirm" type="password" class="active">
                         <label for="password-confirm">Confirmar contraseña</label>
                     </div>
-                    <div class="form-check">
-                        <input name="is_admin" class="form-check-input" type="checkbox" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Register as an admin
-                            </label>
+                    <div class="input-field col s6">
+                        <p>
+                          <label>
+                            <input name="is_admin" type="checkbox" id="defaultCheck1">
+                            <span>¿El usuario será administrador?</span>
+                          </label>
+                        </p>
                     </div>
                 </div>
 
@@ -116,6 +124,14 @@
                     <div class="input-field col s6">
                         <input name="email" id="editar_email" type="email" class="active" placeholder="">
                         <label for="email">Correo electronico</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <p>
+                          <label>
+                            <input name="is_admin" type="checkbox" id="editar_defaultCheck1">
+                            <span>¿El usuario será administrador?</span>
+                          </label>
+                        </p>
                     </div>
                 </div>
 
@@ -150,6 +166,12 @@
 					$('#editar_name').val(data['name']);
 					$('#editar_primerApellido').val(data['primerApellido']);
 					$('#editar_email').val(data['email']);
+
+                    if(data.is_admin == 1)
+                        $('#editar_defaultCheck1').prop("checked",true);
+                    else
+                        $('#editar_defaultCheck1').prop("checked",false);
+
 				},
 				error: function(xhr, textStatus, errorThrown) {
 					console.log("Ocurrió un error.");

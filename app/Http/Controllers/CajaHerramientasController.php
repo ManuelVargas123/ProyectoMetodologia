@@ -42,23 +42,6 @@ class CajaHerramientasController extends Controller
             } else {
                 $caja->propietario2 = "Ninguno";
             }
-
-            //Esto es para saber las herramientas que tiene cada caja
-            if(count($caja->herramientas) == 0)
-                $caja->herramientas = "Ninguna";
-            else{
-                $json = $caja->herramientas;
-                $caja->herramientas = "";
-                for($i=0; $i<count($json); $i++)
-                {
-                    $caja->herramientas .= ' '.$json[$i]->nombre;
-                    $caja->herramientas .= '(';
-                    $caja->herramientas .= $json[$i]->marca; 
-                    $caja->herramientas .= ', ';
-                    $caja->herramientas .= $json[$i]->pivot->cantidad;
-                    $caja->herramientas .= '),';
-                }
-            }
         }
 
         return view('cajas_herramientas')->with([

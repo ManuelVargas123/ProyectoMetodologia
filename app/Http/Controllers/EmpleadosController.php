@@ -75,7 +75,7 @@ class EmpleadosController extends Controller
             'id' => $empleado->id,
             'nombre' => $empleado->nombre,
             'primerApellido' => $empleado->primerApellido,
-            'telefono' => $$empleado->telefono,
+            'telefono' => $empleado->telefono,
             'modificacion' => $empleado->updated_at
         ]);
     }

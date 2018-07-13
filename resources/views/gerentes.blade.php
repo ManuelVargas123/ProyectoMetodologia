@@ -82,11 +82,13 @@
                         <input name="email" id="email" type="email" class="active">
                         <label for="email">Correo electronico</label>
                     </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s6">   
+                        <i class="material-icons prefix" aria-hidden="true" onClick="viewPassword()">remove_red_eye</i>
                         <input name="password" id="password" type="password" class="active">
                         <label for="password">Contraseña</label>
-                    </div>
+                    </div> 
                     <div class="input-field col s6">
+                        <i class="material-icons prefix" aria-hidden="true" onClick="viewPassword2()">remove_red_eye</i>
                         <input name="password_confirmation" id="password-confirm" type="password" class="active">
                         <label for="password-confirm">Confirmar contraseña</label>
                     </div>
@@ -178,5 +180,24 @@
 				}
 			});
 		});
+
+        function viewPassword() {
+            // password-confirm
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        } 
+
+        function viewPassword2() {
+            var x = document.getElementById("password-confirm");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        } 
     </script>
 @endsection

@@ -128,6 +128,11 @@
         <!--  Scripts-->
         <script src="{{asset('js/materialize.min.js')}}"></script>
         <script type="text/javascript">
+            $(document).ready(function() {
+                M.updateTextFields();
+            });
+        </script>
+        <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function() {
                 //collapsible
                 var elems = document.querySelectorAll('.collapsible');

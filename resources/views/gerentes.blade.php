@@ -83,12 +83,12 @@
                         <label for="email">Correo electronico</label>
                     </div>
                     <div class="input-field col s6">   
-                        <i class="material-icons prefix" aria-hidden="true" onClick="viewPassword()">remove_red_eye</i>
+                        <i class="material-icons prefix" style="cursor: pointer;" aria-hidden="true" onClick="viewPassword()">remove_red_eye</i>
                         <input name="password" id="password" type="password" class="active">
                         <label for="password">Contraseña</label>
                     </div> 
                     <div class="input-field col s6">
-                        <i class="material-icons prefix" aria-hidden="true" onClick="viewPassword2()">remove_red_eye</i>
+                        <i class="material-icons prefix" style="cursor: pointer;" aria-hidden="true" onClick="viewPassword2()">remove_red_eye</i>
                         <input name="password_confirmation" id="password-confirm" type="password" class="active">
                         <label for="password-confirm">Confirmar contraseña</label>
                     </div>

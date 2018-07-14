@@ -13,9 +13,9 @@ class AddForeignKeyTable extends Migration
      */
     public function up()
     {
-       /* Schema::table('herramientas', function (Blueprint $table) {
-            $table->foreign('caja_id')->references('id')->on('caja_herramientas');
-        });*/
+       Schema::table('motores', function (Blueprint $table) {
+            $table->foreign('venta_id')->references('id')->on('ventas');
+        });
 
         Schema::table('caja_herramientas', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('empleados');
@@ -28,13 +28,13 @@ class AddForeignKeyTable extends Migration
             $table->foreign('autoparte_id')->references('id')->on('autopartes');
         });
 
-       /* Schema::table('historial', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::table('transmisiones', function (Blueprint $table) {
+            $table->foreign('venta_id')->references('id')->on('ventas');
         });
 
-        Schema::table('trabajos', function (Blueprint $table) {
-            $table->foreign('empleado_id')->references('id')->on('empleados');
-        });*/
+        Schema::table('autopartes', function (Blueprint $table) {
+            $table->foreign('venta_id')->references('id')->on('ventas');
+        });
     }
 
     /**

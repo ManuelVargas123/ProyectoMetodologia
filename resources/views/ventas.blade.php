@@ -36,6 +36,7 @@
 			<th>Costo total</th>
 			<th>Tipo de Moneda</th>
 			<th>Fecha de venta</th>
+			<th>Producto</th>
 			<th></th>
 		</thead>
 		<tbody>
@@ -48,6 +49,7 @@
 					<td>{{ $venta->costo }}</td>
 					<td>{{ $venta->moneda }}</td>
 					<td>{{ $venta->created_at }}</td>
+					<td>{{ $venta->motores }}</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
 							<a data-id="{{ $venta->id }}" class="modal-trigger" href="#modal_editar_venta"><i class="material-icons">edit</i></a>

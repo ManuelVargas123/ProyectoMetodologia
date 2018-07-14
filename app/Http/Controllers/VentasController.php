@@ -19,6 +19,7 @@ class VentasController extends Controller
     public function index()
     {
         $ventas = Ventas::all();
+        
         $motores = Motor::where('cantidad', '>', 0)->get();
         $motoresall = Motor::all();
         $transmisiones = Transmision::where('cantidad', '>', 0)->get();

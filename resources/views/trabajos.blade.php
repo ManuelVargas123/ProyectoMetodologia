@@ -39,7 +39,13 @@
 		<tbody>
 			@foreach($trabajos as $trabajo)
 				<tr>
-					<td>{{ $trabajo->empleado }}</td>
+					<td>
+						@forelse($trabajo->empleados as $empleado)
+							{{ $empleado->nombre }} {{ $empleado->primerApellido }}
+						@empty
+							Ninguno
+						@endforelse
+					</td>
 					<td>{{ $trabajo->descripcion }}</td>
 					<td>{{ $trabajo->fechaLlegada }}</td>
 					<td>{{ $trabajo->fechaInicio }}</td>
@@ -107,30 +113,31 @@
 		<div class="modal-content">
 			<h4>Editar Trabajo</h4>
 			<div class="row">
+				<input id="editar_id" type="hidden" name="id" value="">
 					<div class="input-field col s6">
 						<i class="material-icons prefix">account_circle</i>
-						<select name="editar_empleado">
+						<select name="empleado" id="editar_empleado">
 							<option value="" selected>Ninguno</option>
 							@foreach ($empleados as $empleado)
-								<option value="{{ $empleado->id }}">{{ $empleado->nombre }}</option>
+								<option value="{{ $empleado->id }}">{{ $empleado->nombre }} {{ $empleado->primerApellido }}</option>
 							@endforeach
 						</select>
 						<label>Trabajador</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="editar_descripcion" id="editar_descripcion" type="text" class="active">
+						<input name="descripcion" id="editar_descripcion" type="text" class="active">
 						<label for="editar_descripcion">Descripción</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="editar_fechaLlegada" id="editar_fechaLlegada" type="date" class="active">
+						<input name="fechaLlegada" id="editar_fechaLlegada" type="date" class="active">
 						<label for="editar_fechaLlegada">Fecha de Llegada</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="editar_fechaInicio" id="editar_fechaInicio" type="date" class="active">
+						<input name="fechaInicio" id="editar_fechaInicio" type="date" class="active">
 						<label for="editar_fechaInicio">Fecha de Inicio</label>
 					</div>
 					<div class="input-field col s6">
-						<input name="editar_fechaFinal" id="editar_fechaFinal" type="date" class="active">
+						<input name="fechaFinal" id="editar_fechaFinal" type="date" class="active">
 						<label for="editar_fechaFinal">Fecha de Finalización</label>
 					</div>
 			</div>
@@ -152,19 +159,29 @@
             $('.modal').modal(); // Inicializar Modal
 			$('.tooltipped').tooltip(); // Inicializar tooltips
         });
-        $('a[href$="modal_editar_servicio"]').click(function() {
+        $('a[href$="modal_editar_trabajo"]').click(function() {
 			$.ajax({
 				type: "POST",
 				headers: {
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 				},
-				url: '{{ route('servicios_edit') }}',
+				url: '{{ route('trabajos_edit') }}',
 				data: {"id": $(this).data('id')},
 				success: function(data) {
 					$('#editar_id').val(data['id']);
 
-					$('#editar_empleado').val(data['empleado']);
-					$('#editar_empleado').formSelect();
+					console.log(data.empleado.length);
+					if(data.empleado.length > 0)
+					{
+						$('#editar_empleado').val(data.empleado[0].empleado_id);
+						$('#editar_empleado').formSelect();
+					}
+					else
+					{
+						$('#editar_empleado').val("");
+						$('#editar_empleado').formSelect();
+					}
+
 
 					$('#editar_descripcion').val(data['descripcion']);
 					$('#editar_fechaLlegada').val(data['fechaLlegada']);

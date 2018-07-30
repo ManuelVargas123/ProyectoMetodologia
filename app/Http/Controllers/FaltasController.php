@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Empleado;
+use App\EmpleadoFalta;
 use App\Falta;
 
 class FaltasController extends Controller
@@ -11,17 +12,6 @@ class FaltasController extends Controller
     public function index()
     { 
         $faltas = Falta::get();
-        foreach ($faltas as $falta) 
-        {
-        	if(!empty($falta->empleado_id))
-        	{
-        		$falta->empleado = Empleado::where('id', $falta->empleado_id)->first()->nombre;
-        		$falta->empleado .= ' '. Empleado::where('id', $falta->empleado_id)->first()->primerApellido;
-        	}
-        	else
-        		$falta->empleado = "Ninguno";
-        }
-
         $empleados = Empleado::get();
         return view('faltas')->with([
         	'faltas' => $faltas,
@@ -32,7 +22,7 @@ class FaltasController extends Controller
 	public function store(Request $request)
     {
         $falta = new Falta;
-        $falta->empleado_id = $request->empleado;
+        //$falta->empleado_id = $request->empleado;
 
         if ($request->justificacion === "on") 
         	$falta->justificacion = 1;
@@ -43,6 +33,7 @@ class FaltasController extends Controller
         $falta->fecha = $request->fecha;
 
         if($falta->save()) { // Insertar el registro
+            $falta->empleados()->attach($request->empleado);
             return redirect()->back()->with('success', 'Has agregado una nueva falta correctamente.');
         } else {
             return redirect()->back()->with('error', 'Ocurrió un error al intentar agregar una falta, intentalo de nuevo.');
@@ -54,10 +45,11 @@ class FaltasController extends Controller
         $id = $request->id;
 
         $falta = Falta::find($id);
+        $empleados = EmpleadoFalta::select('empleado_id')->where('falta_id', $id)->get();
 
         return response()->json([
             'id' => $falta->id,
-            'empleado' => $falta->empleado_id,
+            'empleado' => $empleados,
             'justificacion' => $falta->justificacion,
             'razon' => $falta->razon,
             'fecha' => $falta->fecha
@@ -69,7 +61,6 @@ class FaltasController extends Controller
         $id = $request->id;
 
         $falta = Falta::find($id);
-        $falta->empleado_id = $request->empleado;
 
         if ($request->justificacion === "on") 
         	$falta->justificacion = 1;
@@ -80,6 +71,7 @@ class FaltasController extends Controller
         $falta->fecha = $request->fecha;
         
         if($falta->save()) { // Insertar el registro
+            $falta->empleados()->sync($request->empleado);
             return redirect()->back()->with('success', 'Has editado una falta correctamente.');
         } else {
             return redirect()->back()->with('error', 'Ocurrió un error al intentar editar una falta, intentalo de nuevo.');
@@ -89,6 +81,9 @@ class FaltasController extends Controller
     public function destroy($id)
     {
         $falta = Falta::find($id); // Buscamos el registro
+
+        $falta->empleados()->detach();
+
         if($falta->delete()) { // Lo eliminamos
             return redirect()->back()->with('success', 'Has eliminado una falta correctamente.');
         } else {

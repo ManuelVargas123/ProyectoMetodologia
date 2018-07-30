@@ -192,7 +192,6 @@
 					for (var i = 0; i < data.caja_herramientas.length; i++) 
 					{
 						var j = data.caja_herramientas[i].caja_id;
-						console.log(j);
 						$('#editar_caja_herramientas'+j).prop("checked",true);
 						$('#editar_cantidadCaja'+j).val(data.cantidadCaja[i].cantidad);
 					}

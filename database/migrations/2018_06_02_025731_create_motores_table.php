@@ -24,7 +24,7 @@ class CreateMotoresTable extends Migration
             $table->string('descripcion')->nullable();
             $table->text('modelosDisponibles');
             $table->integer('cilindros');
-            $table->integer('venta_id')->unsigned()->nullable();
+            //$table->integer('venta_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

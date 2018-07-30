@@ -171,6 +171,9 @@ class MotoresController extends Controller
         $historial->objeto .= " ". $motor->marca;
         $historial->save();
 
+        //Para eliminar de la tabla de relacion
+        $motor->ventas()->detach();
+
         if($motor->delete()) { // Lo eliminamos
             return redirect()->back()->with('success', 'Has eliminado un motor correctamente.');
         } else {

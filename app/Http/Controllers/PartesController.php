@@ -182,6 +182,10 @@ class PartesController extends Controller
         $historial->objeto .= " ". $autoparte->marca;
         $historial->save();
 
+        
+        //Para eliminar de la tabla de relacion
+        $autoparte->ventas()->detach();
+
         if($autoparte->delete()) { // Lo eliminamos
             return redirect()->back()->with('success', 'Has eliminado una autoparte correctamente.');
         } else {

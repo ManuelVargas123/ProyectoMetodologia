@@ -24,7 +24,7 @@ class CreateTransmisionesTable extends Migration
             $table->text('descripcion')->nullable();
             $table->text('modelosDisponibles');
             $table->string('palancaCambios');
-            $table->integer('venta_id')->unsigned()->nullable();
+           // $table->integer('venta_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

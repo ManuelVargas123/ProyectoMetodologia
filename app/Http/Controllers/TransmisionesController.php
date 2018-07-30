@@ -170,6 +170,9 @@ class TransmisionesController extends Controller
         $historial->objeto .= " ". $transmision->marca;
         $historial->save();
 
+        //Para eliminar de la tabla de relacion
+        $transmision->ventas()->detach();
+
         if($transmision->delete()) { // Lo eliminamos
             return redirect()->back()->with('success', 'Has eliminado una transmision correctamente.');
         } else {

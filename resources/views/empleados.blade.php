@@ -43,7 +43,13 @@
 					<td>{{ $empleado->primerApellido }}</td>
 					<td>{{ $empleado->created_at }}</td>
 					<td>{{ $empleado->telefono }}</td>
-					<td>{{ $empleado->caja_asignada }}</td>
+					<td>
+						@forelse($empleado->cajaHerramientas as $caja)
+							{{ $caja->id }}. 	
+						@empty
+							Ninguna
+						@endforelse
+					</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
 							<a data-id="{{ $empleado->id }}" class="modal-trigger" href="#modal_editar_empleado"><i class="material-icons">edit</i></a>

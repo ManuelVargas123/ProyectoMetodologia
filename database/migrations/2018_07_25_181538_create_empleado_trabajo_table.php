@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCajaHerramientasTable extends Migration
+class CreateEmpleadoTrabajoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateCajaHerramientasTable extends Migration
      */
     public function up()
     {
-        Schema::create('caja_herramientas', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('empleado_trabajo', function (Blueprint $table) {
             $table->increments('id');
-            //$table->integer('user_id')->unsigned()->nullable();
-            //$table->integer('user_id2')->unsigned()->nullable();
+            $table->integer('empleado_id')->unsigned();
+            $table->integer('trabajo_id')->unsigned();
+
+            $table->foreign('empleado_id')->references('id')->on('empleados');
+            $table->foreign('trabajo_id')->references('id')->on('trabajos');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateCajaHerramientasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('caja_herramientas');
+        Schema::dropIfExists('empleado_trabajo');
     }
 }

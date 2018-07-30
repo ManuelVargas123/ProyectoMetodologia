@@ -183,7 +183,6 @@ class HerramientasController extends Controller
         $herramienta->marca                 = $request->marca;
         $herramienta->nombre                = $request->nombre;
         $herramienta->descripcion           = $request->descripcion;
-       // $herramienta->caja_id               = $request->caja_herramientas;
 
         //Para la tabla de la relacion
         $cantidadCaja = $request->input('cantidadCaja'); // array de textbox
@@ -231,7 +230,6 @@ class HerramientasController extends Controller
         if($herramienta->save()) { // Insertar el registro
 
             //Para la tabla de la relacion
-            $herramienta_id = Herramienta::orderBy('id', 'DESC')->first()->id;
             if(!empty($cajas))
             {
                 $herramienta->cajaHerramientas()->detach();

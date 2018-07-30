@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Empleado; // Modelo
+use App\EmpleadoTrabajo;
 use App\Trabajo;
 
 class TrabajoController extends Controller
@@ -16,18 +17,6 @@ class TrabajoController extends Controller
     public function index()
     {
         $trabajos = Trabajo::all();
-
-        foreach ($trabajos as $trabajo) 
-        {
-        	if(!empty($trabajo->empleado_id))
-        	{
-        		$trabajo->empleado = Empleado::where('id', $trabajo->empleado_id)->first()->nombre;
-        		$trabajo->empleado .= ' '. Empleado::where('id', $trabajo->empleado_id)->first()->primerApellido;
-        	}
-        	else
-        		$trabajo->empleado = "Ninguno";
-        }
-
         $empleados = Empleado::all();
         return view('trabajos')->with([
             'trabajos' => $trabajos,
@@ -44,13 +33,15 @@ class TrabajoController extends Controller
     public function store(Request $request)
     {
         $trabajo = new Trabajo;
-        $trabajo->empleado_id = $request->empleado;
+
         $trabajo->descripcion = $request->descripcion;
         $trabajo->fechaLlegada = $request->fechaLlegada;
         $trabajo->fechaInicio = $request->fechaInicio;
         $trabajo->fechaFinal = $request->fechaFinal;
 
         if($trabajo->save()) { // Insertar el registro
+            $trabajo->empleados()->attach($request->empleado);
+
             return redirect()->back()->with('success', 'Has agregado un nuevo trabajo correctamente.');
         } else {
             return redirect()->back()->with('error', 'Ocurrió un error al intentar agregar un trabajo, intentalo de nuevo.');
@@ -80,9 +71,11 @@ class TrabajoController extends Controller
 
         $trabajo = Trabajo::find($id);
 
+        $empleados = EmpleadoTrabajo::select('empleado_id')->where('trabajo_id', $id)->get();
+
         return response()->json([
             'id' => $trabajo->id,
-            'empleado' => $trabajo->empleado_id,
+            'empleado' => $empleados,
             'descripcion' => $trabajo->descripcion,
             'fechaLlegada' => $trabajo->fechaLlegada,
             'fechaInicio' => $trabajo->fechaInicio,
@@ -102,13 +95,13 @@ class TrabajoController extends Controller
         $id = $request->id;
 
         $trabajo = Trabajo::find($id);
-        $trabajo->empleado_id = $request->empleado;
         $trabajo->descripcion = $request->descripcion;
         $trabajo->fechaLlegada = $request->fechaLlegada;
         $trabajo->fechaInicio = $request->fechaInicio;
         $trabajo->fechaFinal = $request->fechaFinal;
         
         if($trabajo->save()) { // Insertar el registro
+            $trabajo->empleados()->sync($request->empleado);
             return redirect()->back()->with('info', 'Has editado un trabajo correctamente.');
         } else {
             return redirect()->back()->with('error', 'Ocurrió un error al intentar editar un trabajo, intentalo de nuevo.');
@@ -124,6 +117,8 @@ class TrabajoController extends Controller
     public function destroy($id)
     {
         $trabajo = Trabajo::find($id); // Buscamos el registro
+        $trabajo->empleados()->detach();
+
         if($trabajo->delete()) { // Lo eliminamos
             return redirect()->back()->with('success', 'Has eliminado un trabajo correctamente.');
         } else {

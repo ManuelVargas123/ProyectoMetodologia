@@ -21,8 +21,7 @@
 		<table id="table_caja_herramientas" class="display striped responsive-table">
 			<thead>
 				<th>Caja</th>
-				<th>Propietario 1</th>
-				<th>Propietario 2</th>
+				<th>Propietario(s)</th>
 				<th>Herramientas</th>
 				<th></th>
 			</thead>
@@ -30,8 +29,14 @@
 				@foreach($caja_herramientas as $caja_herramienta)
 					<tr>
 						<td>Caja #{{ $caja_herramienta->id }}</td>
-						<td>{{ $caja_herramienta->propietario1 }}</td>
-						<td>{{ $caja_herramienta->propietario2 }}</td>
+						<td>
+							@forelse($caja_herramienta->empleados as $empleado)
+								{{ $empleado->nombre }} {{ $empleado->primerApellido }}
+								<br>
+							@empty
+								Ninguno
+							@endforelse
+						</td>
 						<td style="width: 380px;">
 							@forelse($caja_herramienta->herramientas as $herramientas)
 								{{ $herramientas->nombre }} (<b>Marca:</b> {{ $herramientas->marca }}, <b>Cantidad:</b> {{ $herramientas->pivot->cantidad }})<br>
@@ -66,7 +71,7 @@
 			<div class="row">
 				<div class="input-field col s6">
 					<i class="material-icons prefix">account_circle</i>
-					<select name="empleado1">
+					<select name="empleado1" style="overflow-y: scroll">
 						<option value="" selected>Ninguno</option>
 						@foreach ($empleados as $empleado)
 							<option value="{{ $empleado->id }}">{{ $empleado->nombre }} {{ $empleado->primerApellido }}</option>
@@ -103,7 +108,7 @@
 					<select name="empleado1" id="editar_caja_empleado1">
 						<option value="" selected>Ninguno</option>
 						@foreach ($empleados as $empleado)
-							<option value="{{ $empleado->id }}">{{ $empleado->nombre }}</option>
+							<option value="{{ $empleado->id }}">{{ $empleado->nombre }} {{ $empleado->primerApellido }}</option>
 						@endforeach
 					</select>
 					<label>Propietario 1</label>
@@ -113,7 +118,7 @@
 					<select name="empleado2" id="editar_caja_empleado2">
 						<option value="" selected>Ninguno</option>
 						@foreach ($empleados as $empleado)
-							<option value="{{ $empleado->id }}">{{ $empleado->nombre }}</option>
+							<option value="{{ $empleado->id }}">{{ $empleado->nombre }} {{ $empleado->primerApellido }}</option>
 						@endforeach
 					</select>
 					<label>Propietario 2</label>
@@ -148,11 +153,29 @@
 				success: function(data) {
 					$('#editar_caja_id').val(data['id']);
 
-					$('#editar_caja_empleado1').val(data['id_empleado1']);
-					$('#editar_caja_empleado1').formSelect();
+					if(data.empleados.length < 1)
+					{
+						$('#editar_caja_empleado1').val("");
+						$('#editar_caja_empleado1').formSelect();
+					} 
+					if (data.empleados.length < 2) {
+						$('#editar_caja_empleado2').val("");
+						$('#editar_caja_empleado2').formSelect();
+					}
 
-					$('#editar_caja_empleado2').val(data['id_empleado2']);
-					$('#editar_caja_empleado2').formSelect();
+					for (var i = 0; i < data.empleados.length; i++) {
+						if(i == 0)
+						{
+							$('#editar_caja_empleado1').val(data.empleados[i].empleado_id);
+							$('#editar_caja_empleado1').formSelect();
+						}
+						if(i == 1)
+						{
+							$('#editar_caja_empleado2').val(data.empleados[i].empleado_id);
+							$('#editar_caja_empleado2').formSelect();	
+						}
+					}
+
 				},
 				error: function(xhr, textStatus, errorThrown) {
 					console.log("Ocurrió un error.");

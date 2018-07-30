@@ -22,12 +22,7 @@ class CreateVentasTable extends Migration
             $table->string('descripcion')->nullable();
             $table->float('costo');
             $table->string('moneda');
-            $table->integer('motor_id')->unsigned()->nullable();
-            $table->integer('cantidadMotor');
-            $table->integer('transmision_id')->unsigned()->nullable();
-            $table->integer('cantidadTransmision');
-            $table->integer('autoparte_id')->unsigned()->nullable();
-            $table->integer('cantidadAutoparte');
+            
             $table->timestamps();
         });
     }

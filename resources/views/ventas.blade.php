@@ -30,24 +30,53 @@
 	<table id="table_ventas" class="display striped responsive-table">
 		<thead>
 			<th>Nombre del cliente</th>
-			<th>Apellido del cliente</th>
 			<th>Teléfono del cliente</th>
 			<th>Descripción</th>
 			<th>Costo total</th>
-			<th>Tipo de Moneda</th>
 			<th>Fecha de venta</th>
+			<th>Producto(s)</th>
 			<th></th>
 		</thead>
 		<tbody>
 			@foreach($ventas as $venta)
 				<tr>
-					<td>{{ $venta->nombre }}</td>
-					<td>{{ $venta->apellido }}</td>
+					<td>{{ $venta->nombre }} {{ $venta->apellido }}</td>
 					<td>{{ $venta->telefono }}</td>
 					<td>{{ $venta->descripcion }}</td>
-					<td>{{ $venta->costo }}</td>
-					<td>{{ $venta->moneda }}</td>
+					<td>{{ $venta->costo }} {{ $venta->moneda }}</td>
 					<td>{{ $venta->created_at }}</td>
+					<td>
+						@forelse($venta->motores as $motor)
+							<b>Motor:</b> {{ $motor->nombre }}
+							<br>
+							<b>Marca:</b> {{ $motor->marca }}
+							<br>
+							<b>Cantidad:</b> {{ $motor->pivot->cantidad }}
+							<br>
+						@empty
+
+						@endforelse
+						@forelse($venta->transmisiones as $transmision)
+							<b>Transmision:</b> {{ $transmision->nombre }}
+							<br>
+							<b>Marca:</b> {{ $transmision->marca }}
+							<br>
+							<b>Cantidad:</b> {{ $transmision->pivot->cantidad }}
+							<br>
+						@empty
+
+						@endforelse
+						@forelse($venta->autopartes as $autoparte)
+							<b>Autoparte:</b> {{ $autoparte->parte }}
+							<br>
+							<b>Marca:</b> {{ $autoparte->marca }}
+							<br>
+							<b>Cantidad:</b> {{ $autoparte->pivot->cantidad }}
+							<br>
+						@empty
+
+						@endforelse
+					</td>
 					<td style="min-width: 60px;">
 						<div class="tooltipped" data-position="top" data-tooltip="Editar" style="display: inline-block;">
 							<a data-id="{{ $venta->id }}" class="modal-trigger" href="#modal_editar_venta"><i class="material-icons">edit</i></a>
@@ -114,6 +143,10 @@
 					<label>Motor</label>
 				</div>
 				<div class="input-field col s6">
+					<input name="cantidadMotor" id="cantidadMotor" type="number" min="0" step="1" class="active">
+					<label for="cantidadMotor">Cantidad del Motor</label>
+				</div>
+				<div class="input-field col s6">
 					<select name="transmision">
 						<option value="" selected>Ninguno</option>
 						@foreach ($transmisiones as $transmision)
@@ -123,6 +156,10 @@
 					<label>Transmisión</label>
 				</div>
 				<div class="input-field col s6">
+					<input name="cantidadTransmision" id="cantidadTransmision" type="number" min="0" step="1" class="active">
+					<label for="cantidadTransmision">Cantidad de la Transmision</label>
+				</div>
+				<div class="input-field col s6">
 					<select name="autoparte">
 						<option value="" selected>Ninguno</option>
 						@foreach ($autopartes as $autoparte)
@@ -130,6 +167,10 @@
 						@endforeach
 					</select>
 					<label>Autoparte</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="cantidadAutoparte" id="cantidadAutoparte" type="number" min="0" step="1" class="active">
+					<label for="cantidadAutoparte">Cantidad de la Autoparte</label>
 				</div>
 			</div>
 		</div>
@@ -179,12 +220,16 @@
 				</div>
 				<div class="input-field col s6">
 					<select name="motor" id="editar_motor">
-						<option value="" selected>Ninguno</option>
+						<option value="" >Ninguno</option>
 						@foreach ($motoresall as $motor)
 							<option value="{{ $motor->id }}">{{ $motor->nombre." ".$motor->modelo }}</option>
 						@endforeach
 					</select>
 					<label>Motor</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="cantidadMotor" id="editar_cantidadMotor" type="number" min="0" step="1" class="active">
+					<label for="editar_cantidadMotor">Cantidad del Motor</label>
 				</div>
 				<div class="input-field col s6">
 					<select name="transmision" id="editar_transmision">
@@ -196,6 +241,10 @@
 					<label>Transmisión</label>
 				</div>
 				<div class="input-field col s6">
+					<input name="cantidadTransmision" id="editar_cantidadTransmision" type="number" min="0" step="1" class="active">
+					<label for="editar_cantidadTransmision">Cantidad de la Transmision</label>
+				</div>
+				<div class="input-field col s6">
 					<select name="autoparte" id="editar_autoparte">
 						<option value="" selected>Ninguno</option>
 						@foreach ($autopartesall as $autoparte)
@@ -203,6 +252,10 @@
 						@endforeach
 					</select>
 					<label>Autoparte</label>
+				</div>
+				<div class="input-field col s6">
+					<input name="cantidadAutoparte" id="editar_cantidadAutoparte" type="number" min="0" step="1" class="active">
+					<label for="editar_cantidadAutoparte">Cantidad de la Autoparte</label>
 				</div>
 			</div>
 		</div>
@@ -233,6 +286,8 @@
 				url: '{{ route('ventas_edit') }}',
 				data: {"id": $(this).data('id')},
 				success: function(data) {
+					document.getElementById('modal_editar_venta').reset();
+
 					$('#editar_id').val(data['id']);
 					$('#editar_nombre').val(data['nombre']);
 					$('#editar_apellido').val(data['apellido']);
@@ -242,15 +297,31 @@
 
 					$('#editar_moneda').val(data['moneda']);
 					$('#editar_moneda').formSelect();
+					
+					if(data.id_motor.length > 0)
+					{		
+						$('#editar_cantidadMotor').val(data['cantidadMotor'][0].cantidad);
 
-					$('#editar_motor').val(data['id_motor']);
-					$('#editar_motor').formSelect();
+						$('#editar_motor').val(data.id_motor[0].motor_id);
+						$('#editar_motor').formSelect();
+					}
 
-					$('#editar_transmision').val(data['id_transmision']);
-					$('#editar_transmision').formSelect();
+					if(data.id_transmision.length > 0)
+					{
+						$('#editar_cantidadTransmision').val(data['cantidadTransmision'][0].cantidad);
 
-					$('#editar_autoparte').val(data['id_autoparte']);
-					$('#editar_autoparte').formSelect();
+						$('#editar_transmision').val(data.id_transmision[0].transmision_id);
+						$('#editar_transmision').formSelect();
+						
+					}
+
+					if(data.id_autoparte.length > 0)
+					{
+						$('#editar_cantidadAutoparte').val(data['cantidadAutoparte'][0].cantidad);
+
+						$('#editar_autoparte').val(data.id_autoparte[0].autoparte_id);
+						$('#editar_autoparte').formSelect();
+					}
 				},
 				error: function(xhr, textStatus, errorThrown) {
 					console.log("Ocurrió un error.");

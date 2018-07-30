@@ -15,7 +15,7 @@ class CreateFaltasTable extends Migration
     {
         Schema::create('faltas', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer('empleado_id');
+            //$table->integer('empleado_id');
             $table->boolean('justificacion')->default(false);
             $table->string('razon');
             $table->date('fecha');

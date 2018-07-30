@@ -38,7 +38,12 @@
 		<tbody>
 			@foreach($faltas as $falta)
 				<tr>
-					<td>{{ $falta->empleado }}</td>
+					<td>
+						@forelse($falta->empleados as $empleado)
+							{{ $empleado->nombre }} {{ $empleado->primerApellido }}
+						@empty
+						@endforelse
+					</td>
 					@if($falta->justificacion == 1)
 						<td>Sí</td>
 					@else
@@ -165,7 +170,9 @@
 				data: {"id": $(this).data('id')},
 				success: function(data) {
 					$('#editar_id').val(data['id']);
-					$('#editar_empleado').val(data['empleado']);
+
+					console.log(data.empleado[0].empleado_id);
+					$('#editar_empleado').val(data.empleado[0].empleado_id);
 					$('#editar_empleado').formSelect();
 
 					if(data.justificacion == 1)

@@ -44,6 +44,7 @@ class PartesController extends Controller
         $autoparte->cantidad = $request->cantidad;
         $autoparte->marca = $request->marca;
         $autoparte->costo = $request->costo;
+        $autoparte->moneda = $request->moneda;
         $autoparte->descripcion = $request->descripcion;
         $autoparte->modelosDisponibles = $request->modelos_disponibles;
         $autoparte->palancaCambios = $request->palancaCambios;
@@ -102,6 +103,7 @@ class PartesController extends Controller
             'cantidad' => $autoparte->cantidad,
             'marca' => $autoparte->marca,
             'costo' => $autoparte->costo,
+            'moneda' => $autoparte->moneda,
             'descripcion' => $autoparte->descripcion,
             'modelos_disponibles' => $autoparte->modelosDisponibles,
             'palancaCambios' => $autoparte->palancaCambios,
@@ -127,6 +129,7 @@ class PartesController extends Controller
         $autoparte->cantidad = $request->cantidad;
         $autoparte->marca = $request->marca;
         $autoparte->costo = $request->costo;
+        $autoparte->moneda = $request->moneda;
         $autoparte->descripcion = $request->descripcion;
         $autoparte->modelosDisponibles = $request->modelos_disponibles;
         $autoparte->palancaCambios = $request->palancaCambios;

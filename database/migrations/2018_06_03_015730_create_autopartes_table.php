@@ -21,11 +21,11 @@ class CreateAutopartesTable extends Migration
             $table->integer('cantidad');
             $table->string('marca');
             $table->float('costo');
+            $table->string('moneda');
             $table->string('descripcion')->nullable();
             $table->text('modelosDisponibles');
             $table->string('palancaCambios')->nullable();
             $table->integer('cilindros')->nullable();
-            //$table->integer('venta_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

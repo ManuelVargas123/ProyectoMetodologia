@@ -34,6 +34,7 @@ class MotoresController extends Controller
         $motor->cantidad            = $request->cantidad;
         $motor->marca               = $request->marca;
         $motor->costo               = $request->costo;
+        $motor->moneda              = $request->moneda;
         $motor->descripcion         = $request->descripcion;
         $motor->modelosDisponibles  = $request->modelos_disponibles;
         $motor->cilindros           = $request->cilindros;
@@ -92,6 +93,7 @@ class MotoresController extends Controller
             'cantidad' => $motor->cantidad,
             'marca' => $motor->marca,
             'costo' => $motor->costo,
+            'moneda' => $motor->moneda,
             'descripcion' => $motor->descripcion,
             'modelos_disponibles' => $motor->modelosDisponibles,
             'cilindros' => $motor->cilindros,
@@ -106,7 +108,7 @@ class MotoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(MotorRequest $request)
     {
         $id = $request->id;
 
@@ -116,6 +118,7 @@ class MotoresController extends Controller
         $motor->cantidad            = $request->cantidad;
         $motor->marca               = $request->marca;
         $motor->costo               = $request->costo;
+        $motor->moneda              = $request->moneda;
         $motor->descripcion         = $request->descripcion;
         $motor->modelosDisponibles  = $request->modelos_disponibles;
         $motor->cilindros           = $request->cilindros;

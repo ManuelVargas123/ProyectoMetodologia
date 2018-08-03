@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Empleado;
 use App\EmpleadoFalta;
 use App\Falta;
+use App\Http\Requests\FaltasRequest;
 
 class FaltasController extends Controller
 {
@@ -19,7 +20,7 @@ class FaltasController extends Controller
         ]);
     }
 
-	public function store(Request $request)
+	public function store(FaltasRequest $request)
     {
         $falta = new Falta;
         //$falta->empleado_id = $request->empleado;
@@ -56,7 +57,7 @@ class FaltasController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(FaltasRequest $request)
     {
         $id = $request->id;
 

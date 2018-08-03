@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Gasto;
+use App\Http\Requests\GastosRequest;
 
 class GastosController extends Controller
 {
@@ -13,7 +14,7 @@ class GastosController extends Controller
         return view('gastos', compact('gastos'));
     }
 
-	public function store(Request $request)
+	public function store(GastosRequest $request)
     {
         $gasto = new Gasto;
         $gasto->precio = $request->precio;
@@ -43,7 +44,7 @@ class GastosController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(GastosRequest $request)
     {
         $id = $request->id;
 

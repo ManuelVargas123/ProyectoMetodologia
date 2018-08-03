@@ -35,6 +35,7 @@ class TransmisionesController extends Controller
         $transmision->cantidad            = $request->cantidad;
         $transmision->marca               = $request->marca;
         $transmision->costo               = $request->costo;
+        $transmision->moneda              = $request->moneda;
         $transmision->descripcion         = $request->descripcion;
         $transmision->modelosDisponibles  = $request->modelos_disponibles;
         $transmision->palancaCambios      = $request->palanca_cambios ;
@@ -92,6 +93,7 @@ class TransmisionesController extends Controller
             'cantidad' => $transmision->cantidad,
             'marca' => $transmision->marca,
             'costo' => $transmision->costo,
+            'moneda' => $transmision->moneda,
             'descripcion' => $transmision->descripcion,
             'modelos_disponibles' => $transmision->modelosDisponibles,
             'palanca_cambios' => $transmision->palancaCambios ,
@@ -106,7 +108,7 @@ class TransmisionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(TransmisionRequest $request)
     {
         $id = $request->id;
 
@@ -116,6 +118,7 @@ class TransmisionesController extends Controller
         $transmision->cantidad            = $request->cantidad;
         $transmision->marca               = $request->marca;
         $transmision->costo               = $request->costo;
+        $transmision->moneda              = $request->moneda;
         $transmision->descripcion         = $request->descripcion;
         $transmision->modelosDisponibles  = $request->modelos_disponibles;
         $transmision->palancaCambios      = $request->palanca_cambios;

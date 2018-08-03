@@ -29,9 +29,13 @@ class VentasRequest extends FormRequest
             'telefono' => 'required|string',
             'descripcion' => 'nullable|string|max:20000',
             'costo' => 'required|numeric',
+            'moneda' => 'required|string',
             'motor' => 'nullable|numeric',
             'transmision' => 'nullable|numeric',
             'autoparte' => 'nullable|numeric',
+            'cantidadMotor' => 'nullable|integer',
+            'cantidadTransmision' => 'nullable|integer',
+            'cantidadAutoparte' => 'nullable|integer'
         ];
     }
 }

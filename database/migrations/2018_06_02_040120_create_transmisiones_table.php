@@ -21,10 +21,10 @@ class CreateTransmisionesTable extends Migration
             $table->integer('cantidad');
             $table->string('marca');
             $table->float('costo');
+            $table->string('moneda');
             $table->text('descripcion')->nullable();
             $table->text('modelosDisponibles');
             $table->string('palancaCambios');
-           // $table->integer('venta_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

@@ -69,7 +69,6 @@ class HerramientasController extends Controller
         $herramienta->marca                 = $request->marca;
         $herramienta->nombre                = $request->nombre;
         $herramienta->descripcion           = $request->descripcion;
-        //$herramienta->caja_id               = $request->caja_herramientas;
 
         //Informacion del usuario
         $usuario = auth()->user();

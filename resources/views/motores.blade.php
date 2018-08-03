@@ -46,7 +46,7 @@
 					<td>{{ $motor->modelo }}</td>
 					<td>{{ $motor->cantidad }}</td>
 					<td>{{ $motor->marca }}</td>
-					<td>{{ $motor->costo }}</td>
+					<td>{{ $motor->costo }} {{ $motor->moneda }}</td>
 					<td>{{ $motor->descripcion }}</td>
 					<td>{{ $motor->modelosDisponibles }}</td>
 					<td>{{ $motor->cilindros }}</td>
@@ -95,6 +95,17 @@
 =======
 					<input name="costo" id="costo" type="number" min="0.00" max="1000000.00" step="0.01" class="active">
 					<label for="costo">Costo</label>
+				</div>
+				<div class="input-field col s6">
+<<<<<<< HEAD
+>>>>>>> ManuelInputsDinamicos
+=======
+					<select name="moneda">
+					    <option value="" disabled selected>Elija el Tipo de Moneda</option>
+					    <option value="MXN">MXN</option>
+					    <option value="USD">USD</option>
+					</select>
+					<label>Tipo de Moneda</label>
 				</div>
 				<div class="input-field col s6">
 >>>>>>> ManuelInputsDinamicos
@@ -147,6 +158,17 @@
 					<label for="editar_costo">Costo</label>
 				</div>
 				<div class="input-field col s6">
+<<<<<<< HEAD
+>>>>>>> ManuelInputsDinamicos
+=======
+				    <select name="moneda" id="editar_moneda">
+				      <option value="" disabled selected>Elija el Tipo de Moneda</option>
+				      <option value="MXN">MXN</option>
+				      <option value="USD">USD</option>
+				    </select>
+				    <label for="editar_moneda">Tipo de Moneda</label>
+				</div>
+				<div class="input-field col s6">
 >>>>>>> ManuelInputsDinamicos
 					<input name="descripcion" id="editar_descripcion" type="text" class="active" placeholder="">
 					<label for="editar_descripcion">Descripción</label>
@@ -194,6 +216,10 @@
 					$('#editar_cantidad').val(data['cantidad']);
 					$('#editar_marca').val(data['marca']);
 					$('#editar_costo').val(data['costo']);
+
+					$('#editar_moneda').val(data['moneda']);
+					$('#editar_moneda').formSelect();
+
 					$('#editar_descripcion').val(data['descripcion']);
 					$('#editar_modelos_disponibles').val(data['modelos_disponibles']);
 					$('#editar_cilindros').val(data['cilindros']);

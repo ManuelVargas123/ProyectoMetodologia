@@ -212,7 +212,7 @@
 				</div>
 				<div class="input-field col s6">
 				    <select name="moneda" id="editar_moneda">
-				      <option value="" disabled selected>Elija el Tipo de Moneda</option>
+				      <option value="">Elija el Tipo de Moneda</option>
 				      <option value="MXN">MXN</option>
 				      <option value="USD">USD</option>
 				    </select>
@@ -312,7 +312,6 @@
 
 						$('#editar_transmision').val(data.id_transmision[0].transmision_id);
 						$('#editar_transmision').formSelect();
-						
 					}
 
 					if(data.id_autoparte.length > 0)

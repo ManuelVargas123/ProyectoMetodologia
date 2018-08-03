@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Empleado; // Modelo
 use App\EmpleadoTrabajo;
 use App\Trabajo;
+use App\Http\Requests\TrabajoRequest;
 
 class TrabajoController extends Controller
 {
@@ -30,7 +31,7 @@ class TrabajoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TrabajoRequest $request)
     {
         $trabajo = new Trabajo;
 
@@ -90,7 +91,7 @@ class TrabajoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(TrabajoRequest $request)
     {
         $id = $request->id;
 

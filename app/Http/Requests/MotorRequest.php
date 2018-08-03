@@ -28,6 +28,7 @@ class MotorRequest extends FormRequest
             'modelo' => 'required|string|max:255',
             'cantidad' => 'required|integer|max:99999',
             'marca' => 'required|string|max:255',
+            'costo' => 'required|numeric',
             'descripcion' => 'string|nullable|max:20000',
             'modelos_disponibles' => 'required|string|max:20000',
             'cilindros' => 'required|digits_between:0,8'

@@ -24,12 +24,15 @@ class CreateAutopartesTable extends Migration
             $table->float('precio');
 =======
             $table->float('costo');
+<<<<<<< HEAD
+>>>>>>> ManuelInputsDinamicos
+=======
+            $table->string('moneda');
 >>>>>>> ManuelInputsDinamicos
             $table->string('descripcion')->nullable();
             $table->text('modelosDisponibles');
             $table->string('palancaCambios')->nullable();
             $table->integer('cilindros')->nullable();
-            //$table->integer('venta_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Http\Requests\GerentesRequest;
+use App\Http\Requests\GerenteRequestEdit;
 
 class GerentesController extends Controller
 {
@@ -96,6 +97,13 @@ class GerentesController extends Controller
         $id = $request->id;
 
         $gerente = User::find($id);
+
+        if(strcmp($request->email, $gerente->email) !== 0){
+            $email = User::where('email', $request->email)->get();
+            if (count($email) > 0) 
+                return redirect()->back()->with('error', 'El correo ya esta registrado');
+        }
+
         $gerente->name = $request->name;
         $gerente->primerApellido = $request->primerApellido;
         $gerente->is_admin = isset($request->is_admin) ? true : false;

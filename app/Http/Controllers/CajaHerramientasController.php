@@ -44,6 +44,7 @@ class CajaHerramientasController extends Controller
     public function store(Request $request)
     {
         $cajaHerramienta = new CajaHerramienta;
+        $cajaHerramienta->notas = $request->notas;
 
         //Informacion del usuario
         $usuario = auth()->user();
@@ -106,7 +107,8 @@ class CajaHerramientasController extends Controller
 
         return response()->json([
             'id' => $cajaHerramienta->id,
-            'empleados' => $empleados
+            'empleados' => $empleados,
+            'notas' => $cajaHerramienta->notas
         ]);
     }
     /**
@@ -121,6 +123,7 @@ class CajaHerramientasController extends Controller
         $id = $request->id;
 
         $cajaHerramienta = CajaHerramienta::find($id);
+        $cajaHerramienta->notas = $request->notas;
 
         //Informacion del usuario
         $usuario = auth()->user();

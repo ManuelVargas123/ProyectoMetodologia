@@ -24,7 +24,7 @@ class TrabajoRequest extends FormRequest
     public function rules()
     {
         return [
-            'empleado' => 'required|numeric',
+            'empleado' => 'nullable|numeric',
             'descripcion' => 'nullable|string|max:20000',
             'fechaLlegada' => 'nullable|date',
             'fechaInicio' => 'nullable|date',

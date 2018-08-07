@@ -22,6 +22,7 @@
 			<thead>
 				<th>Caja</th>
 				<th>Propietario(s)</th>
+				<th>Notas</th>
 				<th>Herramientas</th>
 				<th></th>
 			</thead>
@@ -36,6 +37,9 @@
 							@empty
 								Ninguno
 							@endforelse
+						</td>
+						<td>
+							{{ $caja_herramienta->notas }}
 						</td>
 						<td style="width: 380px;">
 							@forelse($caja_herramienta->herramientas as $herramientas)
@@ -89,6 +93,10 @@
 					</select>
 					<label>Propietario 2</label>
 				</div>
+				<div class="input-field col s12">
+					<input name="notas" id="notas" type="text" class="active">
+					<label for="notas">Notas</label>
+				</div>
 			</div>
 		</div>
 		<div class="modal-footer">
@@ -123,6 +131,10 @@
 					</select>
 					<label>Propietario 2</label>
 				</div>
+				<div class="input-field col s12">
+					<input name="notas" id="editar_notas" type="text" class="active">
+					<label for="editar_notas">Notas</label>
+				</div>
 			</div>
 		</div>
 		<div class="modal-footer">
@@ -152,6 +164,7 @@
 				data: {"id": $(this).data('id')},
 				success: function(data) {
 					$('#editar_caja_id').val(data['id']);
+					$('#editar_notas').val(data['notas']);	
 
 					if(data.empleados.length < 1)
 					{

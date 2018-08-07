@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="shortcut icon" href="/favicon.png">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-        <title>Taller Andrés</title>
+        <div><link rel="shortcut icon" href="/favicon.png">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+            <title>Taller Andrés</title>
+            
+            <!-- CSS Materialize -->
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}"> <!-- Con asset, laravel va a la carpeta 'public' y busca la ruta dada -->
+            
+            <!-- JQuery -->
+            <script src="{{ asset('js/jquery-2.1.1.min.js') }}"></script>
+            
+            <!-- Datatable -->
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css') }}">
+            <script type="text/javascript" charset="utf8" src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+            <!-- Datatable Responsive -->
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.dataTables.min.css') }}">
+            <script type="text/javascript" charset="utf8" src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
 
-        <!-- CSS Materialize -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}"> <!-- Con asset, laravel va a la carpeta 'public' y busca la ruta dada -->
-
-        <!-- JQuery -->
-        <script src="{{ asset('js/jquery-2.1.1.min.js') }}"></script>
-
-        <!-- Datatable -->
-        
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css') }}">
-        <script type="text/javascript" charset="utf8" src="{{ asset('js/jquery.dataTables.js') }}"></script>
-
-        <!-- Mensajes de alerta -->
-        <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
-        <script src="{{ asset('js/toastr.min.js') }}" charset="utf-8"></script>
-
-        @yield('header')
+            <!-- Mensajes de alerta -->
+            <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+            <script src="{{ asset('js/toastr.min.js') }}" charset="utf-8"></script>
+            
+            @yield('header')</div>
     </head>
 
     <body background="{{asset('img/background.png')}}">
@@ -63,12 +65,12 @@
         </ul>
 
         <ul id="dropdown7" class="dropdown-content">
-             <li><a href="historial"><i class="material-icons left">assignment_ind</i>Empleados</a></li>
-            <li><a href="gerentes"><i class="material-icons left">event_busy</i>Faltas</a></li>
+             <li><a href="empleados"><i class="material-icons left">assignment_ind</i>Empleados</a></li>
+            <li><a href="faltas"><i class="material-icons left">event_busy</i>Faltas</a></li>
         </ul>
 
         <ul id="dropdown8" class="dropdown-content">
-             <li><a href="empleados"><i class="material-icons left">assignment_ind</i>Empleados</a></li>
+            <li><a href="empleados"><i class="material-icons left">assignment_ind</i>Empleados</a></li>
             <li><a href="faltas"><i class="material-icons left">event_busy</i>Faltas</a></li>
         </ul>
 
@@ -103,10 +105,11 @@
 
         <ul id="mobile-demo" class="sidenav">
             <li><a href="/" style="margin-right: 10px;"><i class="material-icons">home</i>Inicio</a></li>
-            <li><a href="empleados" style="margin-right: 10px;"><i  class="material-icons left">person</i>Empleados</a></li>
+            <li><a href="trabajos" style="margin-right: 10px;"><i class="material-icons left">assignment_ind</i>Trabajos</a></li>
+            <li><a class="dropdown-trigger" href="#" data-target="dropdown7" style="margin-right: 10px;"><i class="material-icons left">person</i>Empleados<i class="material-icons right">arrow_drop_down</i></a></li>
             @isAdmin
-            <li><a class="dropdown-trigger" href="#" data-target="dropdown5" style="margin-right: 10px; width: 95%;"><i class="material-icons left">verified_user</i>Admin<i class="material-icons right">arrow_drop_down</i></a></li>
-            <li><a class="dropdown-trigger" href="#" data-target="dropdown3" style="margin-right: 10px;"><i class="material-icons">monetization_on</i>Ganancias<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger" href="#" data-target="dropdown5" style="margin-right: 10px;"><i class="material-icons left">verified_user</i>Admin<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger" href="#" data-target="dropdown3" style="margin-right: 10px;"><i class="material-icons left">monetization_on</i>Finanzas<i class="material-icons right">arrow_drop_down</i></a></li>
             @endisAdmin
                 <!-- Dropdown Trigger -->
                 <li><a class="dropdown-trigger" href="#" data-target="dropdown1" style="margin-right: 10px;"><i class="material-icons">build</i>Inventario<i class="material-icons right">arrow_drop_down</i></a></li>

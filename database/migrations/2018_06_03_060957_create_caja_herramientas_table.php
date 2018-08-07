@@ -16,8 +16,7 @@ class CreateCajaHerramientasTable extends Migration
         Schema::create('caja_herramientas', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            //$table->integer('user_id')->unsigned()->nullable();
-            //$table->integer('user_id2')->unsigned()->nullable();
+            $table->text('notas')->nullable();
             $table->timestamps();
         });
     }

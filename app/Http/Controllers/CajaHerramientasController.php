@@ -8,6 +8,8 @@ use App\Historial;
 use App\HerramientaEnCaja;
 use App\EmpleadoCaja;
 
+use App\Http\Requests\CajaRequest;
+
 class CajaHerramientasController extends Controller
 {
     /**
@@ -41,7 +43,7 @@ class CajaHerramientasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CajaRequest $request)
     {
         $cajaHerramienta = new CajaHerramienta;
         $cajaHerramienta->notas = $request->notas;
@@ -124,6 +126,40 @@ class CajaHerramientasController extends Controller
 
         $cajaHerramienta = CajaHerramienta::find($id);
         $cajaHerramienta->notas = $request->notas;
+
+        $caja_empleados = $cajaHerramienta->empleados;
+        $flag1 = true;
+        $flag2 = true;
+
+        if(!empty($caja_empleados[0]->id)){
+            if($request->empleado1 == $caja_empleados[0]->id)
+                $flag1 = false;
+        }
+
+        if(!empty($caja_empleados[1]->id)){
+            if($request->empleado2 == $caja_empleados[1]->id)
+                $flag2 = false; 
+        }
+
+        if($flag1)
+        {
+            if(!empty($request->empleado1))
+            {
+                $empleado1 = EmpleadoCaja::where('empleado_id', $request->empleado1)->get();  
+                if(count($empleado1) > 0)
+                    return redirect()->back()->with('error', 'El empleado 1 ya está asignado a una caja');
+            }
+        }
+
+        if($flag2)
+        {
+            if(!empty($request->empleado2))
+            {
+                $empleado2 = EmpleadoCaja::where('empleado_id', $request->empleado2)->get();  
+                if(count($empleado2) > 0)
+                    return redirect()->back()->with('error', 'El empleado 2 ya está asignado a una caja');
+            }
+        }
 
         //Informacion del usuario
         $usuario = auth()->user();

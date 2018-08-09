@@ -186,82 +186,139 @@ class VentasController extends Controller
 
             if(!empty($request->motor) && is_numeric($request->motor)) 
             {
-                $motor = Motor::where('id', $request->motor)->get();
-                if($request->cantidadMotor <= $motor[0]->cantidad) 
+                if($venta_motores[0]->pivot->motor_id == $request->motor)
                 {
-                    $total = $request->cantidadMotor;
-                    if ($venta_motores[0]->pivot->cantidad > $request->cantidadMotor) 
+                    $motor = Motor::where('id', $request->motor)->get();
+                    if($request->cantidadMotor <= $motor[0]->cantidad) 
                     {
-                        $total = $venta_motores[0]->pivot->cantidad - $request->cantidadMotor;
-                        // Incrementar la cantidad 
-                        Motor::where('id', $request->motor)->increment('cantidad', $total); 
-                    }
-                    if ($venta_motores[0]->pivot->cantidad < $request->cantidadMotor) 
+                        $total = $request->cantidadMotor;
+                        if ($venta_motores[0]->pivot->cantidad > $request->cantidadMotor) 
+                        {
+                            $total = $venta_motores[0]->pivot->cantidad - $request->cantidadMotor;
+                            // Incrementar la cantidad 
+                            Motor::where('id', $request->motor)->increment('cantidad', $total); 
+                        }
+                        if ($venta_motores[0]->pivot->cantidad < $request->cantidadMotor) 
+                        {
+                            $total = $request->cantidadMotor - $venta_motores[0]->pivot->cantidad;
+                            // Decrementar la cantidad 
+                            Motor::where('id', $request->motor)->decrement('cantidad', $total); 
+                        }
+                        $ventas->motores()->detach();
+                        $ventas->motores()->attach($request->motor, ['cantidad' => $request->cantidadMotor]);
+                    } 
+                    else 
                     {
-                        $total = $request->cantidadMotor - $venta_motores[0]->pivot->cantidad;
-                        // Decrementar la cantidad 
-                        Motor::where('id', $request->motor)->decrement('cantidad', $total); 
+                        return redirect()->back()->with('error', 'La cantidad del motor es menor a la que se intenta vender');
                     }
-                    $ventas->motores()->detach();
-                    $ventas->motores()->attach($request->motor, ['cantidad' => $total]);
-                } 
-                else 
+                }
+                else
                 {
-                    return redirect()->back()->with('error', 'La cantidad del motor es menor a la que se intenta vender');
+                    $motor = Motor::where('id', $request->motor)->get();
+                    if($request->cantidadMotor <= $motor[0]->cantidad) 
+                    {
+                        Motor::where('id', $request->motor)->decrement('cantidad', $request->cantidadMotor);
+                        $ventas->motores()->detach();
+                        $ventas->motores()->attach($request->motor, ['cantidad' => $request->cantidadMotor]);
+                    }
+                    else
+                    {
+                        return redirect()->back()->with('error', 'La cantidad del motor es menor a la que se intenta vender');
+                    }
                 }
             }
 
             if(!empty($request->transmision) && is_numeric($request->transmision)) 
             {
-                $transmision = Transmision::where('id', $request->transmision)->get();
-                if($request->cantidadTransmision <= $transmision[0]->cantidad)
+                if($venta_transmisiones[0]->pivot->transmision_id == $request->transmision)
                 {
-                    $total = $request->cantidadTransmision;
-                    if ($venta_transmisiones[0]->pivot->cantidad > $request->cantidadTransmision) 
+                    $transmision = Transmision::where('id', $request->transmision)->get();
+                    if($request->cantidadTransmision <= $transmision[0]->cantidad)
                     {
-                        $total = $venta_transmisiones[0]->pivot->cantidad - $request->cantidadTransmision;
-                        // Incrementar la cantidad
-                        Transmision::where('id', $request->transmision)->increment('cantidad', $total); 
+                        $total = $request->cantidadTransmision;
+                        if ($venta_transmisiones[0]->pivot->cantidad > $request->cantidadTransmision) 
+                        {
+                            $total = $venta_transmisiones[0]->pivot->cantidad - $request->cantidadTransmision;
+                            // Incrementar la cantidad
+                            Transmision::where('id', $request->transmision)->increment('cantidad', $total); 
+                        }
+                        if ($venta_transmisiones[0]->pivot->cantidad < $request->cantidadTransmision) 
+                        {
+                            $total = $request->cantidadTransmision - $venta_transmisiones[0]->pivot->cantidad;
+                            // Decrementar la cantidad 
+                            Transmision::where('id', $request->transmision)->decrement('cantidad', $total); 
+                        }
+                        $ventas->transmisiones()->detach();
+                        $ventas->transmisiones()->attach($request->transmision, ['cantidad' => 
+                                                                                $request->cantidadTransmision]);
                     }
-                    if ($venta_transmisiones[0]->pivot->cantidad < $request->cantidadTransmision) 
+                    else 
                     {
-                        $total = $request->cantidadTransmision - $venta_transmisiones[0]->pivot->cantidad;
-                        // Decrementar la cantidad 
-                        Transmision::where('id', $request->transmision)->decrement('cantidad', $total); 
+                        return redirect()->back()->with('error', 'La cantidad de la transmision es menor a la que se intenta vender');
                     }
-                    $ventas->transmisiones()->detach();
-                    $ventas->transmisiones()->attach($request->transmision, ['cantidad' => $total]);
                 }
-                else 
+                else
                 {
-                    return redirect()->back()->with('error', 'La cantidad de la transmision es menor a la que se intenta vender');
+                    $transmision = Transmision::where('id', $request->transmision)->get();
+                    if($request->cantidadTransmision <= $transmision[0]->cantidad)
+                    {
+                        Transmision::where('id', $request->transmision)->decrement('cantidad', 
+                                                                                    $request->cantidadTransmision);
+                        $ventas->transmisiones()->detach();
+                        $ventas->transmisiones()->attach($request->transmision, ['cantidad' => 
+                                                                                $request->cantidadTransmision]);
+                    }
+                    else 
+                    {
+                        return redirect()->back()->with('error', 'La cantidad de la transmision es menor a la que se intenta vender');
+                    }
                 }
             }
 
             if(!empty($request->autoparte) && is_numeric($request->autoparte)) 
             {
-                $autoparte = Autoparte::where('id', $request->autoparte)->get();
-                if($request->cantidadAutoparte <= $autoparte[0]->cantidad)
+                if($venta_autopartes[0]->pivot->autoparte_id == $request->autoparte)
                 {
-                    $total = $request->cantidadAutoparte;
-                    if ($venta_autopartes[0]->pivot->cantidad > $request->cantidadAutoparte) 
+                    $autoparte = Autoparte::where('id', $request->autoparte)->get();
+                    if($request->cantidadAutoparte <= $autoparte[0]->cantidad)
                     {
-                        $total = $venta_autopartes[0]->pivot->cantidad - $request->cantidadAutoparte;
-                        // Incrementar la cantidad
-                        Autoparte::where('id', $request->autoparte)->increment('cantidad', $total);
+                        $total = $request->cantidadAutoparte;
+                        if ($venta_autopartes[0]->pivot->cantidad > $request->cantidadAutoparte) 
+                        {
+                            $total = $venta_autopartes[0]->pivot->cantidad - $request->cantidadAutoparte;
+                            // Incrementar la cantidad
+                            Autoparte::where('id', $request->autoparte)->increment('cantidad', $total);
+                        }
+                        if ($venta_autopartes[0]->pivot->cantidad < $request->cantidadAutoparte) 
+                        {
+                            $total = $request->cantidadAutoparte - $venta_autopartes[0]->pivot->cantidad;
+                            // Decrementar la cantidad
+                            Autoparte::where('id', $request->autoparte)->decrement('cantidad', $total);
+                        }
+                        $ventas->autopartes()->detach(); 
+                        $ventas->autopartes()->attach($request->autoparte, ['cantidad' => 
+                                                                            $request->cantidadAutoparte]);
                     }
-                    if ($venta_autopartes[0]->pivot->cantidad < $request->cantidadAutoparte) 
+                    else 
                     {
-                        $total = $request->cantidadAutoparte - $venta_autopartes[0]->pivot->cantidad;
-                        // Decrementar la cantidad
-                        Autoparte::where('id', $request->autoparte)->decrement('cantidad', $total);
+                        return redirect()->back()->with('error', 'La cantidad de la autoparte es menor a la que se intenta vender');
                     }
-                    $ventas->autopartes()->detach(); 
-                    $ventas->autopartes()->attach($request->autoparte, ['cantidad' => $total]);
                 }
-                else 
+                else
                 {
-                    return redirect()->back()->with('error', 'La cantidad de la autoparte es menor a la que se intenta vender');
+                    $autoparte = Autoparte::where('id', $request->autoparte)->get();
+                    if($request->cantidadAutoparte <= $autoparte[0]->cantidad)
+                    {
+                        Autoparte::where('id', $request->autoparte)->decrement('cantidad', 
+                                                                                $request->cantidadAutoparte);
+                        $ventas->autopartes()->detach(); 
+                        $ventas->autopartes()->attach($request->autoparte, ['cantidad' => 
+                                                                            $request->cantidadAutoparte]);
+                    }
+                    else 
+                    {
+                        return redirect()->back()->with('error', 'La cantidad de la autoparte es menor a la que se intenta vender');
+                    }
                 }
             }
         

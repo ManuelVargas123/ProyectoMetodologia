@@ -5,6 +5,9 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+//Notificacion por correo
+use App\Notifications\ResetPasswordNotification;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -27,8 +30,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /*public function task()
+        /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
     {
-        return $this->hasMany(\App)
-    }*/
+        $this->notify(new ResetPasswordNotification($token));
+    }
 }
